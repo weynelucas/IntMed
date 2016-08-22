@@ -1,5 +1,5 @@
 from django.apps import AppConfig
-from .utils.medicine_search import load_medicines
+from TreatCare.utils.medicine_service import load_medicines
 
 class MedicineConfig(AppConfig):
     name = 'medicine'

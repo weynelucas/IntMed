@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load sortable_column %}
+
+
+
+{% block title %}
+Medicamentos
+{% endblock %}
+
+
+{% block main_content %}
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                {% sortable_column property='name' title='Medicamento' %}
+                {% sortable_column property='presentation' title='Apresentação' %}
+                {% sortable_column property='laboratory' title='Laboratório' %}
+                {% sortable_column property='active_principle' title='Princípio Ativo' %}
+                {% sortable_column property='pmc' title='PMC R$' %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for object in objects %}
+            <tr>
+                <td>{{ object.name }}</td>
+                <td>{{ object.presentation }}</td>
+                <td>{{ object.laboratory }}</td>
+                <td>{{ object.active_principle }}</td>
+                <td>{{ object.pmc }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
