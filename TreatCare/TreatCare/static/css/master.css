@@ -1,3 +1,32 @@
-.sortable {
-    text-transform: uppercase;
+body {
+    font-family: 'PT Mono', monospace;
+}
+
+/* Table */
+thead {
+    background-color: #27ae60;
+    color: #fff;
+}
+th.sortable>a,
+th.sortable>a:hover {
+    text-decoration: none;
+    color: #fff;
+}
+th.sortable>a:hover {
+    text-shadow: 2px 2px #1f8048;
+}
+th.sortable {
+    min-width: 100px;
+    max-width: 300px;
+}
+.table>thead>tr>th.sortable {
+    border-bottom: 0;
+}
+.table>tbody>tr>td,
+.table>tbody>tr>th,
+.table>tfoot>tr>td,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>thead>tr>th {
+    border-top: 0;
 }
