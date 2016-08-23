@@ -16,7 +16,7 @@ th.sortable>a:hover {
     text-shadow: 2px 2px #1f8048;
 }
 th.sortable {
-    min-width: 100px;
+    min-width: 130px;
     max-width: 300px;
 }
 .table>thead>tr>th.sortable {

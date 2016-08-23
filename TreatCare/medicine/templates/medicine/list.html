@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load sortable_column %}
-
-
+{% load bootstrap_pagination %}
+{% load humanize %}
 
 {% block title %}
 Medicamentos
@@ -27,10 +27,15 @@ Medicamentos
                 <td>{{ object.presentation }}</td>
                 <td>{{ object.laboratory }}</td>
                 <td>{{ object.active_principle }}</td>
-                <td>{{ object.pmc }}</td>
+                <td>{{ object.pmc | intcomma }}</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+    {% if objects.paginator.num_pages > 1 %}
+        <div class="text-center">
+            {% bootstrap_paginate objects range=10  show_prev_next="false" show_first_last="true" %}
+        </div>
+    {% endif %}
 </div>
 {% endblock %}
