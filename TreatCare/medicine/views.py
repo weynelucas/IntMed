@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from .models import Medicine
+from TreatCare.utils import query_service
 
 # Create your views here.
 def list(request):
-    objects = Medicine.objects.all()
+    objects = query_service.perform_query(app_label='medicine', model_name='Medicine', request=request)
     context = {
         'objects': objects,
     }
