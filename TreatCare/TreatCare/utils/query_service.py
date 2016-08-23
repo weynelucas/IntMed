@@ -12,7 +12,7 @@ def perform_query(app_label, model_name, request):
             List of objects (queryset)
     """
     Model = apps.get_model(app_label=app_label, model_name=model_name)
-
+    fields = [field.name for field in Model._meta.fields]
 
     if request.method == 'POST':
         params = request.POST
@@ -22,7 +22,8 @@ def perform_query(app_label, model_name, request):
     sort = params.get('sort', '')
     order = params.get('order', 'asc')
 
-    queryset = Model.objects.filter()
+    query_params = {key: value for key, value in params.items() if key.split('__')[0] in str(fields)}
+    queryset = Model.objects.filter(**query_params)
 
     if sort:
         order_by = ''

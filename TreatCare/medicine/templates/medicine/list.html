@@ -10,6 +10,7 @@ Medicamentos
 
 {% block main_content %}
 <div class="container">
+    {% if objects %}
     <table class="table table-striped">
         <thead>
             <tr>
@@ -32,6 +33,9 @@ Medicamentos
             {% endfor %}
         </tbody>
     </table>
+    {% else %}
+    <p class="text-center">Nenhum resultado encontrado.</p>
+    {% endif %}
     {% if objects.paginator.num_pages > 1 %}
         <div class="text-center">
             {% bootstrap_paginate objects range=10  show_prev_next="false" show_first_last="true" %}
