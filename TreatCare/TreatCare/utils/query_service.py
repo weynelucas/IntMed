@@ -1,4 +1,5 @@
 from django.apps import apps
+from django.db.models.sql.constants import QUERY_TERMS
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def perform_query(app_label, model_name, request):
@@ -22,7 +23,7 @@ def perform_query(app_label, model_name, request):
     sort = params.get('sort', '')
     order = params.get('order', 'asc')
 
-    query_params = {key: value for key, value in params.items() if key.split('__')[0] in str(fields)}
+    query_params = {key: value for key, value in params.items() if (key.split('__')[0] in str(fields)) and (key.split('__')[-1] in QUERY_TERMS)}
     queryset = Model.objects.filter(**query_params)
 
     if sort:
