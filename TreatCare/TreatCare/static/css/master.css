@@ -31,10 +31,25 @@ th.sortable {
     border-top: 0;
 }
 
+.table-info {
+    line-height: 80px;
+}
+
 .title-box {
     background-color: #27ae60;
     color: #fff;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 2px;
+}
+
+.filter-form-row {
+    padding: 10px 0;
+}
+
+.talign-rigth {
+    text-align: right;
+}
+.talign-left {
+    text-align: left;
 }

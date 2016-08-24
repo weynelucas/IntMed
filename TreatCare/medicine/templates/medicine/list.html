@@ -9,6 +9,25 @@ Medicamentos
 
 {% block main_content %}
 <div class="container">
+    <div class="row filter-form-row">
+        <div class="form-inline">
+            <div class="form-group col-sm-6 text-left">
+                Exibir
+                <select class="form-control" name="items_per_page" onchange="paginateItems(this)">
+                    <option value="10"  {% if items_per_page == '10' %}selected{% endif %}>10</option>
+                    <option value="25"  {% if items_per_page == '25' %}selected{% endif %}>25</option>
+                    <option value="50"  {% if items_per_page == '50' %}selected{% endif %}>50</option>
+                    <option value="100" {% if items_per_page == '100' %}selected{% endif %}>100</option>
+                </select>
+                items
+            </div>
+            <form action="." method="get">
+                <div class="form-group col-sm-6 text-right">
+                    <input type="text" class="form-control" name="q" value="{{ query.q }}" placeholder="Pesquisar">
+                </div>
+            </form>
+        </div>
+    </div>
     {% if objects %}
     <table class="table table-striped">
         <thead>
@@ -36,9 +55,38 @@ Medicamentos
     <p class="text-center">Nenhum resultado encontrado.</p>
     {% endif %}
     {% if objects.paginator.num_pages > 1 %}
-    <div class="text-center">
-        {% bootstrap_paginate objects range=10  show_prev_next="false" show_first_last="true" %}
+    <div class="row">
+        <div class="col-sm-6 talign-left" style="line-height:80px">
+            Exibindo {{ page.start_index }} a {{ page.end_index }} de {{ objects_total }} registros
+        </div>
+        <div class="col-sm-6 talign-rigth">
+            {% bootstrap_paginate objects range=5  show_prev_next="false" show_first_last="true" %}
+        </div>
     </div>
     {% endif %}
+
 </div>
+{% endblock %}
+
+
+{% block  main_script %}
+<script type="text/javascript">
+    function paginateItems(elem) {
+        var path = "{{ request.get_full_path }}";
+        var new_path = updateQueryStringParameter(path, 'items_per_page', elem.value);
+        debugger;
+        window.location.href = new_path;
+    }
+
+    function updateQueryStringParameter(uri, key, value) {
+        var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+        var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+        if (uri.match(re)) {
+            return uri.replace(re, '$1' + key + "=" + value + '$2');
+        }
+        else {
+            return uri + separator + key + "=" + value;
+        }
+    }
+</script>
 {% endblock %}
