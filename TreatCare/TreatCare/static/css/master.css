@@ -30,3 +30,11 @@ th.sortable {
 .table>thead>tr>th {
     border-top: 0;
 }
+
+.title-box {
+    background-color: #27ae60;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 2px;
+}

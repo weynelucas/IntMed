@@ -7,7 +7,6 @@
 Medicamentos
 {% endblock %}
 
-
 {% block main_content %}
 <div class="container">
     {% if objects %}
@@ -37,9 +36,9 @@ Medicamentos
     <p class="text-center">Nenhum resultado encontrado.</p>
     {% endif %}
     {% if objects.paginator.num_pages > 1 %}
-        <div class="text-center">
-            {% bootstrap_paginate objects range=10  show_prev_next="false" show_first_last="true" %}
-        </div>
+    <div class="text-center">
+        {% bootstrap_paginate objects range=10  show_prev_next="false" show_first_last="true" %}
+    </div>
     {% endif %}
 </div>
 {% endblock %}
