@@ -1,3 +1,7 @@
+.form-control {
+    border-radius: 0;
+}
+
 /* Bootstrap Pagination */
 .pagination > li > a,
 .pagination > li > span {
