@@ -9,58 +9,65 @@ Medicamentos
 
 {% block main_content %}
 <div class="container">
-    <div class="row filter-form-row">
-        <form action="." method="get" class="form-inline">
-            <div class="form-group col-sm-6 text-left">
-                Exibir
-                <select class="form-control" name="items_per_page" onchange="paginateItems(this)">
-                    <option value="10"  {% if items_per_page == '10' %}selected{% endif %}>10</option>
-                    <option value="25"  {% if items_per_page == '25' %}selected{% endif %}>25</option>
-                    <option value="50"  {% if items_per_page == '50' %}selected{% endif %}>50</option>
-                    <option value="100" {% if items_per_page == '100' %}selected{% endif %}>100</option>
-                </select>
-                items
-            </div>
-            <div class="form-group col-sm-6 text-right">
-                <input type="text" class="form-control" name="q" value="{{ query.q }}" placeholder="Pesquisar">
-            </div>
-        </form>
-    </div>
-    {% if objects %}
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                {% sortable_column request=request property='name' title='Medicamento'%}
-                {% sortable_column request=request property='presentation' title='Apresentação' %}
-                {% sortable_column request=request property='laboratory' title='Laboratório' %}
-                {% sortable_column request=request property='active_principle' title='Princípio Ativo' %}
-                {% sortable_column request=request property='pmc' title='PMC R$' %}
-            </tr>
-        </thead>
-        <tbody>
-            {% for object in objects %}
-            <tr>
-                <td>{{ object.name }}</td>
-                <td>{{ object.presentation }}</td>
-                <td>{{ object.laboratory }}</td>
-                <td>{{ object.active_principle }}</td>
-                <td>{{ object.pmc | intcomma }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    {% else %}
-    <p class="text-center">Nenhum resultado encontrado.</p>
-    {% endif %}
-    <div class="row">
-        <div class="col-sm-6 talign-left" style="line-height:80px">
-            Exibindo {{ start_index }} a {{ end_index }} de {{ objects_total }} registros
+    <div class="box">
+        <div class="row filter-form-row">
+            <form action="." method="get" class="form-inline">
+                <div class="form-group col-sm-6 text-left">
+                    Exibir
+                    <select class="form-control" name="items_per_page" onchange="paginateItems(this)">
+                        <option value="10"  {% if items_per_page == '10' %}selected{% endif %}>10</option>
+                        <option value="25"  {% if items_per_page == '25' %}selected{% endif %}>25</option>
+                        <option value="50"  {% if items_per_page == '50' %}selected{% endif %}>50</option>
+                        <option value="100" {% if items_per_page == '100' %}selected{% endif %}>100</option>
+                    </select>
+                    items
+                </div>
+                <div class="form-group col-sm-6 text-right">
+                    <input type="text" class="form-control" name="q" value="{{ query.q }}" placeholder="Pesquisar">
+                </div>
+            </form>
         </div>
-        {% if objects.paginator.num_pages > 1 %}
-        <div class="col-sm-6 talign-rigth">
-            {% bootstrap_paginate objects range=5  show_prev_next="false" show_first_last="true" %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    {% sortable_column request=request property='name' title='Medicamento'%}
+                    {% sortable_column request=request property='presentation' title='Apresentação' %}
+                    {% sortable_column request=request property='laboratory' title='Laboratório' %}
+                    {% sortable_column request=request property='active_principle' title='Princípio Ativo' %}
+                    {% sortable_column request=request property='pmc' title='PMC R$' %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for object in objects %}
+                <tr>
+                    <td>{{ object.name }}</td>
+                    <td>{{ object.presentation }}</td>
+                    <td>{{ object.laboratory }}</td>
+                    <td>{{ object.active_principle }}</td>
+                    <td>{{ object.pmc | intcomma }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td>Nenhum resultado encontrado</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-sm-6 talign-left" style="line-height:80px">
+                Exibindo {{ start_index }} a {{ end_index }} de {{ objects_total }} registros
+            </div>
+            {% if objects.paginator.num_pages > 1 %}
+            <div class="col-sm-6 talign-rigth">
+                {% bootstrap_paginate objects range=5  show_prev_next="false" show_first_last="true" %}
+            </div>
+            {% endif %}
         </div>
-        {% endif %}
+
     </div>
 
 
