@@ -10,7 +10,7 @@ Medicamentos
 {% block main_content %}
 <div class="container">
     <div class="row filter-form-row">
-        <div class="form-inline">
+        <form action="." method="get" class="form-inline">
             <div class="form-group col-sm-6 text-left">
                 Exibir
                 <select class="form-control" name="items_per_page" onchange="paginateItems(this)">
@@ -21,12 +21,10 @@ Medicamentos
                 </select>
                 items
             </div>
-            <form action="." method="get">
-                <div class="form-group col-sm-6 text-right">
-                    <input type="text" class="form-control" name="q" value="{{ query.q }}" placeholder="Pesquisar">
-                </div>
-            </form>
-        </div>
+            <div class="form-group col-sm-6 text-right">
+                <input type="text" class="form-control" name="q" value="{{ query.q }}" placeholder="Pesquisar">
+            </div>
+        </form>
     </div>
     {% if objects %}
     <table class="table table-striped">
@@ -54,39 +52,29 @@ Medicamentos
     {% else %}
     <p class="text-center">Nenhum resultado encontrado.</p>
     {% endif %}
-    {% if objects.paginator.num_pages > 1 %}
     <div class="row">
         <div class="col-sm-6 talign-left" style="line-height:80px">
-            Exibindo {{ page.start_index }} a {{ page.end_index }} de {{ objects_total }} registros
+            Exibindo {{ start_index }} a {{ end_index }} de {{ objects_total }} registros
         </div>
+        {% if objects.paginator.num_pages > 1 %}
         <div class="col-sm-6 talign-rigth">
             {% bootstrap_paginate objects range=5  show_prev_next="false" show_first_last="true" %}
         </div>
+        {% endif %}
     </div>
-    {% endif %}
+
 
 </div>
 {% endblock %}
 
 
 {% block  main_script %}
+<script src="/static/js/url_utils.js" charset="utf-8"></script>
 <script type="text/javascript">
     function paginateItems(elem) {
-        var path = "{{ request.get_full_path }}";
+        var path = "{{ request.get_full_path | safe }}";
         var new_path = updateQueryStringParameter(path, 'items_per_page', elem.value);
-        debugger;
         window.location.href = new_path;
-    }
-
-    function updateQueryStringParameter(uri, key, value) {
-        var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
-        var separator = uri.indexOf('?') !== -1 ? "&" : "?";
-        if (uri.match(re)) {
-            return uri.replace(re, '$1' + key + "=" + value + '$2');
-        }
-        else {
-            return uri + separator + key + "=" + value;
-        }
     }
 </script>
 {% endblock %}
