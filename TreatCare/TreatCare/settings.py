@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'bootstrap_pagination',
+    'sortable_column',
     'medicine.apps.MedicineConfig',
 )
 
@@ -119,3 +120,11 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
+
+
+
+SORTABLE_COLUMN_SETTINGS = {
+  'icon': 'fa fa-sort',
+  'icon-asc':'fa fa-sort-asc',
+  'icon-desc':'fa fa-sort-desc',
+}
