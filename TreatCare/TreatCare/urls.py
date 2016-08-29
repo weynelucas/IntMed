@@ -9,6 +9,7 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^medicine/', include('medicine.urls')),
+    url(r'^disease/', include('disease.urls')),
 ]
 
 if settings.DEBUG:

@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load sortable_column %}
+{% load bootstrap_pagination %}
+{% load humanize %}
+
+{% block title %}
+Doenças
+{% endblock %}
+
+{% block main_content %}
+<div class="container">
+    <div class="box">
+        <div class="row filter-form-row">
+            <form action="." method="get" class="form-inline">
+                <div class="form-group col-sm-6 text-left">
+                    Exibir
+                    <select class="form-control" name="items_per_page" onchange="paginateItems(this)">
+                        <option value="10"  {% if items_per_page == '10' %}selected{% endif %}>10</option>
+                        <option value="25"  {% if items_per_page == '25' %}selected{% endif %}>25</option>
+                        <option value="50"  {% if items_per_page == '50' %}selected{% endif %}>50</option>
+                        <option value="100" {% if items_per_page == '100' %}selected{% endif %}>100</option>
+                    </select>
+                    items
+                </div>
+                <div class="form-group col-sm-6 text-right">
+                    <input type="text" class="form-control" name="q" value="{{ query.q }}" placeholder="Pesquisar">
+                </div>
+            </form>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    {% sortable_column request=request property='code' title='Código'%}
+                    {% sortable_column request=request property='description' title='Doença' %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for object in objects %}
+                <tr>
+                    <td>{{ object.code }}</td>
+                    <td>{{ object.description }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td>Nenhum resultado encontrado</td>
+                    <td></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-sm-6 talign-left" style="line-height:80px">
+                Exibindo {{ start_index }} a {{ end_index }} de {{ objects_total }} registros
+            </div>
+            {% if objects.paginator.num_pages > 1 %}
+            <div class="col-sm-6 talign-rigth">
+                {% bootstrap_paginate objects range=5  show_prev_next="false" show_first_last="true" %}
+            </div>
+            {% endif %}
+        </div>
+
+    </div>
+
+
+</div>
+{% endblock %}
+
+
+{% block  main_script %}
+<script src="/static/js/url_utils.js" charset="utf-8"></script>
+<script type="text/javascript">
+    function paginateItems(elem) {
+        var path = "{{ request.get_full_path | safe }}";
+        var new_path = updateQueryStringParameter(path, 'items_per_page', elem.value);
+        window.location.href = new_path;
+    }
+</script>
+{% endblock %}

@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'bootstrap_pagination',
     'sortable_column',
     'medicine.apps.MedicineConfig',
+    'disease.apps.DiseaseConfig',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -122,6 +123,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
 
 
+# Sortable column settings
+# http://github.com/weynelucas/djago-sortable-column
 
 SORTABLE_COLUMN_SETTINGS = {
   'icon': 'fa fa-sort',

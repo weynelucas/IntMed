@@ -53,20 +53,32 @@ def load_medicines(MedicineClass=None):
                     medicine.save()
 
 
-def load_diseases():
+def load_diseases(DiseaseClass=None):
     """ Load diseases from International Classification of
         Deseases (ICD-10) from http://www.medicinanet.com.br
         and save into database if is not empty
+        Args:
+            DiseaseClass: Disease class (required if app has not been loaded yet)
     """
-    soup = get_html_soup_response("www.medicinanet.com.br", "/categorias/lista_cid10.htm")
-    ul = soup.find('div', id='texto').ul
-    li_list = ul.find_all('li')
 
-    for li in li_list:
-        text = li.div.a.get_text()
-        code, description = text.split('-',1)
-        if '.' in code:
-            print(description)
+    if not DiseaseClass:
+        from disease.models import Disease
+        DiseaseClass = Disease
+
+    if db_table_exists(DiseaseClass._meta.db_table) and not DiseaseClass.objects.count():
+        soup = get_html_soup_response("www.medicinanet.com.br", "/categorias/lista_cid10.htm")
+        ul = soup.find('div', id='texto').ul
+        li_list = ul.find_all('li')
+
+        for li in li_list:
+            text = li.div.a.get_text()
+            code, description = text.split('-',1)
+            if '.' in code:
+                disease = DiseaseClass(
+                    code = code,
+                    description = description,
+                )
+                disease.save()
 
 
 def get_html_soup_response(url, uri, port=80):
