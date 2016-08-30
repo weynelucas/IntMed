@@ -2,9 +2,10 @@
 {% load sortable_column %}
 {% load bootstrap_pagination %}
 {% load humanize %}
+{% load getattr %}
 
 {% block title %}
-Doenças
+{{ title }}
 {% endblock %}
 
 {% block main_content %}
@@ -30,8 +31,8 @@ Doenças
         <table class="table table-striped">
             <thead>
                 <tr>
-                    {% for field in fields %}
-                    {% sortable_column request=request property=field.name title='Código'%}
+                    {% for field in fields_tuple %}
+                    {% sortable_column request=request property=field.0 title=field.1 %}
                     {% endfor %}
                 </tr>
 
@@ -39,8 +40,9 @@ Doenças
             <tbody>
                 {% for object in objects %}
                 <tr>
-                    <td>{{ object.code }}</td>
-                    <td>{{ object.description }}</td>
+                    {% for field in fields %}
+                    <td>{{ object | getattr:field }}</td>
+                    {% endfor %}
                 </tr>
                 {% empty %}
                 <tr>

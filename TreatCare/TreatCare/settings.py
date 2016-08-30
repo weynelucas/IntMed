@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     'bootstrap_pagination',
     'sortable_column',
+    'TreatCare',
     'medicine.apps.MedicineConfig',
     'disease.apps.DiseaseConfig',
 )
