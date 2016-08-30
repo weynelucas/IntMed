@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from .models import Disease
 from TreatCare.utils import query_service
+from TreatCare.views import ListView
 # Create your views here.
 def list(request):
     params = request.GET.copy()
@@ -17,3 +19,8 @@ def list(request):
         'end_index': objects.end_index,
     }
     return render(request, 'disease/list.html', context)
+
+class DiseaseListView(ListView):
+    app_label = "disease"
+    model_name = "Disease"
+    fields = Disease._meta.fields
