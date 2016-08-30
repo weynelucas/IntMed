@@ -1,9 +1,10 @@
-function remoteFunction(url, elementId) {
+function remoteFunction(url, elem) {
     $.ajax({
         url: url,
         type: 'get',
         success: function (response) {
-            $('#' + elementId).html(response)
+            var target = $(elem).data('target');
+            $(target).html(response);
         }
     })
 }

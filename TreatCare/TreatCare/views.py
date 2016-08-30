@@ -4,11 +4,7 @@ from django.shortcuts import render
 from django.views.generic import View
 
 class ListView(View):
-    title = ""
-    app_label = ""
-    model_name = ""
-    fields = []
-    labels = []
+    template = "list.html"
 
     def get(self, request):
         # Manage params of request
@@ -37,7 +33,18 @@ class ListView(View):
             'fields_tuple': self.fields_tuple,
         }
 
-        return render(request, 'list.html', context)
+        return render(request, self.template, context)
 
     class Meta:
         abstract = True
+
+
+class CreateView(View):
+    template = "form.html"
+
+    def get(self, request, *args, **kwargs):
+        form = self.form_class()
+        context ={
+            'form': form,
+        }
+        return render(request, self.template, context)
