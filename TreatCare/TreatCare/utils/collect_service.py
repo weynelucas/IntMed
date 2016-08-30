@@ -1,5 +1,6 @@
-from bs4 import BeautifulSoup
+import csv
 import http.client as http
+from bs4 import BeautifulSoup
 from string import ascii_lowercase
 from TreatCare.utils.database_service import db_table_exists
 
@@ -55,7 +56,7 @@ def load_medicines(MedicineClass=None):
 
 def load_diseases(DiseaseClass=None):
     """ Load diseases from International Classification of
-        Deseases (ICD-10) from http://www.medicinanet.com.br
+        Deseases (ICD-10) from datasus CSV files (http://www.datasus.gov.br/cid10/V2008/cid10.htm) 
         and save into database if is not empty
         Args:
             DiseaseClass: Disease class (required if app has not been loaded yet)
@@ -66,14 +67,14 @@ def load_diseases(DiseaseClass=None):
         DiseaseClass = Disease
 
     if db_table_exists(DiseaseClass._meta.db_table) and not DiseaseClass.objects.count():
-        soup = get_html_soup_response("www.medicinanet.com.br", "/categorias/lista_cid10.htm")
-        ul = soup.find('div', id='texto').ul
-        li_list = ul.find_all('li')
+        with open("CID10CSV/CID-10-SUBCATEGORIAS.CSV") as csv_file:
+            reader = csv.DictReader(csv_file, delimiter=';')
+            for row in reader:
+                code = row['SUBCAT']
+                description = row['DESCRICAO']
+                if len(code) == 4:
+                    code = code[:-1] + '.' + code[-1]
 
-        for li in li_list:
-            text = li.div.a.get_text()
-            code, description = text.split('-',1)
-            if '.' in code:
                 disease = DiseaseClass(
                     code = code,
                     description = description,

@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from .models import Medicine
 from TreatCare.utils import query_service
-import math
+from TreatCare.decorators import ajax_required
+
 # Create your views here.
 def list(request):
     params = request.GET.copy()
@@ -19,3 +20,7 @@ def list(request):
         'end_index': objects.end_index,
     }
     return render(request, 'medicine/list.html', context)
+
+@ajax_required
+def create(request):
+    return render(request, 'medicine/create.html')

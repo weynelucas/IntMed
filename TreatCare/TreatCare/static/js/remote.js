@@ -3,6 +3,7 @@ function remoteFunction(url, elementId) {
         url: url,
         type: 'get',
         success: function (response) {
+            debugger;
             $('#' + elementId).html(response)
         }
     })
