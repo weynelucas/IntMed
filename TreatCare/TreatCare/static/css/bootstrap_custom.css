@@ -6,7 +6,7 @@
 /* Bootstrap Pagination */
 .pagination > li > a,
 .pagination > li > span {
-  color: #27ae60;
+  color: #1fa67a;
   background-color: #ffffff;
   border: 1px solid #dddddd;
 }
@@ -14,7 +14,7 @@
 .pagination > li > span:hover,
 .pagination > li > a:focus,
 .pagination > li > span:focus {
-  color: #27ae60;
+  color: #1fa67a;
   background-color: #eeeeee;
   border-color: #dddddd;
 }
@@ -25,8 +25,8 @@
 .pagination > .active > a:focus,
 .pagination > .active > span:focus {
   color: #ffffff;
-  background-color: #27ae60;
-  border-color: #27ae60;
+  background-color: #1fa67a;
+  border-color: #1fa67a;
 }
 .pagination > .disabled > span,
 .pagination > .disabled > span:hover,

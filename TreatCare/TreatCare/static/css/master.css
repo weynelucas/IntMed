@@ -8,9 +8,20 @@ body {
     margin: 15px 0;
 }
 
+.filter-form-row {
+    padding: 10px 0;
+}
+
+.talign-rigth {
+    text-align: right;
+}
+.talign-left {
+    text-align: left;
+}
+
 /* Table */
 .table>thead {
-    background-color: #27ae60;
+    background-color: #1fa67a;
     color: #fff;
 }
 th.sortable>a,
@@ -37,33 +48,72 @@ th.sortable {
     border-top: 0;
 }
 .table>thead{
-    border: 1px solid #27ae60;
+    border: 1px solid #1fa67a;
 }
 .table>tbody {
     border-style: solid;
     border-color: #cccccc;
     border-width: 0 1px 1px 1px;
 }
-
 .table-info {
     line-height: 80px;
 }
 
-.title-box {
-    background-color: #27ae60;
+/* Btn system */
+.btn-system {
     color: #fff;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 2px;
+    background-color: #1fa67a;
+    border-color: #1b926c;
 }
-
-.filter-form-row {
-    padding: 10px 0;
+.btn-system:focus,
+.btn-system.focus {
+    color: #fff;
+    background-color: #1b926c;
+    border-color:  #1a6d52;
 }
-
-.talign-rigth {
-    text-align: right;
+.btn-system:hover {
+    color: #fff;
+    background-color: #1b926c;
+    border-color: #1f8048;
 }
-.talign-left {
-    text-align: left;
+.btn-system:active,
+.btn-system.active,
+.open > .dropdown-toggle.btn-system {
+    color: #fff;
+    background-color:  #1b926c;
+    border-color: #1f8048;
+}
+.btn-system:active:hover,
+.btn-system.active:hover,
+.open > .dropdown-toggle.btn-system:hover,
+.btn-system:active:focus,
+.btn-system.active:focus,
+.open > .dropdown-toggle.btn-system:focus,
+.btn-system:active.focus,
+.btn-system.active.focus,
+.open > .dropdown-toggle.btn-system.focus {
+    color: #fff;
+    background-color: #1b926c;
+    border-color: #1f8048;
+}
+.btn-system:active,
+.btn-system.active,
+.open > .dropdown-toggle.btn-system {
+    background-image: none;
+}
+.btn-system.disabled:hover,
+.btn-system[disabled]:hover,
+fieldset[disabled] .btn-system:hover,
+.btn-system.disabled:focus,
+.btn-system[disabled]:focus,
+fieldset[disabled] .btn-system:focus,
+.btn-system.disabled.focus,
+.btn-system[disabled].focus,
+fieldset[disabled] .btn-system.focus {
+    background-color: #1b926c;
+    border-color: #1f8048;
+}
+.btn-system .badge {
+    color: #1b926c;
+    background-color: #fff;
 }
