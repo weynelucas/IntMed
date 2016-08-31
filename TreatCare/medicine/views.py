@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Medicine
 from .forms import MedicineForm
 from TreatCare.utils import query_service
-from TreatCare.views import ListView, CreateView
+from TreatCare.views import ListView, ModalFormView
 from TreatCare.decorators import ajax_required
 
 class MedicineListView(ListView):
@@ -13,5 +13,5 @@ class MedicineListView(ListView):
     labels = ["Medicamento", "Apresentação", "Laboratório", "Princípio Ativo", "PMC R$"]
 
 
-class MedicineCreateView(CreateView):
+class MedicineFormView(ModalFormView):
     form_class = MedicineForm

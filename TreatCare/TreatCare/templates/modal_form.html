@@ -1,0 +1,29 @@
+{% load widget_attr %}
+
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Modal title</h4>
+        </div>
+        <form id="modal_form" action="." method="post">{% csrf_token %}
+            <div class="modal-body">
+                {% for field in form %}
+                    <div class="form-group">
+                        <label for="id_{{ field.name }}" class="control-label">{{ field.label }}:</label>
+                        {{ field }}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</input>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/static/js/form.js" charset="utf-8"></script>
+<script type="text/javascript">
+    initFormBehaviour("#modal_form");
+</script>

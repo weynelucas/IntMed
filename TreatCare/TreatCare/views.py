@@ -1,7 +1,11 @@
-from django.apps import apps
 from .utils import query_service
+from .decorators import ajax_required
+from django.apps import apps
+from django.http import JsonResponse
 from django.shortcuts import render
+from django.utils.decorators import method_decorator
 from django.views.generic import View
+from django.views.generic.edit import FormView
 
 class ListView(View):
     template = "list.html"
@@ -38,13 +42,12 @@ class ListView(View):
     class Meta:
         abstract = True
 
+@method_decorator(ajax_required, name='dispatch')
+class ModalFormView(FormView):
+    template_name = "modal_form.html"
 
-class CreateView(View):
-    template = "form.html"
+    def form_invalid(self, form):
+        return JsonResponse(form.errors, status=404)
 
-    def get(self, request, *args, **kwargs):
-        form = self.form_class()
-        context ={
-            'form': form,
-        }
-        return render(request, self.template, context)
+    class Meta:
+        abstract = True

@@ -3,5 +3,5 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.MedicineListView.as_view()),
-    url(r'^create/$', views.MedicineCreateView.as_view()),
+    url(r'^create/$', views.MedicineFormView.as_view()),
 ]
