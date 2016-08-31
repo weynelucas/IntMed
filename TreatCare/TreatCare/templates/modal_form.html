@@ -4,14 +4,14 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Modal title</h4>
+            <h4 class="modal-title">{{ title }}</h4>
+            <p>{{ subtitle }}</p>
         </div>
         <form id="modal_form" action="." method="post">{% csrf_token %}
             <div class="modal-body">
                 {% for field in form %}
                     <div class="form-group">
-                        <label for="id_{{ field.name }}" class="control-label">{{ field.label }}:</label>
-                        {{ field }}
+                        {{ field | placeholder:field.label }}
                     </div>
                 {% endfor %}
             </div>

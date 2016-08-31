@@ -46,6 +46,14 @@ class ListView(View):
 class ModalFormView(FormView):
     template_name = "modal_form.html"
 
+    def get_context_data(self, **kwargs):
+        context = super(ModalFormView, self).get_context_data(**kwargs)
+        context.update({
+            'title': self.title,
+            'subtitle': self.subtitle,
+        })
+        return context
+
     def form_invalid(self, form):
         return JsonResponse(form.errors, status=404)
 

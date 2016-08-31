@@ -14,4 +14,6 @@ class MedicineListView(ListView):
 
 
 class MedicineFormView(ModalFormView):
+    title = "Adicionar Medicamento"
+    subtitle = "Preencha o formulário abaixo:"
     form_class = MedicineForm

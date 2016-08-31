@@ -37,3 +37,21 @@
   background-color: #ffffff;
   border-color: #dddddd;
 }
+
+.modal-header > p {
+    color: #888888;
+}
+.modal-header {
+    border-bottom: 1px solid #ddd;
+}
+.modal-title {
+    line-height: 30px;
+    margin-bottom: 10px;
+}
+.modal-body {
+    background: #eee;
+    padding: 25px 45px;
+}
+.modal-footer {
+    border-top: 1px solid #ddd;
+}
