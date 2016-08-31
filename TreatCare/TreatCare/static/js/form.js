@@ -39,11 +39,12 @@ function encapsulateData(form) {
 }
 
 function displayErrors(form, response) {
+    debugger;
     var first = true;
     for (field in response) {
         var input = $(form).find("input[name='" + field + "']");
         var formGroup = $(input).parent();
-        var helpBlock;
+        var helpBlock = null;
 
         if(!$(formGroup).find(".help-block").length) {
             helpBlock = $('<span>').addClass("help-block").html(response[field]);
