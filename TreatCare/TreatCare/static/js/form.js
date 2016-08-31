@@ -39,7 +39,6 @@ function encapsulateData(form) {
 }
 
 function displayErrors(form, response) {
-    debugger;
     var first = true;
     for (field in response) {
         var input = $(form).find("input[name='" + field + "']");
