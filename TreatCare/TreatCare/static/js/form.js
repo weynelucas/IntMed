@@ -20,7 +20,8 @@ function preventSubmitBehaviour(formId) {
             async: true,
             data: encapsulateData(form),
             success: function (response) {
-                console.log(response)
+                $('#mainModal').modal('hide');
+                displayToast('success', response.message);
             },
             error: function (request, status, error) {
                 displayErrors(form, request.responseJSON);

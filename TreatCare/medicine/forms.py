@@ -7,11 +7,18 @@ form_control = {'class': 'form-control'}
 class MedicineForm(ModelForm):
     class Meta:
         model = Medicine
-        fields = ['name', 'presentation', 'laboratory', 'active_principle', 'pmc']
+        fields = '__all__'
         widgets = {
             'pmc': NumberInput(attrs=form_control),
             'name': TextInput(attrs=form_control),
             'laboratory': TextInput(attrs=form_control),
             'presentation': TextInput(attrs=form_control),
             'active_principle': TextInput(attrs=form_control),
+        }
+        labels = {
+            'pmc': 'PMC',
+            'name': 'Nome',
+            'laboratory': 'Laboratório',
+            'presentation': 'Apresentação',
+            'active_principle': 'Princípio ativo',
         }

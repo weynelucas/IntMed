@@ -6,9 +6,12 @@ from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views.generic import View
 from django.views.generic.edit import FormView
+from django.forms.models import model_to_dict
+from django.contrib import messages
 
 class ListView(View):
     template = "list.html"
+    enable_create = True
 
     def get(self, request):
         # Manage params of request
@@ -35,6 +38,7 @@ class ListView(View):
             'end_index': objects.end_index,
             'fields': self.fields,
             'fields_tuple': self.fields_tuple,
+            'enable_create': self.enable_create,
         }
 
         return render(request, self.template, context)
@@ -43,11 +47,13 @@ class ListView(View):
         abstract = True
 
 @method_decorator(ajax_required, name='dispatch')
-class ModalFormView(FormView):
+class ModalCreateFormView(FormView):
     template_name = "modal_form.html"
+    subtitle = "Preencha o formulário abaixo:"
+    main_property = "name"
 
     def get_context_data(self, **kwargs):
-        context = super(ModalFormView, self).get_context_data(**kwargs)
+        context = super(ModalCreateFormView, self).get_context_data(**kwargs)
         context.update({
             'title': self.title,
             'subtitle': self.subtitle,
@@ -56,6 +62,17 @@ class ModalFormView(FormView):
 
     def form_invalid(self, form):
         return JsonResponse(form.errors, status=404)
+
+    def form_valid(self, form):
+        form.save()
+        
+        model_verbose_name = form.instance.__class__._meta.verbose_name.title().capitalize()
+        instance_dict = model_to_dict(form.instance)
+        success_context = {
+            'message': model_verbose_name + ' ' + instance_dict.get(self.main_property, '') + ' adicionado com sucesso.',
+            'instance': instance_dict,
+        }
+        return JsonResponse(success_context)
 
     class Meta:
         abstract = True

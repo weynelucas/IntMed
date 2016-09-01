@@ -10,58 +10,77 @@
 
 {% block main_content %}
 <div class="container">
-    <button type="button" name="button" onclick="remoteFunction('create/', this)" data-toggle="modal" data-target="#mainModal">Adicionar</button>
     <div class="box">
-        <div class="row filter-form-row">
-            <form action="." method="get" class="form-inline">
-                <div class="form-group col-sm-6 text-left">
-                    Exibir
-                    <select class="form-control" name="items_per_page" onchange="paginateItems(this)">
-                        <option value="10"  {% if items_per_page == '10' %}selected{% endif %}>10</option>
-                        <option value="25"  {% if items_per_page == '25' %}selected{% endif %}>25</option>
-                        <option value="50"  {% if items_per_page == '50' %}selected{% endif %}>50</option>
-                        <option value="100" {% if items_per_page == '100' %}selected{% endif %}>100</option>
-                    </select>
-                    items
+        <div class="box-title">
+            <div class="row">
+                <h3 class="col-md-8">{{ title }}</h3>
+                {% if enable_create %}
+                <div class="col-md-4 talign-rigth">
+                    <button class="btn btn-add" type="button" name="button" onclick="remoteFunction('create/', this)" data-toggle="modal" data-target="#mainModal">
+                        Adicionar
+                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                    </button>
                 </div>
-                <div class="form-group col-sm-6 text-right">
-                    <input type="text" class="form-control" name="q" value="{{ query.q }}" placeholder="Pesquisar">
-                </div>
-            </form>
+                {% endif %}
+            </div>
         </div>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    {% for field in fields_tuple %}
-                    {% sortable_column request=request property=field.0 title=field.1 %}
-                    {% endfor %}
-                </tr>
+        <div class="box-body">
+            <div class="row box-row">
+                <form action="." method="get" class="form-inline">
+                    <div class="form-group col-sm-6 text-left">
+                        Exibir
+                        <select class="form-control" name="items_per_page" onchange="paginateItems(this)">
+                            <option value="10"  {% if items_per_page == '10' %}selected{% endif %}>10</option>
+                            <option value="25"  {% if items_per_page == '25' %}selected{% endif %}>25</option>
+                            <option value="50"  {% if items_per_page == '50' %}selected{% endif %}>50</option>
+                            <option value="100" {% if items_per_page == '100' %}selected{% endif %}>100</option>
+                        </select>
+                        items
+                    </div>
+                    <div class="form-group col-sm-6 text-right">
+                        <input type="text" class="form-control" name="q" value="{{ query.q }}" placeholder="Pesquisar">
+                    </div>
+                </form>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        {% for field in fields_tuple %}
+                        {% sortable_column request=request property=field.0 title=field.1 %}
+                        {% endfor %}
+                    </tr>
 
-            </thead>
-            <tbody>
-                {% for object in objects %}
-                <tr>
-                    {% for field in fields %}
-                    <td>{{ object | getattr:field }}</td>
+                </thead>
+                <tbody>
+                    {% for object in objects %}
+                    <tr>
+                        {% for field in fields %}
+                        <td>{{ object | getattr:field }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td>Nenhum resultado encontrado</td>
+                        {% for field in fields %}
+                        {% if not forloop.first %}
+                        <td></td>
+                        {% endif %}
+                        {% endfor %}
+                    </tr>
                     {% endfor %}
-                </tr>
-                {% empty %}
-                <tr>
-                    <td>Nenhum resultado encontrado</td>
-                    <td></td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <div class="row">
-            <div class="col-sm-6 talign-left" style="line-height:80px">
-                Exibindo {{ start_index }} a {{ end_index }} de {{ objects_total }} registros
+                </tbody>
+            </table>
+
+            <div class="row">
+                <div class="col-sm-6 talign-left" style="line-height:80px">
+                    Exibindo {{ start_index }} a {{ end_index }} de {{ objects_total }} registros
+                </div>
+                {% if objects.paginator.num_pages > 1 %}
+                <div class="col-sm-6 talign-rigth">
+                    {% bootstrap_paginate objects range=5  show_prev_next="false" show_first_last="true" %}
+                </div>
+                {% endif %}
             </div>
-            {% if objects.paginator.num_pages > 1 %}
-            <div class="col-sm-6 talign-rigth">
-                {% bootstrap_paginate objects range=5  show_prev_next="false" show_first_last="true" %}
-            </div>
-            {% endif %}
         </div>
 
     </div>

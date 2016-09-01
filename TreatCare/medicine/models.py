@@ -7,3 +7,7 @@ class Medicine(models.Model):
     presentation = models.CharField(null=True, blank=True, max_length=250)
     active_principle = models.CharField(null=True, blank=True, max_length=250)
     pmc = models.DecimalField(null=True, blank=True, max_digits=10, decimal_places=2)
+
+    class Meta:
+        verbose_name = 'medicamento'
+        verbose_name_plural = 'medicamentos'

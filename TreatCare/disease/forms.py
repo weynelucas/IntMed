@@ -11,3 +11,7 @@ class DiseaseForm(ModelForm):
             'code': TextInput(attrs=form_control),
             'description': TextInput(attrs=form_control),
         }
+        labels = {
+            'code': 'Código',
+            'description': 'Descrição',
+        }

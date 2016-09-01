@@ -2,16 +2,41 @@ body {
     font-family: 'PT Mono', monospace;
 }
 
+
+/* Box */
 .box {
-    border: 1px solid #ccc;
-    padding: 15px;
     margin: 15px 0;
 }
-
-.filter-form-row {
-    padding: 10px 0;
+.box-body {
+    padding: 15px;
+    border: 1px solid #ccc;
+}
+.box-row {
+    padding: 0 0 10px 0;
+}
+.box-title {
+    color: #fff;
+    background-color: #1fa67a;
+    border-radius: 10px 10px 0 0;
+    padding: 15px;
 }
 
+.box-title > h1,
+.box-title > h2,
+.box-title > h3,
+.box-title > h4,
+.box-title > h5,
+.box-title > div > h1,
+.box-title > div > h2,
+.box-title > div > h3,
+.box-title > div > h4,
+.box-title > div > h5 {
+    margin: 0;
+    line-height: 30px;
+    text-shadow: 2px 2px #1f8048;
+}
+
+/* Text align */
 .talign-rigth {
     text-align: right;
 }
@@ -59,6 +84,70 @@ th.sortable {
     line-height: 80px;
 }
 
+/* Btn add */
+.btn.btn-add {
+    border-radius: 5px;
+    border-width: 0.10em;
+}
+.btn-add {
+    color: #fff;
+    background-color: #1fa67a;
+    border-color: #fff;
+}
+.btn-add:focus,
+.btn-add.focus {
+    color: #fff;
+    background-color: #1fa67a;
+    border-color: #fff;
+    outline: 0;
+}
+.btn-add:hover {
+    color: #1fa67a;
+    background-color: #fff;
+    border-color:  #fff;
+}
+.btn-add:active,
+.btn-add.active,
+.open > .dropdown-toggle.btn-add {
+    color: #1fa67a;
+    background-color: #fff;
+    border-color:  #fff;
+}
+.btn-add:active:hover,
+.btn-add.active:hover,
+.open > .dropdown-toggle.btn-add:hover,
+.btn-add:active:focus,
+.btn-add.active:focus,
+.open > .dropdown-toggle.btn-add:focus,
+.btn-add:active.focus,
+.btn-add.active.focus,
+.open > .dropdown-toggle.btn-add.focus {
+    color: #1fa67a;
+    background-color: #fff;
+    border-color:  #fff;
+}
+.btn-add:active,
+.btn-add.active,
+.open > .dropdown-toggle.btn-add {
+    background-image: none;
+}
+.btn-add.disabled:hover,
+.btn-add[disabled]:hover,
+fieldset[disabled] .btn-add:hover,
+.btn-add.disabled:focus,
+.btn-add[disabled]:focus,
+fieldset[disabled] .btn-add:focus,
+.btn-add.disabled.focus,
+.btn-add[disabled].focus,
+fieldset[disabled] .btn-add.focus {
+    background-color: #fff;
+    border-color:  #fff;
+}
+.btn-add .badge {
+    color: #1fa67a;
+    background-color: #fff;
+}
+
 /* Btn system */
 .btn-system {
     color: #fff;
@@ -74,14 +163,14 @@ th.sortable {
 .btn-system:hover {
     color: #fff;
     background-color: #1b926c;
-    border-color: #1f8048;
+    border-color: #1a6d52;
 }
 .btn-system:active,
 .btn-system.active,
 .open > .dropdown-toggle.btn-system {
     color: #fff;
     background-color:  #1b926c;
-    border-color: #1f8048;
+    border-color: #1a6d52;
 }
 .btn-system:active:hover,
 .btn-system.active:hover,
