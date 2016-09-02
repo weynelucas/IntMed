@@ -21,6 +21,12 @@ class ListView(View):
 
         # Perform query
         objects = query_service.perform_lookup_query(app_label=self.app_label, model_name=self.model_name, params=params, query=q)
+
+        # Return JSON if request comes from AJAX
+        if request.is_ajax():
+            return JsonResponse(list(objects.values()), safe=False)
+
+        # Pagination
         objects = query_service.paginate_list(objects, params, items_per_page)
 
         # Pack fields and labels
@@ -65,7 +71,7 @@ class ModalCreateFormView(FormView):
 
     def form_valid(self, form):
         form.save()
-        
+
         model_verbose_name = form.instance.__class__._meta.verbose_name.title().capitalize()
         instance_dict = model_to_dict(form.instance)
         success_context = {

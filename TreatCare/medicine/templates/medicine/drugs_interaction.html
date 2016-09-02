@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+<div class="container">
+    <div class="box-xs">
+        <div class="box-title">
+            <div class="row">
+                <div class="col-md-6">
+                    Insira um medicamento:
+                    <input id="drug_search" class="form-control" type="text" name="name" value="">
+                </div>
+            </div>
+        </div>
+        <div class="box-body">
+            <div class="row">
+                <div class="col-md-6" >
+                    <div id="selected_drugs" class="list-group"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block main_script %}
+<script type="text/javascript">
+    var selectedItems = {
+        items: [],
+        callback: proccessInteractions,
+        add: function (item) {
+            this.items.push(item);
+            this.callback();
+        },
+        removeItemById: function (id) {
+            var matchedItems = this.items.filter (function (item) {
+                return item.id == id
+            });
+
+            for (item in matchedItems) {
+                var index = this.items.indexOf(matchedItems[item]);
+                if(index >= 0) {
+                    this.items.splice(index, 1);
+                }
+            }
+            this.callback()
+        }
+    }
+
+
+    $("#drug_search").autocomplete({
+        minLength: 3,
+        source: function (request, response) {
+            $.ajax( {
+                url: "/medicine/",
+                data: {
+                    q: request.term
+                },
+                success: function (data) {
+                    response( data.length === 1 && data[ 0 ].length === 0 ? [] : data );
+                }
+            } );
+        },
+        select: function (event, ui) {
+            var span = $('<span>').attr({
+                ariaHidden: 'true',
+            }).html('&times');
+
+            var closeBtn = $('<button>').attr({
+                class: 'close',
+                type: 'button',
+                ariaLabel: 'Close',
+                onclick:'removeItem(this)',
+            }).html(span);
+
+            var listGroupItemHeading = $('<h5>').addClass('list-group-item-heading').append(ui.item.name).append(closeBtn);
+            var laboratory = $('<p>').addClass('list-group-item-text').html(ui.item.laboratory);
+            var active_principle = $('<p>').addClass('list-group-item-text').append(ui.item.active_principle);
+            var hidenId = $('<input>').attr({
+                type: 'hidden',
+                value: ui.item.id,
+            });
+            var listGroupItem = $('<div>').addClass('list-group-item').append(hidenId).append(listGroupItemHeading).append(laboratory).append(active_principle);
+
+            $("#selected_drugs").append(listGroupItem);
+            $("#drug_search").val(ui.item.name);
+            selectedItems.add(ui.item);
+
+            return false;
+        }
+    })
+    .autocomplete( "instance" )._renderItem = function(ul, item) {
+      return $("<li>")
+        .append("<div>" + item.name + "<br>" + "<span class='presentation'>" + item.active_principle + "<span>" + "</div>" )
+        .appendTo(ul);
+    };
+
+    function removeItem(elem) {
+        var parent = $(elem).parent().parent();
+        var elemId = $(parent).find("input[type='hidden']").val();
+        $(parent).remove();
+        selectedItems.removeItemById(elemId);
+    }
+
+    function proccessInteractions () {
+        if (selectedItems.items.length > 1) {
+            console.log("Proccess Interactions ... ")
+        }
+    }
+</script>
+{% endblock %}

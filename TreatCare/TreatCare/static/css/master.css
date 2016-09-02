@@ -6,6 +6,10 @@ body {
 /* Box */
 .box {
     margin: 15px 0;
+    min-width: 200px;
+}
+.box-xs {
+    width: 700px;
 }
 .box-body {
     padding: 15px;
@@ -44,6 +48,21 @@ body {
     text-align: left;
 }
 
+.ui-menu {
+    font-family: 'PT Mono', monospace;
+}
+
+p.list-group-item-text {
+    font-size: 12px;
+}
+.list-group-item-heading {
+    color: #1fa67a;
+}
+
+.presentation {
+    font-size: 10px;
+}
+.ui-autocomplete { max-height: 200px; overflow-y: scroll; overflow-x: hidden;}
 /* Table */
 .table>thead {
     background-color: #1fa67a;
