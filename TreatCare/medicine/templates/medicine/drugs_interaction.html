@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-md-6">
                     Insira um medicamento:
-                    <input id="drug_search" class="form-control" type="text" name="name" value="">
+                    <input id="drug_search" class="form-control" type="text" name="name" value="" placeholder="Pesquisar">
                 </div>
             </div>
         </div>
@@ -28,7 +28,15 @@
         items: [],
         callback: proccessInteractions,
         add: function (item) {
+            var idList = []
+
+            for (i in this.items) {
+                if(this.items[i]['id'] == item.id) {
+                    return
+                }
+            }
             this.items.push(item);
+            this.addItemElem(item);
             this.callback();
         },
         removeItemById: function (id) {
@@ -42,7 +50,36 @@
                     this.items.splice(index, 1);
                 }
             }
-            this.callback()
+            this.removeItemElem(id);
+            this.callback();
+        },
+        addItemElem: function (item) {
+            var span = $('<span>').attr({
+                ariaHidden: 'true',
+            }).html('&times');
+
+            var closeBtn = $('<button>').attr({
+                class: 'close',
+                type: 'button',
+                ariaLabel: 'Close',
+                onclick:'removeItem(this)',
+            }).html(span);
+
+            var listGroupItemHeading = $('<h5>').addClass('list-group-item-heading').append(item.name).append(closeBtn);
+            var laboratory = $('<p>').addClass('list-group-item-text').html(item.laboratory);
+            var active_principle = $('<p>').addClass('list-group-item-text').append(item.active_principle);
+            var hidenId = $('<input>').attr({
+                type: 'hidden',
+                class: 'item_id',
+                value: item.id,
+            });
+            var listGroupItem = $('<div>').addClass('list-group-item').append(hidenId).append(listGroupItemHeading).append(laboratory).append(active_principle);
+
+            $("#selected_drugs").append(listGroupItem);
+            $("#drug_search").val(item.name);
+        },
+        removeItemElem: function (itemId) {
+            $(".item_id[value='"+ itemId +"']").parent().remove();
         }
     }
 
@@ -61,30 +98,7 @@
             } );
         },
         select: function (event, ui) {
-            var span = $('<span>').attr({
-                ariaHidden: 'true',
-            }).html('&times');
-
-            var closeBtn = $('<button>').attr({
-                class: 'close',
-                type: 'button',
-                ariaLabel: 'Close',
-                onclick:'removeItem(this)',
-            }).html(span);
-
-            var listGroupItemHeading = $('<h5>').addClass('list-group-item-heading').append(ui.item.name).append(closeBtn);
-            var laboratory = $('<p>').addClass('list-group-item-text').html(ui.item.laboratory);
-            var active_principle = $('<p>').addClass('list-group-item-text').append(ui.item.active_principle);
-            var hidenId = $('<input>').attr({
-                type: 'hidden',
-                value: ui.item.id,
-            });
-            var listGroupItem = $('<div>').addClass('list-group-item').append(hidenId).append(listGroupItemHeading).append(laboratory).append(active_principle);
-
-            $("#selected_drugs").append(listGroupItem);
-            $("#drug_search").val(ui.item.name);
             selectedItems.add(ui.item);
-
             return false;
         }
     })
@@ -96,8 +110,7 @@
 
     function removeItem(elem) {
         var parent = $(elem).parent().parent();
-        var elemId = $(parent).find("input[type='hidden']").val();
-        $(parent).remove();
+        var elemId = $(parent).find(".item_id:first").val();
         selectedItems.removeItemById(elemId);
     }
 

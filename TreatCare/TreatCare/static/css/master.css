@@ -6,7 +6,6 @@ body {
 /* Box */
 .box {
     margin: 15px 0;
-    min-width: 200px;
 }
 .box-xs {
     width: 700px;
