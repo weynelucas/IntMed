@@ -3,7 +3,8 @@ body {
 }
 
 
-/* Box */
+/* box
+---------------------------------------------*/
 .box {
     margin: 15px 0;
 }
@@ -23,7 +24,6 @@ body {
     border-radius: 10px 10px 0 0;
     padding: 15px;
 }
-
 .box-title > h1,
 .box-title > h2,
 .box-title > h3,
@@ -39,7 +39,9 @@ body {
     text-shadow: 2px 2px #1f8048;
 }
 
-/* Text align */
+
+/* talign
+---------------------------------------------*/
 .talign-rigth {
     text-align: right;
 }
@@ -47,8 +49,17 @@ body {
     text-align: left;
 }
 
+
+/* ui-autocomplete
+---------------------------------------------*/
 .ui-menu {
     font-family: 'PT Mono', monospace;
+}
+.ui-menu-item .ui-state-active {
+    border: 1px solid #1f8048;
+    background: #1fa67a;
+    font-weight: normal;
+    color: #fff;
 }
 
 p.list-group-item-text {
@@ -62,47 +73,52 @@ p.list-group-item-text {
     font-size: 10px;
 }
 .ui-autocomplete { max-height: 200px; overflow-y: scroll; overflow-x: hidden;}
-/* Table */
-.table>thead {
+
+
+/* table-site
+---------------------------------------------*/
+.table-site>thead {
     background-color: #1fa67a;
     color: #fff;
 }
-th.sortable>a,
-th.sortable>a:hover {
+.table-site th.sortable>a,
+.table-site th.sortable>a:hover {
     text-decoration: none;
     color: #fff;
 }
-th.sortable>a:hover {
+.table-site th.sortable>a:hover {
     text-shadow: 2px 2px #1f8048;
 }
-th.sortable {
+.table-site th.sortable {
     min-width: 130px;
     max-width: 300px;
 }
-.table>thead>tr>th.sortable {
+.table-site>thead>tr>th.sortable {
     border-bottom: 0;
 }
-.table>tbody>tr>td,
-.table>tbody>tr>th,
-.table>tfoot>tr>td,
-.table>tfoot>tr>th,
-.table>thead>tr>td,
-.table>thead>tr>th {
+.table-site>tbody>tr>td,
+.table-site>tbody>tr>th,
+.table-site>tfoot>tr>td,
+.table-site>tfoot>tr>th,
+.table-site>thead>tr>td,
+.table-site>thead>tr>th {
     border-top: 0;
 }
-.table>thead{
+.table-site>thead{
     border: 1px solid #1fa67a;
 }
-.table>tbody {
+.table-site>tbody {
     border-style: solid;
     border-color: #cccccc;
     border-width: 0 1px 1px 1px;
 }
-.table-info {
+.table-site-info {
     line-height: 80px;
 }
 
-/* Btn add */
+
+/* btn-add
+---------------------------------------------*/
 .btn.btn-add {
     border-radius: 5px;
     border-width: 0.10em;
@@ -166,7 +182,9 @@ fieldset[disabled] .btn-add.focus {
     background-color: #fff;
 }
 
-/* Btn system */
+
+/* btn-system
+---------------------------------------------*/
 .btn-system {
     color: #fff;
     background-color: #1fa67a;

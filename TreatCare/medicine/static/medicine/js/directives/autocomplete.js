@@ -8,6 +8,8 @@ app.directive('autocomplete', ['$http', function ($http) {
                     url: '/medicine/',
                     params: {
                         q: request.term,
+                        exclude_property: 'id',
+                        exclude_values: JSON.stringify(scope.selectedIds()),
                     },
                     headers: {
                         'X-Requested-With': 'XMLHttpRequest'

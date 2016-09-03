@@ -21,6 +21,8 @@ def perform_query(app_label, model_name, params, or_query=False):
 
     sort = params.get('sort', '')
     order = params.get('order', 'asc')
+    exclude_property = params.get('exclude_property', '')
+    exclude_values = params.get('exclude_values', '').replace('[', '').replace(']', '')
 
     query_params = {key: value for key, value in params.items() if (key.split('__')[0] in str(fields)) and (key.split('__')[-1] in QUERY_TERMS)}
     if or_query:
@@ -28,6 +30,13 @@ def perform_query(app_label, model_name, params, or_query=False):
         queryset = Model.objects.filter(reduce(operator.or_, list_of_Q))
     else:
         queryset = Model.objects.filter(**query_params)
+
+    if exclude_property and (exclude_property in fields) and exclude_values:
+        exclude_values = exclude_values.split(',')
+        exclude_query = {}
+        exclude_query[exclude_property + '__in'] = exclude_values
+
+        queryset = queryset.exclude(**exclude_query)
 
     if sort:
         order_by = ''

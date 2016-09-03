@@ -10,11 +10,18 @@ app.controller('MedicineController', function MedicineController($scope) {
         delete medicine;
     }
 
+    $scope.selectedIds = function () {
+        return $scope.selectedMedicines.map(function (medicine) {
+            return medicine.id;
+        });
+    }
+
     $scope.$watch(function (scope) {
         return scope.selectedMedicines.length;
     }, function (value) {
         if (value > 1) {
             // Process medicine interactions
+    
         }
     });
 });
