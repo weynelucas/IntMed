@@ -24,7 +24,6 @@ class ListView(View):
 
         # Return JSON if request comes from AJAX
         if request.is_ajax():
-            print(type(request.GET.get('exclude_values', 'notFound')))
             return JsonResponse(list(objects.values()), safe=False)
 
         # Pagination
