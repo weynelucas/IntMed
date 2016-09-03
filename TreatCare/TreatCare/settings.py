@@ -63,6 +63,8 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'TreatCare', 'templates'),
+            os.path.join(BASE_DIR, 'medicine', 'templates'),
+            os.path.join(BASE_DIR, 'disease', 'templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -115,6 +117,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'TreatCare', 'static'),
+    os.path.join(BASE_DIR, 'medicine', 'static'),
 ]
 
 # Media files

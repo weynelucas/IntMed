@@ -17,5 +17,5 @@ class MedicineFormView(ModalCreateFormView):
     title = "Adicionar Medicamento"
     form_class = MedicineForm
 
-def drugs_interaction(request):
-    return render(request, 'medicine/drugs_interaction.html')
+def interactions(request):
+    return render(request, 'medicine/interactions.html')
