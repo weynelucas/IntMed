@@ -1,6 +1,10 @@
 app.controller('MedicineController', function MedicineController($scope) {
     $scope.selectedMedicines = [];
 
+    $scope.clearSelectedMedicines = function () {
+        $scope.selectedMedicines = [];
+    }
+
     $scope.removeSelectedMedicine = function (index) {
         $scope.selectedMedicines.splice(index, 1);
     }
@@ -21,7 +25,7 @@ app.controller('MedicineController', function MedicineController($scope) {
     }, function (value) {
         if (value > 1) {
             // Process medicine interactions
-    
+
         }
     });
 });

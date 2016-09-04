@@ -1,5 +1,16 @@
+@font-face {
+    font-family: LetterGothicStd;
+    src: url("/static/fonts/LetterGothicStd.otf") format("opentype");
+}
+
+@font-face {
+    font-family: LetterGothicStd;
+    font-weight: bold;
+    src: url("/static/fonts/LetterGothicStd-Bold.otf") format("opentype");
+}
+
 body {
-    font-family: 'PT Mono', monospace;
+    font-family: LetterGothicStd;
 }
 
 
@@ -53,31 +64,115 @@ body {
 /* ui-autocomplete
 ---------------------------------------------*/
 .ui-menu {
-    font-family: 'PT Mono', monospace;
+    font-family: LetterGothicStd;
 }
-.ui-menu-item .ui-state-active {
+.ui-autocomplete {
+    max-height: 200px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.ui-menu-item .ui-state-active  {
     border: 1px solid #1f8048;
     background: #1fa67a;
     font-weight: normal;
     color: #fff;
 }
-
-p.list-group-item-text {
-    font-size: 12px;
-}
-.list-group-item-heading {
+.ui-autocomplete-item-title {
     color: #1fa67a;
 }
-
-.presentation {
+.ui-menu-item .ui-state-active .ui-autocomplete-item-title {
+    color: #fff;
+}
+.ui-autocomplete-item-subtitle {
     font-size: 10px;
 }
-.ui-autocomplete { max-height: 200px; overflow-y: scroll; overflow-x: hidden;}
 
+
+
+/* list-group-site
+---------------------------------------------*/
+.list-group-site p.list-group-item-text  {
+    font-size: 12px;
+}
+.list-group-site .list-group-item-heading {
+    color: #1fa67a;
+}
+.list-group-options {
+    padding: 0 0 10px 0;
+}
+.list-group-options-title {
+    line-height: 35px;
+}
+
+/* chip
+---------------------------------------------*/
+.chip {
+    height: 28px;
+    line-height: 28px;
+    padding: 0 12px;
+    border: 0;
+    border-radius: 16px;
+    background-color: #dedede;
+    display: inline-block;
+    color: rgba(0,0,0, 0.87);
+    margin: 2px 0;
+    font-size: 0;
+    white-space: nowrap;
+}
+.chip-text {
+    font-size: 13px;
+    vertical-align: middle;
+    display: inline-block;
+}
+.chip-action {
+    height: 24px;
+    width: 24px;
+    background: transparent;
+    opacity: 0.54;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0;
+    margin: 0;
+    margin-left: 4px;
+    font-size: 13px;
+    text-decoration: none;
+    color: rgba(0,0,0, 0.87);
+    border: none;
+    outline: none;
+    overflow: hidden;
+}
+.chip-contact {
+    height: 32px;
+    width: 32px;
+    border-radius: 16px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 18px;
+    line-height: 32px;
+}
+.chip:focus {
+    outline: 0;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+.chip:active {
+    background-color: #d6d6d6;
+}
+.chip-deletable {
+    padding-right: 4px;
+}
+.chip-contact {
+    padding-left: 0;
+}
 
 /* table-site
 ---------------------------------------------*/
 .table-site>thead {
+    font-family: LetterGothicStd;
     background-color: #1fa67a;
     color: #fff;
 }

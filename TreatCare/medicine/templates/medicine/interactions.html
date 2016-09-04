@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block title %}
+Interações Medicamentosas | Medicamentos
+{% endblock %}
+
 {% block main_content %}
 {% verbatim %}
 <!-- Inside this verbatim, the {{}} expressions refers to AngularJS -->
@@ -9,7 +13,7 @@
             <div class="box-xs" >
                 <div class="box-title">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-sm-6">
                             Insira um medicamento:
                             <input class="form-control" type="text" name="name" value="" placeholder="Pesquisar" autocomplete>
                         </div>
@@ -17,8 +21,21 @@
                 </div>
                 <div class="box-body">
                     <div class="row">
-                        <div class="col-md-6" >
-                            <div class="list-group">
+                        <div class="col-sm-6" >
+                            <div class="list-group-options row" ng-show="selectedMedicines.length">
+                                <div class="col-sm-6">
+                                    <div class="list-group-options-title">Medicamentos</div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="talign-rigth">
+                                        <span class="chip chip-deletable">
+                                            <span class="chip-text">Limpar</span>
+                                            <button ng-click="clearSelectedMedicines()" class="chip-action"><i class="material-icons">cancel</i></button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-group list-group-site">
                                 <div class="list-group-item" ng-repeat="medicine in selectedMedicines">
                                     <selected-medicine medicine="medicine" remove="removeSelectedMedicine" index="$index"></selected-medicine>
                                 </div>
@@ -43,5 +60,4 @@
 <!-- Directives -->
 <script src="/static/medicine/js/directives/autocomplete.js" charset="utf-8"></script>
 <script src="/static/medicine/js/directives/selectedMedicine.js" charset="utf-8"></script>
-
 {% endblock %}
