@@ -51,6 +51,22 @@ body {
 }
 
 
+/* loading-box
+---------------------------------------------*/
+.jumbotron {
+    background-color: transparent;
+    text-align: center;
+}
+.loading-box {
+    color: #1fa67a;
+}
+.loading-icon {
+    margin-bottom: 10px;
+}
+.fast-spin {
+  -webkit-animation: fa-spin 1s infinite linear;
+  animation: fa-spin 1s infinite linear;
+}
 /* talign
 ---------------------------------------------*/
 .talign-rigth {
@@ -59,7 +75,9 @@ body {
 .talign-left {
     text-align: left;
 }
-
+.talign-center {
+    text-align: center;
+}
 
 /* ui-autocomplete
 ---------------------------------------------*/
@@ -88,14 +106,15 @@ body {
 }
 
 
-
 /* list-group-site
 ---------------------------------------------*/
 .list-group-site p.list-group-item-text  {
     font-size: 12px;
+    margin-bottom: 5px;
 }
 .list-group-site .list-group-item-heading {
     color: #1fa67a;
+    margin-bottom: 0;
 }
 .list-group-options {
     padding: 0 0 10px 0;
@@ -103,6 +122,17 @@ body {
 .list-group-options-title {
     line-height: 35px;
 }
+
+
+/* label-interacts
+---------------------------------------------*/
+.strongly_interacts {
+    background-color: #d9534f;
+}
+.interacts {
+    background-color: #f0ad4e;
+}
+
 
 /* chip
 ---------------------------------------------*/

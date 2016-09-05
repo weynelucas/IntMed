@@ -9,8 +9,8 @@ Interações Medicamentosas | Medicamentos
 <!-- Inside this verbatim, the {{}} expressions refers to AngularJS -->
 <div class="container">
     <div ng-app="drugInteractions">
-        <div ng-controller="DrugController">
-            <div class="box-xs" >
+        <div class="col-sm-8" ng-controller="DrugController">
+            <div class="box" >
                 <div class="box-title">
                     <div class="row">
                         <div class="col-sm-6">
@@ -37,17 +37,33 @@ Interações Medicamentosas | Medicamentos
                             </div>
                             <div class="list-group list-group-site">
                                 <div class="list-group-item" ng-repeat="drug in selectedDrugs">
-                                    <selected-drug drug="drug" remove="removeSelectedDrug" index="$index"></selected-drug>
+                                    <selected-drug model="drug" remove="removeSelectedDrug" index="$index"></selected-drug>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            {{ interactions.length }} interações encontradas
-                            <div class="list-group list-group-site">
-                                <div class="list-group-item" ng-repeat="interaction in interactions">
-                                <h5 class="list-group-item-heading">{{ interaction.startNode }} + {{ interaction.endNode }}</h5>
-                                <p class="list-group-item-text">{{ interaction.type }}</p>
-                                <p class="list-group-item-text">{{ interaction.explanation }}</p>
+                            <div class="jumbotron loading-box" ng-show="loading">
+                                <div class="loading-icon row">
+                                    <i class="fa fa-spinner fa-spin fa-4x fast-spin"></i>
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                                <div class="row">
+                                    Procurando interações
+                                </div>
+                            </div>
+                            <div ng-if="!loading">
+                                <div ng-show="selectedDrugs.length > 1">
+                                    <ng-pluralize count="interactions.length"
+                                                  when="{'0': 'Nenhuma interação encontrada.',
+                                                         '1': '{} interação encontrada.',
+                                                         'other': '{} interações encontradas.'}">
+                                    </ng-pluralize>
+                                    <div class="list-group list-group-site">
+                                        <div class="list-group-item" ng-repeat="interaction in interactions">
+                                            <interaction model="interaction"></interaction>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -69,4 +85,5 @@ Interações Medicamentosas | Medicamentos
 <!-- Directives -->
 <script src="/static/drug/js/directives/autocomplete.js" charset="utf-8"></script>
 <script src="/static/drug/js/directives/selectedDrug.js" charset="utf-8"></script>
+<script src="/static/drug/js/directives/interaction.js" charset="utf-8"></script>
 {% endblock %}

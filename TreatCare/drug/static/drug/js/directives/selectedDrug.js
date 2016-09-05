@@ -4,7 +4,7 @@ app.directive('selectedDrug', function () {
         replace: true,
         restrict: 'E',
         scope: {
-            drug: '=',
+            model: '=',
             remove: '=',
             index:'=',
         }

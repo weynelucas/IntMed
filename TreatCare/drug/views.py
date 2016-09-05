@@ -29,7 +29,6 @@ def perform_interactions(request):
         params = request.GET
 
     drugs = params.getlist('drug')
-    print(drugs)
 
     driver = GraphDatabase.driver("bolt://localhost", auth=basic_auth("neo4j", "password"))
     session = driver.session()
@@ -39,10 +38,9 @@ def perform_interactions(request):
                         WITH COLLECT(d) as ds
                         MATCH (x)-[r]-(y)
                         WHERE x in ds AND y in ds
-                        RETURN DISTINCT type(r) as type, r.explanation as explanation, startNode(r).name as startNode, endNode(r).name as endNode
+                        RETURN DISTINCT type(r) as type, r.explanation as explanation, r.note as note, startNode(r).name as startNode, endNode(r).name as endNode
                     """ % (str(drugs))
 
     result = session.run(cypher_query)
     result_dict = [dict(record) for record in result]
-    print(result_dict)
     return JsonResponse(result_dict, safe=False)
