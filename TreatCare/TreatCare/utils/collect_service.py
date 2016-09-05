@@ -3,6 +3,28 @@ import http.client as http
 from bs4 import BeautifulSoup
 from string import ascii_lowercase
 from TreatCare.utils.database_service import db_table_exists
+from neo4j.v1 import GraphDatabase, basic_auth
+
+
+def load_drugs(DrugClass=None):
+    """ Load medicines from Neo4j drugs interactions graph
+        database and save into database if is not empty
+        Args:
+            DrugClass: Drug class (required if app has not been loaded yet)
+    """
+    if not DrugClass:
+        from drug.models import Drug
+        DrugClass = Drug
+
+    if db_table_exists(DrugClass._meta.db_table) and not DrugClass.objects.count():
+         driver = GraphDatabase.driver("bolt://localhost", auth=basic_auth("neo4j", "password"))
+         session = driver.session()
+
+         result = session.run("MATCH (d:DRUG) RETURN d.name AS name")
+
+         for record in result:
+             drug = DrugClass(name=record['name'])
+             drug.save()
 
 def load_medicines(MedicineClass=None):
     """ Load medicines from http://www.consultamedicamentos.com.br
@@ -56,7 +78,7 @@ def load_medicines(MedicineClass=None):
 
 def load_diseases(DiseaseClass=None):
     """ Load diseases from International Classification of
-        Deseases (ICD-10) from datasus CSV files (http://www.datasus.gov.br/cid10/V2008/cid10.htm) 
+        Deseases (ICD-10) from datasus CSV files (http://www.datasus.gov.br/cid10/V2008/cid10.htm)
         and save into database if is not empty
         Args:
             DiseaseClass: Disease class (required if app has not been loaded yet)

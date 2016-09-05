@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'TreatCare',
     'medicine.apps.MedicineConfig',
     'disease.apps.DiseaseConfig',
+    'drug.apps.DrugConfig',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -65,6 +66,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'TreatCare', 'templates'),
             os.path.join(BASE_DIR, 'medicine', 'templates'),
             os.path.join(BASE_DIR, 'disease', 'templates'),
+            os.path.join(BASE_DIR, 'drug', 'templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -118,6 +120,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'TreatCare', 'static'),
     os.path.join(BASE_DIR, 'medicine', 'static'),
+    os.path.join(BASE_DIR, 'drug', 'static'),
 ]
 
 # Media files

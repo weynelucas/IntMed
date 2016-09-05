@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Interações Medicamentosas | Medicamentos
+{% endblock %}
+
+{% block main_content %}
+{% verbatim %}
+<!-- Inside this verbatim, the {{}} expressions refers to AngularJS -->
+<div class="container">
+    <div ng-app="drugInteractions">
+        <div ng-controller="DrugController">
+            <div class="box-xs" >
+                <div class="box-title">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            Insira um medicamento:
+                            <input class="form-control" type="text" name="name" value="" placeholder="Pesquisar" autocomplete>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-sm-6" >
+                            <div class="list-group-options row" ng-show="selectedDrugs.length">
+                                <div class="col-sm-6">
+                                    <div class="list-group-options-title">Medicamentos</div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="talign-rigth">
+                                        <span class="chip chip-deletable">
+                                            <span class="chip-text">Limpar</span>
+                                            <button ng-click="clearSelectedDrugs()" class="chip-action"><i class="material-icons">cancel</i></button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-group list-group-site">
+                                <div class="list-group-item" ng-repeat="drug in selectedDrugs">
+                                    <selected-drug drug="drug" remove="removeSelectedDrug" index="$index"></selected-drug>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            {{ interactions.length }} interações encontradas
+                            <div class="list-group list-group-site">
+                                <div class="list-group-item" ng-repeat="interaction in interactions">
+                                <h5 class="list-group-item-heading">{{ interaction.startNode }} + {{ interaction.endNode }}</h5>
+                                <p class="list-group-item-text">{{ interaction.type }}</p>
+                                <p class="list-group-item-text">{{ interaction.explanation }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endverbatim %}
+{% endblock %}
+
+{% block main_script %}
+<!-- AngularJS -->
+<script src="/static/libs/angular/angular.min.js" charset="utf-8"></script>
+<!-- App -->
+<script src="/static/drug/js/app.js" charset="utf-8"></script>
+<!-- Controllers -->
+<script src="/static/drug/js/controllers/DrugController.js" charset="utf-8"></script>
+<!-- Directives -->
+<script src="/static/drug/js/directives/autocomplete.js" charset="utf-8"></script>
+<script src="/static/drug/js/directives/selectedDrug.js" charset="utf-8"></script>
+{% endblock %}

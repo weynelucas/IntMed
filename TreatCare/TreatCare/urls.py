@@ -8,6 +8,7 @@ urlpatterns = [
     # url(r'^$', 'TreatCare.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^drug/', include('drug.urls')),
     url(r'^medicine/', include('medicine.urls')),
     url(r'^disease/', include('disease.urls')),
 ]
