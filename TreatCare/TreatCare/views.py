@@ -8,7 +8,6 @@ from django.views.generic import View
 from django.views.generic.edit import FormView
 from django.forms.models import model_to_dict
 from django.contrib import messages
-from django.utils.translation import activate
 from django.utils.translation import ugettext_lazy as _
 
 class ListView(View):
@@ -16,7 +15,6 @@ class ListView(View):
     enable_create = True
 
     def get(self, request):
-        print(request.LANGUAGE_CODE)
         # Manage params of request
         params = request.GET.copy()
         q = params.get('q', '')
@@ -78,7 +76,12 @@ class ModalCreateFormView(FormView):
         model_verbose_name = form.instance.__class__._meta.verbose_name.title().capitalize()
         instance_dict = model_to_dict(form.instance)
         success_context = {
-            'message': model_verbose_name + ' ' + instance_dict.get(self.main_property, '') + ' adicionado com sucesso.',
+            'message': _(
+                "%(model_name)s %(main_property_value)s successfully added."
+            ) % {
+                'model_name': model_verbose_name,
+                'main_property_value': instance_dict.get(self.main_property, ''),
+            },
             'instance': instance_dict,
         }
         return JsonResponse(success_context)

@@ -2,16 +2,17 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls.i18n import i18n_patterns
 
-urlpatterns = [
-    # Examples:
-    # url(r'^$', 'TreatCare.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
+urlpatterns = []
+
+urlpatterns += i18n_patterns(
     url(r'^admin/', include(admin.site.urls)),
     url(r'^drug/', include('drug.urls')),
     url(r'^medicine/', include('medicine.urls')),
     url(r'^disease/', include('disease.urls')),
-]
+)
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_URL)

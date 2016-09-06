@@ -9,12 +9,14 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class DrugListView(ListView):
-    title = _("Drugs")
     app_label = "drug"
     model_name = "Drug"
+
     fields = ["name"]
-    labels = [_("Drug")]
     enable_create = True
+
+    title = _("Drugs")
+    labels = [_("Drug")]
 
 
 class DrugFormView(ModalCreateFormView):
