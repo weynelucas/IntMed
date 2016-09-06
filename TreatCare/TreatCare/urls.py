@@ -9,8 +9,6 @@ urlpatterns = []
 urlpatterns += i18n_patterns(
     url(r'^admin/', include(admin.site.urls)),
     url(r'^drug/', include('drug.urls')),
-    url(r'^medicine/', include('medicine.urls')),
-    url(r'^disease/', include('disease.urls')),
 )
 
 

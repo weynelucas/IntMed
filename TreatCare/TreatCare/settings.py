@@ -43,8 +43,6 @@ INSTALLED_APPS = (
     'sortable_column',
     # Local apps
     'TreatCare',
-    'medicine.apps.MedicineConfig',
-    'disease.apps.DiseaseConfig',
     'drug.apps.DrugConfig',
 )
 
@@ -67,8 +65,6 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'TreatCare', 'templates'),
-            os.path.join(BASE_DIR, 'medicine', 'templates'),
-            os.path.join(BASE_DIR, 'disease', 'templates'),
             os.path.join(BASE_DIR, 'drug', 'templates'),
         ],
         'APP_DIRS': True,
@@ -134,7 +130,6 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'TreatCare', 'static'),
-    os.path.join(BASE_DIR, 'medicine', 'static'),
     os.path.join(BASE_DIR, 'drug', 'static'),
 ]
 
