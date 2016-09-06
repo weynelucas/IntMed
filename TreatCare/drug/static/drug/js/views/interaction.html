@@ -1,6 +1,6 @@
 <div>
-    <div class="list-group-item-heading">{{ model.startNode }} + {{ model.endNode }}</div>
-    <p class="list-group-item-text"><span class="label {{ model.type | lowercase }}">{{ model.type.split('_')[0] }}</span></p>
-    <p class="list-group-item-text">{{ model.explanation }}</p>
-    <p ng-show="model.note != 'NO NOTES'" class="list-group-item-text"><strong>{{ model.note.substring(0,5) }}</strong>{{ model.note.substring(5) }}</p>
+    <div class="list-group-item-heading">{{ ::model.startNode }} + {{ ::model.endNode }}</div>
+    <p class="list-group-item-text"><span class="label {{ ::model.type | lowercase }}">{{ ::model.type.split('_')[0] }}</span></p>
+    <p class="list-group-item-text">{{ ::model.explanation }}</p>
+    <p ng-show="::model.note != 'NO NOTES'" class="list-group-item-text"><strong>{{ ::model.note.substring(0,5) }}</strong>{{ ::model.note.substring(5) }}</p>
 </div>

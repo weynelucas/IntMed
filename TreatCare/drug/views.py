@@ -13,6 +13,7 @@ class DrugListView(ListView):
     model_name = "Drug"
     fields = ["name"]
     labels = ["Medicamento"]
+    enable_create = False
 
 
 class DrugFormView(ModalCreateFormView):

@@ -9,7 +9,7 @@ app.directive('autocomplete', ['$http', function ($http) {
                     params: {
                         q: request.term,
                         exclude_property: 'id',
-                        exclude_values: JSON.stringify(scope.selectedIds()),
+                        exclude_value: scope.selectedIds(),
                     },
                     headers: {
                         'X-Requested-With': 'XMLHttpRequest'

@@ -38,8 +38,10 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    # Third party
     'bootstrap_pagination',
     'sortable_column',
+    # Local apps
     'TreatCare',
     'medicine.apps.MedicineConfig',
     'disease.apps.DiseaseConfig',

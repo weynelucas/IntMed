@@ -41,6 +41,9 @@ app.controller('DrugController', function DrugController($scope, $http) {
         }).success(function (data, status) {
             $scope.interactions = data;
             $scope.loading = false;
+        }).error(function (data) {
+            $scope.interactions = [];
+            $scope.loading = false;
         });
     }
 

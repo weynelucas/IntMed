@@ -7,6 +7,7 @@ Interações Medicamentosas | Medicamentos
 {% block main_content %}
 {% verbatim %}
 <!-- Inside this verbatim, the {{}} expressions refers to AngularJS -->
+
 <div class="container">
     <div ng-app="drugInteractions">
         <div class="col-sm-8" ng-controller="DrugController">
@@ -23,10 +24,10 @@ Interações Medicamentosas | Medicamentos
                     <div class="row">
                         <div class="col-sm-6" >
                             <div class="list-group-options row" ng-show="selectedDrugs.length">
-                                <div class="col-sm-6">
+                                <div class="col-xs-6 col-sm-6">
                                     <div class="list-group-options-title">Medicamentos</div>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-xs-6 col-sm-6">
                                     <div class="talign-rigth">
                                         <span class="chip chip-deletable">
                                             <span class="chip-text">Limpar</span>
@@ -42,7 +43,7 @@ Interações Medicamentosas | Medicamentos
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="jumbotron loading-box" ng-show="loading">
+                            <div class="jumbotron loading-box" ng-if="loading">
                                 <div class="loading-icon row">
                                     <i class="fa fa-spinner fa-spin fa-4x fast-spin"></i>
                                     <span class="sr-only">Loading...</span>
@@ -53,13 +54,15 @@ Interações Medicamentosas | Medicamentos
                             </div>
                             <div ng-if="!loading">
                                 <div ng-show="selectedDrugs.length > 1">
-                                    <ng-pluralize count="interactions.length"
-                                                  when="{'0': 'Nenhuma interação encontrada.',
-                                                         '1': '{} interação encontrada.',
-                                                         'other': '{} interações encontradas.'}">
-                                    </ng-pluralize>
+                                    <div class="talign-center">
+                                        <ng-pluralize count="interactions.length"
+                                                      when="{'0': 'Nenhuma interação encontrada.',
+                                                             '1': '{} interação encontrada.',
+                                                             'other': '{} interações encontradas.'}">
+                                        </ng-pluralize>
+                                    </div>
                                     <div class="list-group list-group-site">
-                                        <div class="list-group-item" ng-repeat="interaction in interactions">
+                                        <div class="list-group-item" ng-repeat="interaction in interactions | orderBy: 'type'">
                                             <interaction model="interaction"></interaction>
                                         </div>
                                     </div>
