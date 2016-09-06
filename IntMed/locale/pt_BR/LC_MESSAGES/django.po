@@ -18,52 +18,52 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: .\TreatCare\settings.py:112
+#: .\IntMed\settings.py:112
 msgid "Portuguese (Brazil)"
 msgstr "Português do Brasil"
 
-#: .\TreatCare\settings.py:113
+#: .\IntMed\settings.py:113
 msgid "English"
 msgstr "Inglês"
 
-#: .\TreatCare\templates\list.html:21
+#: .\IntMed\templates\list.html:21
 msgid "Add"
 msgstr "Adicionar"
 
-#: .\TreatCare\templates\list.html:32
+#: .\IntMed\templates\list.html:32
 msgid "Show"
 msgstr "Exibir"
 
-#: .\TreatCare\templates\list.html:39
+#: .\IntMed\templates\list.html:39
 msgid "entries"
 msgstr "registros"
 
-#: .\TreatCare\templates\list.html:42
+#: .\IntMed\templates\list.html:42
 msgid "Search"
 msgstr "Pesquisar"
 
-#: .\TreatCare\templates\list.html:64
+#: .\IntMed\templates\list.html:64
 msgid "No results found"
 msgstr "Nenhum resultado encontrado"
 
-#: .\TreatCare\templates\list.html:77
+#: .\IntMed\templates\list.html:77
 #, python-format
 msgid "Showing %(start)s to %(end)s of %(total)s entries"
 msgstr "Exibindo %(start)s a %(end)s de %(total)s registros"
 
-#: .\TreatCare\templates\modal_form.html:20
+#: .\IntMed\templates\modal_form.html:20
 msgid "Close"
 msgstr "Sair"
 
-#: .\TreatCare\templates\modal_form.html:22
+#: .\IntMed\templates\modal_form.html:22
 msgid "Save"
 msgstr "Salvar"
 
-#: .\TreatCare\views.py:59
+#: .\IntMed\views.py:59
 msgid "Complete the form bellow"
 msgstr "Preencha o formulário abaixo"
 
-#: .\TreatCare\views.py:80
+#: .\IntMed\views.py:80
 #, python-format
 msgid "%(model_name)s %(main_property_value)s successfully added."
 msgstr "%(model_name)s %(main_property_value)s adicionado com successo."

@@ -2,7 +2,7 @@ import csv
 import http.client as http
 from bs4 import BeautifulSoup
 from string import ascii_lowercase
-from TreatCare.utils.database_service import db_table_exists
+from .database_service import db_table_exists
 from neo4j.v1 import GraphDatabase, basic_auth
 
 

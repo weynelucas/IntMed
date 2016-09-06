@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from .models import Drug
 from .forms import DrugForm
-from TreatCare.utils import query_service
-from TreatCare.views import ListView, ModalCreateFormView
+from IntMed.utils import query_service
+from IntMed.views import ListView, ModalCreateFormView
 from neo4j.v1 import GraphDatabase, basic_auth
 from django.http import JsonResponse
 from django.utils.translation import ugettext_lazy as _

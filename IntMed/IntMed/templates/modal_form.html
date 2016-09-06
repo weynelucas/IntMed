@@ -12,7 +12,7 @@
             <div class="modal-body">
                 {% for field in form %}
                     <div class="form-group">
-                        {{ field }}
+                        {{ field | placeholder:field.label }}
                     </div>
                 {% endfor %}
             </div>
