@@ -50,6 +50,7 @@ INSTALLED_APPS = (
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -77,6 +78,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.i18n',
             ],
         },
     },
@@ -102,6 +104,16 @@ DATABASES = {
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
+from django.utils.translation import ugettext_lazy as _
+
+LANGUAGES = (
+    ('en-us', _('English (United States)')),
+    ('pt-br', _('Portuguese (Brazil)'))
+)
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
 
 LANGUAGE_CODE = 'pt-br'
 
