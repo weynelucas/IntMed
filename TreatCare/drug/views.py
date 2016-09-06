@@ -5,20 +5,22 @@ from TreatCare.utils import query_service
 from TreatCare.views import ListView, ModalCreateFormView
 from neo4j.v1 import GraphDatabase, basic_auth
 from django.http import JsonResponse
+from django.utils.translation import ugettext_lazy as _
 
 
 class DrugListView(ListView):
-    title = "Medicamentos"
+    title = _("Drugs")
     app_label = "drug"
     model_name = "Drug"
     fields = ["name"]
-    labels = ["Medicamento"]
-    enable_create = False
+    labels = [_("Drug")]
+    enable_create = True
 
 
 class DrugFormView(ModalCreateFormView):
-    title = "Adicionar Medicamento"
+    title = _("Add Drug")
     form_class = DrugForm
+
 
 def interactions(request):
     return render(request, 'drug/interactions.html')

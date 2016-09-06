@@ -1,4 +1,5 @@
 from .models import Drug
+from django.utils.translation import ugettext_lazy as _
 from django.forms import ModelForm, TextInput, NumberInput
 
 form_control = {'class': 'form-control'}
@@ -10,7 +11,4 @@ class DrugForm(ModelForm):
         fields = '__all__'
         widgets = {
             'name': TextInput(attrs=form_control),
-        }
-        labels = {
-            'name': 'Nome',
         }

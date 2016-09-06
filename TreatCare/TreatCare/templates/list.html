@@ -3,6 +3,7 @@
 {% load bootstrap_pagination %}
 {% load humanize %}
 {% load getattr %}
+{% load i18n %}
 
 {% block title %}
 {{ title }}
@@ -17,7 +18,7 @@
                 {% if enable_create %}
                 <div class="col-md-4 talign-rigth">
                     <button class="btn btn-add" type="button" name="button" onclick="remoteFunction('create/', this)" data-toggle="modal" data-target="#mainModal">
-                        Adicionar
+                        {% trans 'Add' %}
                         <i class="fa fa-plus-circle" aria-hidden="true"></i>
                     </button>
                 </div>
@@ -28,17 +29,17 @@
             <div class="row box-row">
                 <form action="." method="get" class="form-inline">
                     <div class="form-group col-sm-6 text-left">
-                        Exibir
+                        {% trans 'Show' %}
                         <select class="form-control" name="items_per_page" onchange="paginateItems(this)">
                             <option value="10"  {% if items_per_page == '10' %}selected{% endif %}>10</option>
                             <option value="25"  {% if items_per_page == '25' %}selected{% endif %}>25</option>
                             <option value="50"  {% if items_per_page == '50' %}selected{% endif %}>50</option>
                             <option value="100" {% if items_per_page == '100' %}selected{% endif %}>100</option>
                         </select>
-                        items
+                        {% trans 'entries' %}
                     </div>
                     <div class="form-group col-sm-6 text-right">
-                        <input type="text" class="form-control" name="q" value="{{ query.q }}" placeholder="Pesquisar">
+                        <input type="text" class="form-control" name="q" value="{{ query.q }}" placeholder="{% trans 'Search' %}">
                     </div>
                 </form>
             </div>
@@ -60,7 +61,7 @@
                     </tr>
                     {% empty %}
                     <tr>
-                        <td>Nenhum resultado encontrado</td>
+                        <td>{% trans 'No results found' %}</td>
                         {% for field in fields %}
                         {% if not forloop.first %}
                         <td></td>
@@ -73,7 +74,7 @@
 
             <div class="row">
                 <div class="col-sm-6 talign-left" style="line-height:80px">
-                    Exibindo {{ start_index }} a {{ end_index }} de {{ objects_total }} registros
+                    {% blocktrans with start=start_index end=end_index total=objects_total%}Showing {{ start }} to {{ end }} of {{ total }} entries{% endblocktrans %}
                 </div>
                 {% if objects.paginator.num_pages > 1 %}
                 <div class="col-sm-6 talign-rigth">

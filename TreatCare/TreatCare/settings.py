@@ -106,16 +106,17 @@ DATABASES = {
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 from django.utils.translation import ugettext_lazy as _
 
+LANGUAGE_CODE = 'pt-br'
+
 LANGUAGES = (
+    ('pt-br', _('Portuguese (Brazil)')),
     ('en-us', _('English (United States)')),
-    ('pt-br', _('Portuguese (Brazil)'))
 )
 
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
 )
 
-LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'UTC'
 

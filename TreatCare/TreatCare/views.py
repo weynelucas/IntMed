@@ -8,12 +8,15 @@ from django.views.generic import View
 from django.views.generic.edit import FormView
 from django.forms.models import model_to_dict
 from django.contrib import messages
+from django.utils.translation import activate
+from django.utils.translation import ugettext_lazy as _
 
 class ListView(View):
     template = "list.html"
     enable_create = True
 
     def get(self, request):
+        print(request.LANGUAGE_CODE)
         # Manage params of request
         params = request.GET.copy()
         q = params.get('q', '')
@@ -55,7 +58,7 @@ class ListView(View):
 @method_decorator(ajax_required, name='dispatch')
 class ModalCreateFormView(FormView):
     template_name = "modal_form.html"
-    subtitle = "Preencha o formulário abaixo:"
+    subtitle = _("Complete the form bellow")
     main_property = "name"
 
     def get_context_data(self, **kwargs):
