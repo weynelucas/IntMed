@@ -65,7 +65,7 @@ Interações Medicamentosas | Medicamentos
                                     </div>
                                     <div class="list-group list-group-site">
                                         <div class="list-group-item" ng-repeat="interaction in interactions | orderBy: 'type'">
-                                            <interaction model="interaction"></interaction>
+                                            <interaction model="interaction" evidence-label="{% trans 'Evidence' %}" action-label="{% trans 'Action' %}"></interaction>
                                         </div>
                                     </div>
                                 </div>
