@@ -11,7 +11,7 @@ Interações Medicamentosas | Medicamentos
 <div class="container">
     <div ng-app="drugInteractions">
         <div class="col-sm-8" ng-controller="DrugController">
-            <div class="box" >
+            <div class="box">
                 <div class="box-title">
                     <div class="row">
                         <div class="col-sm-6">
@@ -54,12 +54,14 @@ Interações Medicamentosas | Medicamentos
                             </div>
                             <div ng-if="!loading">
                                 <div ng-show="selectedDrugs.length > 1">
-                                    <div class="talign-center">
-                                        <ng-pluralize count="interactions.length"
-                                                      when="{'0': '{% trans 'No interactions found' %}',
-                                                             '1': '{} {% trans 'interaction found' %}',
-                                                             'other': '{} {% trans 'interactions found' %}'}">
-                                        </ng-pluralize>
+                                    <div class="result-row">
+                                        <span class="result-info">
+                                            <ng-pluralize count="interactions.length"
+                                                          when="{'0': '{% trans 'No interactions found' %}',
+                                                                 '1': '{} {% trans 'interaction found' %}',
+                                                                 'other': '{} {% trans 'interactions found' %}'}">
+                                            </ng-pluralize>
+                                        </span>
                                     </div>
                                     <div class="list-group list-group-site">
                                         <div class="list-group-item" ng-repeat="interaction in interactions | orderBy: 'type'">
@@ -81,6 +83,7 @@ Interações Medicamentosas | Medicamentos
 {% block main_script %}
 <!-- AngularJS -->
 <script src="/static/libs/angular/angular.min.js" charset="utf-8"></script>
+<script src="/static/libs/angular/angular-cookies.min.js" charset="utf-8"></script>
 <!-- App -->
 <script src="/static/drug/js/app.js" charset="utf-8"></script>
 <!-- Controllers -->

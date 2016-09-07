@@ -1,7 +1,10 @@
-app.controller('DrugController', function DrugController($scope, $http) {
-    $scope.selectedDrugs = [];
-    $scope.interactions = [];
-    $scope.loading = false;
+app.controller('DrugController', function DrugController($scope, $http, $cookies) {
+
+    $scope.init = function () {
+        $scope.selectedDrugs = $cookies.getObject("selectedDrugs") || [];
+        $scope.interactions = [];
+        $scope.loading = false;
+    }
 
     $scope.clearSelectedDrugs = function () {
         $scope.selectedDrugs = [];
@@ -50,13 +53,16 @@ app.controller('DrugController', function DrugController($scope, $http) {
     $scope.$watch(function (scope) {
         return scope.selectedDrugs.length;
     }, function (value) {
+        $cookies.putObject("selectedDrugs", $scope.selectedDrugs);
         $scope.loading = true;
+
         if (value > 1) {
-            // Process drug interactions
             $scope.processInteractions();
         } else {
             $scope.interactions = [];
             $scope.loading = false;
         }
     });
+
+    $scope.init();
 });

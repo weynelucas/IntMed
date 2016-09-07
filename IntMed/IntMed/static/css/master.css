@@ -23,6 +23,7 @@ body {
     width: 700px;
 }
 .box-body {
+    background-color: #fff;
     padding: 15px;
     border: 1px solid #ccc;
 }
@@ -67,6 +68,8 @@ body {
   -webkit-animation: fa-spin 1s infinite linear;
   animation: fa-spin 1s infinite linear;
 }
+
+
 /* talign
 ---------------------------------------------*/
 .talign-rigth {
@@ -78,6 +81,21 @@ body {
 .talign-center {
     text-align: center;
 }
+
+
+/* result
+---------------------------------------------*/
+.result-info {
+    background-color: #1fa67a;
+    color: #fff;
+    border-radius: 4px;
+    padding: 6px;
+}
+.result-row {
+    margin-bottom: 10px;
+    text-align: right;
+}
+
 
 /* ui-autocomplete
 ---------------------------------------------*/

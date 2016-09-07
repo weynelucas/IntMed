@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-07 09:19-0300\n"
+"POT-Creation-Date: 2016-09-07 17:04-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -80,6 +80,14 @@ msgstr "ação"
 msgid "drug"
 msgstr "medicamento"
 
+#: .\drug\static\drug\js\views\interactionItem.html:4
+msgid "Evidence"
+msgstr "Evidência"
+
+#: .\drug\static\drug\js\views\interactionItem.html:5 .\drug\views.py:19
+msgid "Action"
+msgstr "Ação"
+
 #: .\drug\templates\drug\interactions.html:18
 msgid "Enter a drug"
 msgstr "Insira um medicamento"
@@ -96,25 +104,21 @@ msgstr "Limpar tudo"
 msgid "Looking for interactions"
 msgstr "Procurando interações"
 
-#: .\drug\templates\drug\interactions.html:59
-msgid "No interactions found"
-msgstr "Nenhum resultado encontrado"
-
 #: .\drug\templates\drug\interactions.html:60
+msgid "No interactions found"
+msgstr "Nenhuma interação encontrada"
+
+#: .\drug\templates\drug\interactions.html:61
 msgid "interaction found"
 msgstr "interação encontrada"
 
-#: .\drug\templates\drug\interactions.html:61
+#: .\drug\templates\drug\interactions.html:62
 msgid "interactions found"
 msgstr "interações encontradas"
 
 #: .\drug\views.py:19
 msgid "Drug"
 msgstr "Medicamento"
-
-#: .\drug\views.py:19
-msgid "Action"
-msgstr "Ação"
 
 #: .\drug\views.py:23
 msgid "Add Drug"
