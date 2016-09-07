@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-06 18:29-0300\n"
+"POT-Creation-Date: 2016-09-06 22:48-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: .\IntMed\settings.py:112
+#: .\IntMed\settings.py:108
 msgid "Portuguese (Brazil)"
 msgstr "Português do Brasil"
 
-#: .\IntMed\settings.py:113
+#: .\IntMed\settings.py:109
 msgid "English"
 msgstr "Inglês"
 
@@ -38,7 +38,7 @@ msgstr "Exibir"
 msgid "entries"
 msgstr "registros"
 
-#: .\IntMed\templates\list.html:42
+#: .\IntMed\templates\list.html:42 .\drug\templates\drug\interactions.html:19
 msgid "Search"
 msgstr "Pesquisar"
 
@@ -76,9 +76,33 @@ msgstr "nome"
 msgid "drug"
 msgstr "medicamento"
 
-#: .\drug\views.py:18
+#: .\drug\templates\drug\interactions.html:18
+msgid "Enter a drug"
+msgstr "Insira um medicamento"
+
+#: .\drug\templates\drug\interactions.html:28 .\drug\views.py:18
 msgid "Drugs"
 msgstr "Medicamentos"
+
+#: .\drug\templates\drug\interactions.html:33
+msgid "Clear all"
+msgstr "Limpar tudo"
+
+#: .\drug\templates\drug\interactions.html:52
+msgid "Looking for interactions"
+msgstr "Procurando interações"
+
+#: .\drug\templates\drug\interactions.html:59
+msgid "No interactions found"
+msgstr "Nenhum resultado encontrado"
+
+#: .\drug\templates\drug\interactions.html:60
+msgid "interaction found"
+msgstr "interação encontrada"
+
+#: .\drug\templates\drug\interactions.html:61
+msgid "interactions found"
+msgstr "interações encontradas"
 
 #: .\drug\views.py:19
 msgid "Drug"

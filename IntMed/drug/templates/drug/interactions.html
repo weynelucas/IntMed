@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block title %}
 Interações Medicamentosas | Medicamentos
 {% endblock %}
 
+
 {% block main_content %}
-{% verbatim %}
-<!-- Inside this verbatim, the {{}} expressions refers to AngularJS -->
 
 <div class="container">
     <div ng-app="drugInteractions">
@@ -15,8 +15,8 @@ Interações Medicamentosas | Medicamentos
                 <div class="box-title">
                     <div class="row">
                         <div class="col-sm-6">
-                            Insira um medicamento:
-                            <input class="form-control" type="text" name="name" value="" placeholder="Pesquisar" autocomplete>
+                            {% trans 'Enter a drug' %}:
+                            <input class="form-control" type="text" name="name" value="" placeholder="{% trans 'Search' %}" autocomplete>
                         </div>
                     </div>
                 </div>
@@ -25,12 +25,12 @@ Interações Medicamentosas | Medicamentos
                         <div class="col-sm-6" >
                             <div class="list-group-options row" ng-show="selectedDrugs.length">
                                 <div class="col-xs-6 col-sm-6">
-                                    <div class="list-group-options-title">Medicamentos</div>
+                                    <div class="list-group-options-title">{% trans 'Drugs' %}</div>
                                 </div>
                                 <div class="col-xs-6 col-sm-6">
                                     <div class="talign-rigth">
                                         <span class="chip chip-deletable">
-                                            <span class="chip-text">Limpar</span>
+                                            <span class="chip-text">{% trans 'Clear all' %}</span>
                                             <button ng-click="clearSelectedDrugs()" class="chip-action"><i class="material-icons">cancel</i></button>
                                         </span>
                                     </div>
@@ -49,16 +49,16 @@ Interações Medicamentosas | Medicamentos
                                     <span class="sr-only">Loading...</span>
                                 </div>
                                 <div class="row">
-                                    Procurando interações
+                                    {% trans 'Looking for interactions' %}
                                 </div>
                             </div>
                             <div ng-if="!loading">
                                 <div ng-show="selectedDrugs.length > 1">
                                     <div class="talign-center">
                                         <ng-pluralize count="interactions.length"
-                                                      when="{'0': 'Nenhuma interação encontrada.',
-                                                             '1': '{} interação encontrada.',
-                                                             'other': '{} interações encontradas.'}">
+                                                      when="{'0': '{% trans 'No interactions found' %}',
+                                                             '1': '{} {% trans 'interaction found' %}',
+                                                             'other': '{} {% trans 'interactions found' %}'}">
                                         </ng-pluralize>
                                     </div>
                                     <div class="list-group list-group-site">
@@ -75,7 +75,7 @@ Interações Medicamentosas | Medicamentos
         </div>
     </div>
 </div>
-{% endverbatim %}
+
 {% endblock %}
 
 {% block main_script %}
