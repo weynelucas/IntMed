@@ -148,3 +148,10 @@ SORTABLE_COLUMN_SETTINGS = {
   'icon-asc':'fa fa-sort-asc',
   'icon-desc':'fa fa-sort-desc',
 }
+
+# Graph database (Neo4J)
+GRAPH_DATABASE = {
+    'HOST': '54.152.213.214/browser/',
+    'USER': 'neo4j',
+    'PASSWORD': 'ufc=1890',
+}

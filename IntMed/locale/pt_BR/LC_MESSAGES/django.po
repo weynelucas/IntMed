@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-06 22:48-0300\n"
+"POT-Creation-Date: 2016-09-07 09:19-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -72,6 +72,10 @@ msgstr "%(model_name)s %(main_property_value)s adicionado com successo."
 msgid "name"
 msgstr "nome"
 
+#: .\drug\models.py:7
+msgid "action"
+msgstr "ação"
+
 #: .\drug\models.py:9
 msgid "drug"
 msgstr "medicamento"
@@ -107,6 +111,10 @@ msgstr "interações encontradas"
 #: .\drug\views.py:19
 msgid "Drug"
 msgstr "Medicamento"
+
+#: .\drug\views.py:19
+msgid "Action"
+msgstr "Ação"
 
 #: .\drug\views.py:23
 msgid "Add Drug"

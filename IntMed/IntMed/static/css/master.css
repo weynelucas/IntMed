@@ -186,11 +186,20 @@ body {
 
 /* label-interacts
 ---------------------------------------------*/
-.strongly_interacts {
+.unknown_severity_interaction {
+    background-color: #777;
+}
+.severe_interaction {
     background-color: #d9534f;
 }
-.interacts {
+.moderate_interaction {
     background-color: #f0ad4e;
+}
+.mild_interaction {
+    background-color: #5bc0de;
+}
+.nothing_expected {
+    background-color: #5cb85c;
 }
 
 

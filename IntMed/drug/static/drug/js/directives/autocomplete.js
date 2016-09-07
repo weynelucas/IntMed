@@ -27,7 +27,8 @@ app.directive('autocomplete', ['$http', function ($http) {
             },
         }).autocomplete( "instance" )._renderItem = function(ul, item) {
             var uiItemTitle = $('<span>').addClass('ui-autocomplete-item-title').html(item.name + '<br/>');
-            var uiItemContainer = $('<div>').addClass('ui-autocomplete-item-container').append(uiItemTitle);
+            var uiItemSubtitle = $('<span>').addClass('ui-autocomplete-item-subtitle').html(item.action);
+            var uiItemContainer = $('<div>').addClass('ui-autocomplete-item-container').append(uiItemTitle).append(uiItemSubtitle);
 
             return $("<li>").append(uiItemContainer).appendTo(ul);
         };

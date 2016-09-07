@@ -11,4 +11,5 @@ class DrugForm(ModelForm):
         fields = '__all__'
         widgets = {
             'name': TextInput(attrs=form_control),
+            'action': TextInput(attrs=form_control),
         }

@@ -6,4 +6,4 @@ class DrugConfig(AppConfig):
 
     def ready(self):
         Drug = self.get_model('Drug')
-        load_drugs(Drug)
+        load_drugs()

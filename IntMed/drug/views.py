@@ -12,11 +12,11 @@ class DrugListView(ListView):
     app_label = "drug"
     model_name = "Drug"
 
-    fields = ["name"]
+    fields = ["name", "action"]
     enable_create = True
 
     title = _("Drugs")
-    labels = [_("Drug")]
+    labels = [_("Drug"), _("Action")]
 
 
 class DrugFormView(ModalCreateFormView):
@@ -35,7 +35,7 @@ def perform_interactions(request):
 
     drugs = params.getlist('drug')
 
-    driver = GraphDatabase.driver("bolt://localhost", auth=basic_auth("neo4j", "password"))
+    driver = GraphDatabase.driver("bolt://54.152.213.214/browser/", auth=basic_auth("neo4j", "ufc=1890"))
     session = driver.session()
     cypher_query =  """
                         MATCH (d:DRUG)
@@ -43,7 +43,7 @@ def perform_interactions(request):
                         WITH COLLECT(d) as ds
                         MATCH (x)-[r]-(y)
                         WHERE x in ds AND y in ds
-                        RETURN DISTINCT type(r) as type, r.explanation as explanation, r.note as note, startNode(r).name as startNode, endNode(r).name as endNode
+                        RETURN DISTINCT type(r) as type, r.evidence as evidence, r.action as action, r.explanation as explanation, startNode(r).name as startNode, endNode(r).name as endNode
                     """ % (str(drugs))
 
     result = session.run(cypher_query)
