@@ -5,4 +5,5 @@ urlpatterns = [
     url(r'^$', views.DrugListView.as_view()),
     url(r'^create/$', views.DrugFormView.as_view()),
     url(r'^interactions/$', views.interactions),
+    url(r'^single_interactions/$', views.single_interactions)
 ]
