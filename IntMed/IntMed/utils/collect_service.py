@@ -1,7 +1,7 @@
 import http.client as http
 from bs4 import BeautifulSoup
 from .database_service import db_table_exists
-from neo4j.v1 import GraphDatabase, basic_auth
+from api.drug_interaction import connection
 
 
 def load_drugs(DrugClass=None):
@@ -15,10 +15,7 @@ def load_drugs(DrugClass=None):
         DrugClass = Drug
 
     if db_table_exists(DrugClass._meta.db_table) and not DrugClass.objects.count():
-         driver = GraphDatabase.driver("bolt://54.152.213.214/browser/", auth=basic_auth("neo4j", "ufc=1890"))
-         session = driver.session()
-
-         result = session.run("MATCH (d:DRUG) RETURN d.name AS name, d.drugAction AS action")
+         result = connection.get_all_drugs()
 
          for record in result:
              drug = DrugClass(name=record['name'], action=record['action'])

@@ -34,7 +34,7 @@ app.controller('DrugController', function DrugController($scope, $http, $cookies
     $scope.processInteractions = function () {
         $http({
             method: 'GET',
-            url: '/drug/perform_interactions/',
+            url: '/interactions/multiple/',
             params: {
                 drug: $scope.selectedNames(),
             },
