@@ -44,7 +44,7 @@ INSTALLED_APPS = (
     # Local apps
     'IntMed',
     'drug.apps.DrugConfig',
-    'api.apps.ApiConfig',
+    'interactions.apps.InteractionsConfig',
 )
 
 MIDDLEWARE_CLASSES = (

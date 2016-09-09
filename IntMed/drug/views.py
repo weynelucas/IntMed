@@ -23,6 +23,3 @@ class DrugFormView(ModalCreateFormView):
 
 def interactions(request):
     return render(request, 'drug/interactions.html')
-
-def single_interactions(request):
-    return render(request, 'drug/single_interactions.html')

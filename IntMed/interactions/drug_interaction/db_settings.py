@@ -1,7 +1,7 @@
 DB_SETTINGS = {
-    'HOST': 'bolt://localhost/browser/',
+    'HOST': 'bolt://54.152.213.214/browser/',
     'USER': 'neo4j',
-    'PASSWORD': 'password',
+    'PASSWORD': 'ufc=1890',
 }
 
 NODE_LABELS = ["DRUG"]

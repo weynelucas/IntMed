@@ -1,4 +1,4 @@
-app.controller('DrugController', function DrugController($scope, $http, $cookies) {
+app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($scope, $http, $cookies) {
 
     $scope.init = function () {
         $scope.selectedDrugs = $cookies.getObject("selectedDrugs") || [];
