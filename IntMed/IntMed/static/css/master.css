@@ -329,67 +329,66 @@ body {
 }
 
 
-/* btn-add
+/* btn-header
 ---------------------------------------------*/
-.btn.btn-add {
-    border-radius: 5px;
+.btn.btn-header {
     border-width: 0.10em;
 }
-.btn-add {
+.btn-header {
     color: #fff;
     background-color: #1fa67a;
     border-color: #fff;
 }
-.btn-add:focus,
-.btn-add.focus {
+.btn-header:focus,
+.btn-header.focus {
     color: #fff;
     background-color: #1fa67a;
     border-color: #fff;
     outline: 0;
 }
-.btn-add:hover {
+.btn-header:hover {
     color: #1fa67a;
     background-color: #fff;
     border-color:  #fff;
 }
-.btn-add:active,
-.btn-add.active,
-.open > .dropdown-toggle.btn-add {
+.btn-header:active,
+.btn-header.active,
+.open > .dropdown-toggle.btn-header {
     color: #1fa67a;
     background-color: #fff;
     border-color:  #fff;
 }
-.btn-add:active:hover,
-.btn-add.active:hover,
-.open > .dropdown-toggle.btn-add:hover,
-.btn-add:active:focus,
-.btn-add.active:focus,
-.open > .dropdown-toggle.btn-add:focus,
-.btn-add:active.focus,
-.btn-add.active.focus,
-.open > .dropdown-toggle.btn-add.focus {
+.btn-header:active:hover,
+.btn-header.active:hover,
+.open > .dropdown-toggle.btn-header:hover,
+.btn-header:active:focus,
+.btn-header.active:focus,
+.open > .dropdown-toggle.btn-header:focus,
+.btn-header:active.focus,
+.btn-header.active.focus,
+.open > .dropdown-toggle.btn-header.focus {
     color: #1fa67a;
     background-color: #fff;
     border-color:  #fff;
 }
-.btn-add:active,
-.btn-add.active,
-.open > .dropdown-toggle.btn-add {
+.btn-header:active,
+.btn-header.active,
+.open > .dropdown-toggle.btn-header {
     background-image: none;
 }
-.btn-add.disabled:hover,
-.btn-add[disabled]:hover,
-fieldset[disabled] .btn-add:hover,
-.btn-add.disabled:focus,
-.btn-add[disabled]:focus,
-fieldset[disabled] .btn-add:focus,
-.btn-add.disabled.focus,
-.btn-add[disabled].focus,
-fieldset[disabled] .btn-add.focus {
+.btn-header.disabled:hover,
+.btn-header[disabled]:hover,
+fieldset[disabled] .btn-header:hover,
+.btn-header.disabled:focus,
+.btn-header[disabled]:focus,
+fieldset[disabled] .btn-header:focus,
+.btn-header.disabled.focus,
+.btn-header[disabled].focus,
+fieldset[disabled] .btn-header.focus {
     background-color: #fff;
     border-color:  #fff;
 }
-.btn-add .badge {
+.btn-header .badge {
     color: #1fa67a;
     background-color: #fff;
 }

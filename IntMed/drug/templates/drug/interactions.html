@@ -18,6 +18,11 @@ Interações Medicamentosas | Medicamentos
                             {% trans 'Enter a drug' %}:
                             <input class="form-control" type="text" name="name" value="" placeholder="{% trans 'Search' %}" autocomplete>
                         </div>
+                        <div class="col-md-6 talign-rigth" ng-show="selectedDrugs.length > 1 && !loading">
+                            <br/>
+                            <button class="btn btn-header"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> {% trans 'Export' %}</button>
+                            <button class="btn btn-header"><i class="fa fa-floppy-o" aria-hidden="true"></i> {% trans 'Save' %}</button>
+                        </div>
                     </div>
                 </div>
                 <div class="box-body">
