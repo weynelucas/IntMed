@@ -58,12 +58,20 @@ class ModalCreateFormView(FormView):
     template_name = "modal_form.html"
     subtitle = _("Complete the form bellow")
     main_property = "name"
+    url = "create/"
+    append_language_code = False
 
     def get_context_data(self, **kwargs):
+        if self.append_language_code:
+            url = '/' + self.request.LANGUAGE_CODE + self.url
+        else:
+            url = self.url
+
         context = super(ModalCreateFormView, self).get_context_data(**kwargs)
         context.update({
             'title': self.title,
             'subtitle': self.subtitle,
+            'url': url,
         })
         return context
 

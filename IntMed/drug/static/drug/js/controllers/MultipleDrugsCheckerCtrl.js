@@ -6,6 +6,26 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
         $scope.loading = false;
     }
 
+    $scope.openSaveModal = function (url, elem) {
+        remoteFunction(url, elem.target, function (response) {
+            var html_response = $.parseHTML(response, document, true)
+            var drugsContainer = $(html_response).find('.form-group:last')[0];
+
+            var drugsInputs = $scope.selectedDrugs.map(function (drug) {
+                return $('<input>').attr({
+                    type: 'hidden',
+                    name: 'drugs',
+                    value: drug.id,
+                    id: 'id_drugs_' + drug.id,
+                });
+            });
+
+            $(drugsContainer).html(drugsInputs);
+
+            return html_response;
+        });
+    }
+
     $scope.clearSelectedDrugs = function () {
         $scope.selectedDrugs = [];
     }

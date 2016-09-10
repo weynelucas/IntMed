@@ -21,7 +21,7 @@ Interações Medicamentosas | Medicamentos
                         <div class="col-md-6 talign-rigth" ng-show="selectedDrugs.length > 1 && !loading">
                             <br/>
                             <button class="btn btn-header"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> {% trans 'Export' %}</button>
-                            <button class="btn btn-header"><i class="fa fa-floppy-o" aria-hidden="true"></i> {% trans 'Save' %}</button>
+                            <button data-toggle="modal" data-target="#mainModal" ng-click="openSaveModal('/{{ request.LANGUAGE_CODE }}/drug/save_result/', $event)" class="btn btn-header"><i class="fa fa-floppy-o" aria-hidden="true"></i> {% trans 'Save' %}</button>
                         </div>
                     </div>
                 </div>

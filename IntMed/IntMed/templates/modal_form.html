@@ -18,7 +18,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">{% trans 'Close' %}</button>
-                <button type="submit" class="btn btn-system">
+                <button id="confirmBtn" type="submit" class="btn btn-system">
                     {% trans 'Save' %}
                     <i class="fa fa-floppy-o" aria-hidden="true"></i>
                 </button>
@@ -29,5 +29,5 @@
 
 <script src="/static/js/form.js" charset="utf-8"></script>
 <script type="text/javascript">
-    initFormBehaviour("#modal_form");
+    initFormBehaviour("#modal_form", "{{ url | safe }}");
 </script>

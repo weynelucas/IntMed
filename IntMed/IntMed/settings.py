@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     # Local apps
     'IntMed',
     'drug.apps.DrugConfig',
+    'inspection.apps.InspectionConfig',
     'interactions.apps.InteractionsConfig',
 )
 
@@ -102,8 +103,6 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 from django.utils.translation import ugettext_lazy as _
-
-LANGUAGE_CODE = 'pt-br'
 
 LANGUAGES = (
     ('pt-br', _('Portuguese (Brazil)')),

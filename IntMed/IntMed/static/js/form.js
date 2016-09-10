@@ -1,5 +1,5 @@
-function initFormBehaviour (formId) {
-    preventSubmitBehaviour(formId);
+function initFormBehaviour (formId, url) {
+    preventSubmitBehaviour(formId, url);
     removeInputErrosOnKeyup(formId);
 }
 
@@ -9,40 +9,32 @@ function removeInputErrosOnKeyup(formId) {
     });
 }
 
-function preventSubmitBehaviour(formId) {
+function preventSubmitBehaviour(formId, url) {
     $(formId).on('submit', function (event) {
         var form = this;
         event.preventDefault();
 
         $.ajax({
-            url: "create/",
-            method: "POST",
+            url: url,
+            type: "POST",
             async: true,
-            data: encapsulateData(form),
+            data: $(form).serializeArray(),
             success: function (response) {
                 $('#mainModal').modal('hide');
                 displayToast('success', response.message);
             },
             error: function (request, status, error) {
+                console.log(request.responseJSON);
                 displayErrors(form, request.responseJSON);
             }
         });
     });
 }
 
-function encapsulateData(form) {
-    var inputs = $(form).find("input");
-    data = {};
-    $(inputs).each(function (index, elem) {
-        data[elem.name] = elem.value;
-    });
-    return data;
-}
-
 function displayErrors(form, response) {
     var first = true;
     for (field in response) {
-        var input = $(form).find("input[name='" + field + "']");
+        var input = $(form).find("[name='" + field + "']");
         var formGroup = $(input).parent();
         var helpBlock = null;
 

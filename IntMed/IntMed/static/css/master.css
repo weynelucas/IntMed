@@ -13,6 +13,9 @@ body {
     font-family: LetterGothicStd;
 }
 
+textarea {
+    resize: vertical; 
+}
 
 /* box
 ---------------------------------------------*/
