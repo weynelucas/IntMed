@@ -44,7 +44,6 @@ INSTALLED_APPS = (
     # Local apps
     'IntMed',
     'drug.apps.DrugConfig',
-    'inspection.apps.InspectionConfig',
     'interactions.apps.InteractionsConfig',
 )
 
