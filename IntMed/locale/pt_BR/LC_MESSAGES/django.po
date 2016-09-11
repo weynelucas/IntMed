@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-07 17:04-0300\n"
+"POT-Creation-Date: 2016-09-11 10:56-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,37 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: .\IntMed\settings.py:108
+#: .\IntMed\checker_report.py:13
+msgid "Selected drugs"
+msgstr "Medicamentos selecionados"
+
+#: .\IntMed\checker_report.py:22 .\IntMed\checker_report.py:34
+#: .\drug\templates\drug\interactions.html:32 .\drug\views.py:19
+msgid "Drugs"
+msgstr "Medicamentos"
+
+#: .\IntMed\checker_report.py:22
+msgid "Interaction"
+msgstr "Interação"
+
+#: .\IntMed\checker_report.py:22 .\drug\templates\drug\interactions.html.py:72
+msgid "Evidence"
+msgstr "Evidência"
+
+#: .\IntMed\checker_report.py:22 .\drug\templates\drug\interactions.html.py:72
+#: .\drug\views.py:20
+msgid "Action"
+msgstr "Ação"
+
+#: .\IntMed\checker_report.py:34
+msgid "Explanation"
+msgstr "Explicação"
+
+#: .\IntMed\settings.py:107
 msgid "Portuguese (Brazil)"
 msgstr "Português do Brasil"
 
-#: .\IntMed\settings.py:109
+#: .\IntMed\settings.py:108
 msgid "English"
 msgstr "Inglês"
 
@@ -38,7 +64,7 @@ msgstr "Exibir"
 msgid "entries"
 msgstr "registros"
 
-#: .\IntMed\templates\list.html:42 .\drug\templates\drug\interactions.html:19
+#: .\IntMed\templates\list.html:42 .\drug\templates\drug\interactions.html:18
 msgid "Search"
 msgstr "Pesquisar"
 
@@ -56,6 +82,7 @@ msgid "Close"
 msgstr "Sair"
 
 #: .\IntMed\templates\modal_form.html:22
+#: .\drug\templates\drug\interactions.html:23
 msgid "Save"
 msgstr "Salvar"
 
@@ -63,7 +90,7 @@ msgstr "Salvar"
 msgid "Complete the form bellow"
 msgstr "Preencha o formulário abaixo"
 
-#: .\IntMed\views.py:80
+#: .\IntMed\views.py:88
 #, python-format
 msgid "%(model_name)s %(main_property_value)s successfully added."
 msgstr "%(model_name)s %(main_property_value)s adicionado com successo."
@@ -80,46 +107,88 @@ msgstr "ação"
 msgid "drug"
 msgstr "medicamento"
 
-#: .\drug\static\drug\js\views\interactionItem.html:4
-msgid "Evidence"
-msgstr "Evidência"
+#: .\drug\models.py:13
+msgid "title"
+msgstr "título"
 
-#: .\drug\static\drug\js\views\interactionItem.html:5 .\drug\views.py:19
-msgid "Action"
-msgstr "Ação"
+#: .\drug\models.py:14
+msgid "description"
+msgstr "descrição"
 
-#: .\drug\templates\drug\interactions.html:18
+#: .\drug\templates\drug\interactions.html:17
 msgid "Enter a drug"
 msgstr "Insira um medicamento"
 
-#: .\drug\templates\drug\interactions.html:28 .\drug\views.py:18
-msgid "Drugs"
-msgstr "Medicamentos"
+#: .\drug\templates\drug\interactions.html:22
+msgid "Export"
+msgstr "Exportar"
 
-#: .\drug\templates\drug\interactions.html:33
+#: .\drug\templates\drug\interactions.html:37
 msgid "Clear all"
 msgstr "Limpar tudo"
 
-#: .\drug\templates\drug\interactions.html:52
+#: .\drug\templates\drug\interactions.html:56
 msgid "Looking for interactions"
 msgstr "Procurando interações"
 
-#: .\drug\templates\drug\interactions.html:60
+#: .\drug\templates\drug\interactions.html:64
 msgid "No interactions found"
 msgstr "Nenhuma interação encontrada"
 
-#: .\drug\templates\drug\interactions.html:61
+#: .\drug\templates\drug\interactions.html:65
 msgid "interaction found"
 msgstr "interação encontrada"
 
-#: .\drug\templates\drug\interactions.html:62
+#: .\drug\templates\drug\interactions.html:66
 msgid "interactions found"
 msgstr "interações encontradas"
 
-#: .\drug\views.py:19
+#: .\drug\views.py:20
 msgid "Drug"
 msgstr "Medicamento"
 
-#: .\drug\views.py:23
+#: .\drug\views.py:24 .\drug\views.py:28
 msgid "Add Drug"
 msgstr "Adicionar Medicamento"
+
+msgid "Severe"
+msgstr "Grave"
+
+msgid "Moderate"
+msgstr "Moderada"
+
+msgid "Mild"
+msgstr "Leve"
+
+msgid "Unknown severity"
+msgstr "Gravidade desconhecida"
+
+msgid "Nothing expected"
+msgstr "Nada esperado"
+
+msgid "Study"
+msgstr "Estudo"
+
+msgid "Theoretical"
+msgstr "Teórica"
+
+msgid "Case"
+msgstr "Caso"
+
+msgid "Extensive"
+msgstr "Extensiva"
+
+msgid "Informative"
+msgstr "Informativa"
+
+msgid "No action"
+msgstr "Nenhuma"
+
+msgid "Avoid"
+msgstr "Evitar"
+
+msgid "Adjust"
+msgstr "Ajustar"
+
+msgid "Monitor"
+msgstr "Monitorar"

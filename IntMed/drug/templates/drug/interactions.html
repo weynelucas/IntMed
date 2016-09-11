@@ -7,7 +7,6 @@ Interações Medicamentosas | Medicamentos
 
 
 {% block main_content %}
-
 <div class="container">
     <div ng-app="drugInteractions">
         <div class="col-sm-8" ng-controller="MultipleDrugsCheckerCtrl">
@@ -18,17 +17,17 @@ Interações Medicamentosas | Medicamentos
                             {% trans 'Enter a drug' %}:
                             <input class="form-control" type="text" name="name" value="" placeholder="{% trans 'Search' %}" autocomplete>
                         </div>
-                        <div class="col-md-6 talign-rigth" ng-show="selectedDrugs.length > 1 && !loading">
+                        <div class="col-md-6 talign-rigth" ng-show="checker.selectedDrugs.length > 1 && !loading">
                             <br/>
-                            <button class="btn btn-header"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> {% trans 'Export' %}</button>
-                            <button data-toggle="modal" data-target="#mainModal" ng-click="openSaveModal('/{{ request.LANGUAGE_CODE }}/drug/save_result/', $event)" class="btn btn-header"><i class="fa fa-floppy-o" aria-hidden="true"></i> {% trans 'Save' %}</button>
+                            <a class="btn btn-header" ng-click="exportChecker()"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> {% trans 'Export' %}</a>
+                            <button data-toggle="modal" data-target="#mainModal" ng-click="openSaveModal($event)" class="btn btn-header"><i class="fa fa-floppy-o" aria-hidden="true"></i> {% trans 'Save' %}</button>
                         </div>
                     </div>
                 </div>
                 <div class="box-body">
                     <div class="row">
                         <div class="col-sm-6" >
-                            <div class="list-group-options row" ng-show="selectedDrugs.length">
+                            <div class="list-group-options row" ng-show="checker.selectedDrugs.length">
                                 <div class="col-xs-6 col-sm-6">
                                     <div class="list-group-options-title">{% trans 'Drugs' %}</div>
                                 </div>
@@ -42,7 +41,7 @@ Interações Medicamentosas | Medicamentos
                                 </div>
                             </div>
                             <div class="list-group list-group-site">
-                                <div class="list-group-item" ng-repeat="drug in selectedDrugs">
+                                <div class="list-group-item" ng-repeat="drug in checker.selectedDrugs">
                                     <selected-drug model="drug" remove="removeSelectedDrug" index="$index"></selected-drug>
                                 </div>
                             </div>
@@ -58,10 +57,10 @@ Interações Medicamentosas | Medicamentos
                                 </div>
                             </div>
                             <div ng-if="!loading">
-                                <div ng-show="selectedDrugs.length > 1">
+                                <div ng-show="checker.selectedDrugs.length > 1">
                                     <div class="result-row">
                                         <span class="result-info">
-                                            <ng-pluralize count="interactions.length"
+                                            <ng-pluralize count="checker.interactions.length"
                                                           when="{'0': '{% trans 'No interactions found' %}',
                                                                  '1': '{} {% trans 'interaction found' %}',
                                                                  'other': '{} {% trans 'interactions found' %}'}">
@@ -69,7 +68,7 @@ Interações Medicamentosas | Medicamentos
                                         </span>
                                     </div>
                                     <div class="list-group list-group-site">
-                                        <div class="list-group-item" ng-repeat="interaction in interactions | orderBy: 'type'">
+                                        <div class="list-group-item" ng-repeat="interaction in checker.interactions | orderBy: 'type'">
                                             <interaction model="interaction" evidence-label="{% trans 'Evidence' %}" action-label="{% trans 'Action' %}"></interaction>
                                         </div>
                                     </div>
@@ -86,6 +85,10 @@ Interações Medicamentosas | Medicamentos
 {% endblock %}
 
 {% block main_script %}
+<!-- Global variable to hold language code -->
+<script type="text/javascript">
+    var language = "{{ request.LANGUAGE_CODE | safe }}";
+</script>
 <!-- AngularJS -->
 <script src="/static/libs/angular/angular.min.js" charset="utf-8"></script>
 <script src="/static/libs/angular/angular-cookies.min.js" charset="utf-8"></script>
