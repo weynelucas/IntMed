@@ -25,7 +25,8 @@ def generate_checker_report(checker):
             _(format_interaction_type(obj['type'])),
             _(obj['evidence']),
             _(obj['action'])
-        ]
+        ],
+        'empty_message': _('No interactions found between selected drugs'),
     }
 
     explanation_table = {

@@ -3,6 +3,16 @@ from reportlab.lib.units import mm
 from .styles             import tableStyles, stylesheet
 
 
+def add_paragraph(doc_data, text, style='Normal'):
+    """ Add paragraph to document
+        Args:
+            doc_data : Document data to append paragraph
+            title    : Text to display on paragraph
+    """
+    doc_data.append(Paragraph(text, stylesheet[style]))
+    add_space(doc_data, height=25)
+
+
 def wrap_word_cell(text):
     """ Convert a long text string to a Paragraph to wrap on
         a table cell and not escape it and prevents layout breaks

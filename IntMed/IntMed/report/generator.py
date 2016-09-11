@@ -4,7 +4,7 @@ from reportlab.lib.units import mm
 from reportlab.lib.pagesizes import letter, A4
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
-from .writer import add_info_table, add_history_table, wrap_word_cell, add_title, get_table_writer
+from .writer import add_info_table, add_history_table, wrap_word_cell, add_title, get_table_writer, add_paragraph
 import ast
 from django.utils.translation import ugettext as _
 
@@ -45,6 +45,10 @@ class ReportGenerator:
 
                 writer = get_table_writer(arg['table'])
                 writer(doc_data=doc_data, labels=arg['labels'], table_data=objects_data, colWidths=arg.get('colWidths'), title=arg.get('title'))
+            else:
+                empty_message = arg.get('empty_message')
+                if empty_message:
+                    add_paragraph(doc_data, empty_message, 'ParagraphCenter')
 
 
         self.doc.build(doc_data)

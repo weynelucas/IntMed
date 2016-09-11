@@ -13,7 +13,7 @@ class DrugListView(ListView):
     model_name = "Drug"
 
     fields = ["name", "action"]
-    enable_create = True
+    enable_create = False
 
     title = _("Drugs")
     labels = [_("Drug"), _("Action")]

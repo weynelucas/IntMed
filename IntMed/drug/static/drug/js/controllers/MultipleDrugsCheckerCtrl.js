@@ -47,11 +47,12 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
     }
 
     $scope.processInteractions = function () {
+        console.log($scope.selectedIds());
         $http({
             method: 'GET',
             url: '/interactions/multiple/',
             params: {
-                drug: $scope.selectedNames(),
+                drug: $scope.selectedIds(),
             },
             headers: {
                 'X-Requested-With': 'XMLHttpRequest'

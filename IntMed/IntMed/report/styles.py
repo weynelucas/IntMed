@@ -40,9 +40,10 @@ tableStyles = {
 def loadStyles():
     """ Function to load report stylesheet """
     styles = getSampleStyleSheet()
-    styles.add(ParagraphStyle(name="ReportTitle",  alignment=TA_CENTER,  fontName="Type Writer Bold", fontSize=25))
-    styles.add(ParagraphStyle(name="SectionTitle", alignment=TA_JUSTIFY, fontName="Type Writer Bold", fontSize=16))
-    styles.add(ParagraphStyle(name="WrapWord",     alignment=TA_JUSTIFY, fontName="Type Writer", parent=styles['BodyText']))
+    styles.add(ParagraphStyle(name="ReportTitle",     alignment=TA_CENTER,  fontName="Type Writer Bold", fontSize=25))
+    styles.add(ParagraphStyle(name="SectionTitle",    alignment=TA_JUSTIFY, fontName="Type Writer Bold", fontSize=16))
+    styles.add(ParagraphStyle(name="ParagraphCenter", alignment=TA_CENTER,  fontName="Type Writer", parent=styles['Normal']))
+    styles.add(ParagraphStyle(name="WrapWord",        alignment=TA_JUSTIFY, fontName="Type Writer", parent=styles['BodyText']))
 
     return styles
 

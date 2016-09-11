@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-11 10:56-0300\n"
+"POT-Creation-Date: 2016-09-11 20:19-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,8 +22,8 @@ msgstr ""
 msgid "Selected drugs"
 msgstr "Medicamentos selecionados"
 
-#: .\IntMed\checker_report.py:22 .\IntMed\checker_report.py:34
-#: .\drug\templates\drug\interactions.html:32 .\drug\views.py:19
+#: .\IntMed\checker_report.py:22 .\IntMed\checker_report.py:35
+#: .\drug\templates\drug\interactions.html:32 .\drug\views.py:18
 msgid "Drugs"
 msgstr "Medicamentos"
 
@@ -36,11 +36,15 @@ msgid "Evidence"
 msgstr "Evidência"
 
 #: .\IntMed\checker_report.py:22 .\drug\templates\drug\interactions.html.py:72
-#: .\drug\views.py:20
+#: .\drug\views.py:19
 msgid "Action"
 msgstr "Ação"
 
-#: .\IntMed\checker_report.py:34
+#: .\IntMed\checker_report.py:29
+msgid "No interactions found between selected drugs"
+msgstr "Nenhuma interação encontrada entre os medicamentos selecionados"
+
+#: .\IntMed\checker_report.py:35
 msgid "Explanation"
 msgstr "Explicação"
 
@@ -95,23 +99,23 @@ msgstr "Preencha o formulário abaixo"
 msgid "%(model_name)s %(main_property_value)s successfully added."
 msgstr "%(model_name)s %(main_property_value)s adicionado com successo."
 
-#: .\drug\models.py:6
+#: .\drug\models.py:7
 msgid "name"
 msgstr "nome"
 
-#: .\drug\models.py:7
+#: .\drug\models.py:8
 msgid "action"
 msgstr "ação"
 
-#: .\drug\models.py:9
+#: .\drug\models.py:11
 msgid "drug"
 msgstr "medicamento"
 
-#: .\drug\models.py:13
+#: .\drug\models.py:15
 msgid "title"
 msgstr "título"
 
-#: .\drug\models.py:14
+#: .\drug\models.py:16
 msgid "description"
 msgstr "descrição"
 
@@ -143,11 +147,11 @@ msgstr "interação encontrada"
 msgid "interactions found"
 msgstr "interações encontradas"
 
-#: .\drug\views.py:20
+#: .\drug\views.py:19
 msgid "Drug"
 msgstr "Medicamento"
 
-#: .\drug\views.py:24 .\drug\views.py:28
+#: .\drug\views.py:23 .\drug\views.py:27
 msgid "Add Drug"
 msgstr "Adicionar Medicamento"
 

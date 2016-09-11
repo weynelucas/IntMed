@@ -18,7 +18,7 @@ def load_drugs(DrugClass=None):
          result = connection.get_all_drugs()
 
          for record in result:
-             drug = DrugClass(name=record['name'], action=record['action'])
+             drug = DrugClass(id = record['id'], name=record['name'], action=record['action'])
              drug.save()
 
 
