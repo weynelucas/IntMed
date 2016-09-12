@@ -9,9 +9,3 @@ class Drug(models.Model):
 
     class Meta:
         verbose_name = _('drug')
-
-
-class CheckerResult(models.Model):
-    title = models.CharField(verbose_name=_('title'), null=True, blank=True, max_length=255)
-    description = models.CharField(verbose_name=_('description'), null=True, blank=True, max_length=750)
-    drugs = models.ManyToManyField(Drug)

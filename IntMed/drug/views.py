@@ -1,9 +1,7 @@
-import json
 import ast
 from django.shortcuts import render
 from .models import Drug
-from .forms import DrugForm, CheckerResultForm
-from django.http import JsonResponse, HttpResponse
+from .forms import DrugForm
 from IntMed.views import ListView, ModalCreateFormView
 from django.utils.translation import ugettext_lazy as _
 from IntMed.checker_report import generate_checker_report
@@ -11,24 +9,15 @@ from IntMed.checker_report import generate_checker_report
 class DrugListView(ListView):
     app_label = "drug"
     model_name = "Drug"
-
     fields = ["name", "action"]
-    enable_create = False
-
-    title = _("Drugs")
     labels = [_("Drug"), _("Action")]
+    title = _("Drugs")
+    enable_create = False
 
 
 class DrugFormView(ModalCreateFormView):
     title = _("Add Drug")
     form_class = DrugForm
-
-class CheckerResultFormView(ModalCreateFormView):
-    title = _("Add Drug")
-    form_class = CheckerResultForm
-    append_language_code = True
-    url = "/drug/save_result/"
-
 
 def interactions(request):
     return render(request, 'drug/interactions.html')

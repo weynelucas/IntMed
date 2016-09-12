@@ -173,7 +173,7 @@ msgstr "Salvar Consulta"
 
 #: .\drug\views.py:28
 msgid ""
-"Save your most consulted multiple drugs interactions to check them more "
+"Save your most searched multiple drugs interactions to check them more "
 "easily in the future."
 msgstr ""
 "Salve suas interações medicamentosas mais consultadas para visualizá-las "
