@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from IntMed.view import ModalCreateFormView
+from IntMed.views import ModalCreateFormView
 from .forms import DrugInteractionCheckerForm
 from django.utils.translation import ugettext_lazy as _
 

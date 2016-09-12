@@ -1,8 +1,8 @@
-.models import DrugInteractionChecker
+from .models import DrugInteractionChecker
 from django import forms
 from IntMed.widgets import form_control
 
-class DrugInteractionCheckerForm(models.ModelForm):
+class DrugInteractionCheckerForm(forms.ModelForm):
     class Meta:
         model = DrugInteractionChecker
         fields = ['title', 'description', 'selected_drugs']

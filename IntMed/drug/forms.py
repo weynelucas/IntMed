@@ -8,5 +8,5 @@ class DrugForm(forms.ModelForm):
         fields = '__all__'
         widgets = {
             'name': forms.TextInput(attrs=form_control),
-            'action': formsTextInput(attrs=form_control),
+            'action': forms.TextInput(attrs=form_control),
         }
