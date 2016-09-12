@@ -1,4 +1,4 @@
-RELATIONSHIP_RETURN_ALIAS =  "RETURN DISTINCT type(r) as type, r.evidence as evidence, r.action as action, r.explanation as explanation, startNode(r).name as startNode, endNode(r).name as endNode"
+RELATIONSHIP_RETURN_ALIAS =  "RETURN DISTINCT id(r) as id, type(r) as type, r.evidence as evidence, r.action as action, r.explanation as explanation, startNode(r).name as startNode, endNode(r).name as endNode"
 OTHER_APPEND = ", o.name as other"
 
 ALL_DRUGS = "MATCH (d:DRUG) RETURN id(d) as id, d.name as name, d.drugAction as action"

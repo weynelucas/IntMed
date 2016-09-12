@@ -81,7 +81,18 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
                 });
             });
 
-            $(drugsContainer).html(drugsInputs);
+            var interactionsInput = $scope.checker.interactions.map(function (interaction) {
+                var objContainer = $('<div>').addClass('it');
+                var id = $('<input>').attr({type: 'hidden', name: 'interaction', value: interaction.id});
+                var evidence = $('<input>').attr({type: 'hidden', name: interaction.id + '_evidence', value: interaction.evidence});
+                var action = $('<input>').attr({type: 'hidden', name: interaction.id + '_action', value: interaction.action});
+                var explanation = $('<input>').attr({type: 'hidden', name: interaction.id + '_explanation', value: interaction.explanation});
+                $(objContainer).append(id).append(evidence).append(action).append(explanation);
+
+                return objContainer;
+            });
+
+            $(drugsContainer).append(drugsInputs).append(interactionsInput);
 
             return html_response;
         });

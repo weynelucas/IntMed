@@ -16,7 +16,7 @@ class DrugForm(ModelForm):
 
 
 class CheckerResultForm(ModelForm):
-    # drugs = NotValidatedMultipleChoiceFiled(queryset=Drug.objects.all())
+
     class Meta:
         model = CheckerResult
         fields = '__all__'
@@ -25,3 +25,23 @@ class CheckerResultForm(ModelForm):
             'description': Textarea(attrs=form_control),
             'drugs': MultipleHiddenInput(),
         }
+
+    def  __init__(self, *args, **kwargs):
+        super(CheckerResultForm, self).__init__(*args, **kwargs)
+        print('_________________________________________________\n\n')
+        print(kwargs)
+        print(args)
+
+    def save(self, commit=True):
+        print(self.cleaned_data)
+        interaction_id = self.cleaned_data['interaction']
+        interaction_ation = self.cleaned_data[interaction_id + '_action']
+        interaction_evidence = self.cleaned_data[interaction_id + '_evidence']
+        interaction_explanation = self.cleaned_data[interaction_id + '_explanation']
+
+        print(interaction_id)
+        print(interaction_action)
+        print(interaction_evidence)
+        print(interaction_explanation)
+
+        super(CheckerResultForm, self).save()
