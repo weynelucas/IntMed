@@ -12,7 +12,11 @@
             <div class="modal-body">
                 {% for field in form %}
                     <div class="form-group">
+                        {% if field.help_text %}
+                        {{ field | placeholder:field.help_text }}
+                        {% else %}
                         {{ field | placeholder:field.label }}
+                        {% endif %}
                     </div>
                 {% endfor %}
             </div>
