@@ -9,3 +9,6 @@ class DrugInteractionChecker(models.Model):
     uses = models.PositiveIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     selected_drugs = models.ManyToManyField(Drug)
+
+    class Meta:
+        verbose_name = _('drug interaction')

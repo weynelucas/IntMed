@@ -2,9 +2,9 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
 
     var dataFromCookies = false;
     var urlPrefix = "/" + language + "/";
-    var saveCheckerUrl = urlPrefix + "drug/save_result/";
-    var exportCheckerUrl = urlPrefix + "drug/export/";
-    var processInteractionsUrl = urlPrefix + "interactions/multiple/"
+    var saveCheckerUrl = urlPrefix + "checker/create/";
+    var exportCheckerUrl = urlPrefix + "checker/export/";
+    var processInteractionsUrl = urlPrefix + "interactions/multiple/";
 
     $scope.init = function () {
         var selectedDrugsFromCookies = $cookies.getObject("selectedDrugs");
@@ -75,7 +75,7 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
             var drugsInputs = $scope.checker.selectedDrugs.map(function (drug) {
                 return $('<input>').attr({
                     type: 'hidden',
-                    name: 'drugs',
+                    name: 'selected_drugs',
                     value: drug.id,
                     id: 'id_drugs_' + drug.id,
                 });
@@ -88,7 +88,7 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
     }
 
     $scope.exportChecker = function () {
-        window.location.href = exportCheckerUrl + "?pdfModel=" + JSON.stringify($scope.checker);
+        window.location.href = exportCheckerUrl + "?checker=" + JSON.stringify($scope.checker);
     }
 
     $scope.$watch(function (scope) {

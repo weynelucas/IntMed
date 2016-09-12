@@ -1,10 +1,11 @@
-from .report.generator import ReportGenerator
-from .report.writer import wrap_word_cell
+from IntMed.report.generator import ReportGenerator
+from IntMed.report.writer import wrap_word_cell
 from reportlab.lib.units import mm
 from django.utils.translation import ugettext as _
+from IntMed.formatters import format_interaction_type
 
 
-def generate_checker_report(checker):
+def generateCheckerPdfReport(checker):
     report = ReportGenerator()
 
     selected_drugs_table = {
@@ -41,7 +42,3 @@ def generate_checker_report(checker):
     }
 
     return report.generatePdfReport(selected_drugs_table, interactions_table, explanation_table)
-
-
-def format_interaction_type (int_type):
-    return ' '.join(int_type.split('INTERACTION')[0].split('_')).lower().capitalize().strip()

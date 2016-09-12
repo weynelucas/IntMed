@@ -9,6 +9,8 @@ from django.views.generic.edit import FormView
 from django.forms.models import model_to_dict
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext
+
 
 class ListView(View):
     template = "list.html"
@@ -60,6 +62,7 @@ class ModalCreateFormView(FormView):
     main_property = "name"
     url = "create/"
     append_language_code = False
+    success_message = ""
 
     def get_context_data(self, **kwargs):
         if self.append_language_code:
@@ -84,7 +87,7 @@ class ModalCreateFormView(FormView):
         model_verbose_name = form.instance.__class__._meta.verbose_name.title().capitalize()
         instance_dict = model_to_dict(form.instance)
         success_context = {
-            'message': _(
+            'message': ugettext(self.success_message) or _(
                 "%(model_name)s %(main_property_value)s successfully added."
             ) % {
                 'model_name': model_verbose_name,
