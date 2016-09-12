@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-11 20:19-0300\n"
+"POT-Creation-Date: 2016-09-12 14:37-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,11 +81,11 @@ msgstr "Nenhum resultado encontrado"
 msgid "Showing %(start)s to %(end)s of %(total)s entries"
 msgstr "Exibindo %(start)s a %(end)s de %(total)s registros"
 
-#: .\IntMed\templates\modal_form.html:20
+#: .\IntMed\templates\modal_form.html:24
 msgid "Close"
 msgstr "Sair"
 
-#: .\IntMed\templates\modal_form.html:22
+#: .\IntMed\templates\modal_form.html:26
 #: .\drug\templates\drug\interactions.html:23
 msgid "Save"
 msgstr "Salvar"
@@ -115,9 +115,21 @@ msgstr "medicamento"
 msgid "title"
 msgstr "título"
 
+#: .\drug\models.py:15
+msgid "Title (Optional)"
+msgstr "Título (Opcional)"
+
 #: .\drug\models.py:16
 msgid "description"
 msgstr "descrição"
+
+#: .\drug\models.py:16
+msgid "Description (Optional)"
+msgstr "Descrição (Opcional)"
+
+#: .\drug\models.py:21
+msgid "consultation"
+msgstr "Consulta"
 
 #: .\drug\templates\drug\interactions.html:17
 msgid "Enter a drug"
@@ -151,9 +163,21 @@ msgstr "interações encontradas"
 msgid "Drug"
 msgstr "Medicamento"
 
-#: .\drug\views.py:23 .\drug\views.py:27
+#: .\drug\views.py:23
 msgid "Add Drug"
 msgstr "Adicionar Medicamento"
+
+#: .\drug\views.py:27
+msgid "Save Consultation"
+msgstr "Salvar Consulta"
+
+#: .\drug\views.py:28
+msgid ""
+"Save your most consulted multiple drugs interactions to check them more "
+"easily in the future."
+msgstr ""
+"Salve suas interações medicamentosas mais consultadas para visualizá-las "
+"mais facilmente no futuro."
 
 msgid "Severe"
 msgstr "Grave"
