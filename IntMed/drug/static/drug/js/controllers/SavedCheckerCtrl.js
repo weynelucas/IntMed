@@ -3,6 +3,7 @@ app.controller('SavedCheckerCtrl', function SavedCheckerCtrl ($scope, $rootScope
     var savedCheckersUrl = urlPrefix + "checker/list"
 
     $scope.init = function () {
+        $scope.savedCheckers = [];
         $http({
             method: 'GET',
             url: savedCheckersUrl,
@@ -17,15 +18,15 @@ app.controller('SavedCheckerCtrl', function SavedCheckerCtrl ($scope, $rootScope
     }
 
     $scope.insertChecker = function (checker) {
-        $scope.savedCheckers.push(angular.copy(checker));
+        $scope.savedCheckers.push(checker);
     }
 
     $scope.verifyInteraction = function (checker) {
         $rootScope.$broadcast('verifyInteraction', checker.selected_drugs);
     }
 
-    $rootScope.$on('checkerSaved', function (checker) {
-
+    $rootScope.$on('checkerSaved', function (evt, checker) {
+        $scope.insertChecker(checker);
     });
 
     $scope.init();

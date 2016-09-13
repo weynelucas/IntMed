@@ -90,12 +90,12 @@ Interações Medicamentosas | Medicamentos
                     <div class="list-group list-group-site">
                         <a class="list-group-item" ng-repeat="checker in savedCheckers">
                             <div ng-click="verifyInteraction(checker)">
-                                <div class="list-group-item-heading">{[{ ::checker.title || 'Interação' }]}</div>
-                                <p class="list-group-item-text"><i>{[{ ::checker.description }]}</i></p>
+                                <div class="list-group-item-heading">{[{ checker.title || 'Interação' }]}</div>
+                                <p class="list-group-item-text"><i>{[{ checker.description }]}</i></p>
                                 <p class="list-group-item-text">Medicamentos:</p>
                                 <p class="list-group-item-text">
                                     <ul ng-class="{'two-columns': checker.selected_drugs.length > 3}">
-                                        <li ng-repeat="drug in checker.selected_drugs">{[{ ::drug.name }]}</li>
+                                        <li ng-repeat="drug in checker.selected_drugs">{[{ drug.name }]}</li>
                                     </ul>
                                 </p>
 

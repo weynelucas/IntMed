@@ -13,11 +13,9 @@ function removeInputErrosOnKeyup(formId) {
 }
 
 function preventSubmitBehaviour(formId, url, target) {
-    console.log(target);
     $(formId).on('submit', function (event) {
         var form = this;
         event.preventDefault();
-
 
         $.ajax({
             url: url,
@@ -29,7 +27,7 @@ function preventSubmitBehaviour(formId, url, target) {
                 displayToast('success', response.message);
 
                 if(callback && typeof(callback === 'function')) {
-                    callback(response.instance);
+                    callback(response.data);
                 }
             },
             error: function (request, status, error) {

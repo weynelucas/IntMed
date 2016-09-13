@@ -67,7 +67,6 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
     }
 
     $scope.openSaveModal = function (elem) {
-        //remoteFunction(saveCheckerUrl, elem.target, appendDrugsIdsOnHtmlResponse);
         $http({
             method: 'GET',
             url: saveCheckerUrl,
@@ -81,7 +80,8 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
             $(target).html(response);
 
             initFormBehaviour('#modal_form', saveCheckerUrl, function (checker) {
-                $scope.checkerSaved(checker)
+                // Called outside AngularJS
+                $scope.$apply($scope.checkerSaved(checker));
             }, target);
         });
     }
@@ -93,6 +93,10 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
     $scope.checkerSaved = function (checker) {
         $rootScope.$broadcast('checkerSaved', checker)
     }
+
+    $rootScope.$on('verifyInteraction', function (evt, drugs) {
+        $scope.checker.selectedDrugs = angular.copy(drugs);
+    });
 
     $scope.$watch('checker.selectedDrugs', function (selectedDrugs) {
         $cookies.putObject("selectedDrugs", $scope.checker.selectedDrugs);
@@ -110,10 +114,6 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
             dataFromCookies = false;
         }
     }, true);
-
-    $rootScope.$on('verifyInteraction', function (evt, drugs) {
-        $scope.checker.selectedDrugs = angular.copy(drugs);
-    });
 
 
     function appendDrugsIdsOnHtmlResponse (response) {

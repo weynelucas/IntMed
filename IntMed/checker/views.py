@@ -24,6 +24,7 @@ class DrugInteractionCheckerFormView(ModalCreateFormView):
     form_class = DrugInteractionCheckerForm
     url = '/checker/create/'
     append_language_code = True
+    serializer_class = DrugInteractionCheckerSerializer
 
 def export(request):
     try:

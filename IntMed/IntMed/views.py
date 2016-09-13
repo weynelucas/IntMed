@@ -10,6 +10,7 @@ from django.forms.models import model_to_dict
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
+from rest_framework.response import Response
 
 
 class ListView(View):
@@ -84,17 +85,16 @@ class ModalCreateFormView(FormView):
     def form_valid(self, form):
         form.save()
 
-        model_verbose_name = form.instance.__class__._meta.verbose_name.title().capitalize()
-        instance_dict = model_to_dict(form.instance)
+        if self.serializer_class:
+            data = self.serializer_class(form.instance).data
+        else:
+            data = model_to_dict(form.instance)
+
         success_context = {
-            'message': ugettext(self.success_message) or _(
-                "%(model_name)s %(main_property_value)s successfully added."
-            ) % {
-                'model_name': model_verbose_name,
-                'main_property_value': instance_dict.get(self.main_property, ''),
-            },
-            'instance': instance_dict,
+            'message': ugettext(self.success_message),
+            'data': data,
         }
+
         return JsonResponse(success_context)
 
     class Meta:
