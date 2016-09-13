@@ -1,4 +1,4 @@
-app.controller('SavedCheckerCtrl', function SavedCheckerCtrl ($scope, $http) {
+app.controller('SavedCheckerCtrl', function SavedCheckerCtrl ($scope, $rootScope, $http) {
     var urlPrefix = "/" + language + "/";
     var savedCheckersUrl = urlPrefix + "checker/list"
 
@@ -14,6 +14,10 @@ app.controller('SavedCheckerCtrl', function SavedCheckerCtrl ($scope, $http) {
         }).error(function (data) {
             $scope.savedCheckers = [];
         })
+    }
+
+    $scope.verifyInteraction = function (checker) {
+        $rootScope.$broadcast('verifyInteraction', checker.selected_drugs);
     }
 
     $scope.init();

@@ -1,4 +1,4 @@
-app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($scope, $http, $cookies) {
+app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($scope, $rootScope, $http, $cookies) {
 
     var dataFromCookies = false;
     var urlPrefix = "/" + language + "/";
@@ -47,7 +47,6 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
     }
 
     $scope.processInteractions = function () {
-        console.log($scope.selectedIds());
         $http({
             method: 'GET',
             url: '/interactions/multiple/',
@@ -108,6 +107,10 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
         } else {
             dataFromCookies = false;
         }
+    });
+
+    $rootScope.$on('verifyInteraction', function (evt, drugs) {
+        $scope.checker.selectedDrugs = drugs;
     });
 
     $scope.init();

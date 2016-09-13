@@ -146,7 +146,6 @@ textarea {
     font-size: 12px;
     list-style: none;
 }
-
 .list-group-site ul > li:before {
     position: relative;
     top: 1px;
@@ -162,6 +161,9 @@ textarea {
     content: "\e080";
     margin-right: 3px;
     color: #1fa67a;
+}
+.list-group-site a.list-group-item {
+    cursor: pointer;
 }
 .list-group-site .list-group-item-heading,
 .list-group-site a.list-group-item .list-group-item-heading {
