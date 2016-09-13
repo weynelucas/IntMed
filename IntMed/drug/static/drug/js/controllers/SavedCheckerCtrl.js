@@ -16,9 +16,17 @@ app.controller('SavedCheckerCtrl', function SavedCheckerCtrl ($scope, $rootScope
         })
     }
 
+    $scope.insertChecker = function (checker) {
+        $scope.savedCheckers.push(angular.copy(checker));
+    }
+
     $scope.verifyInteraction = function (checker) {
         $rootScope.$broadcast('verifyInteraction', checker.selected_drugs);
     }
+
+    $rootScope.$on('checkerSaved', function (checker) {
+
+    });
 
     $scope.init();
 });

@@ -80,14 +80,18 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
             var target = $(elem.target).data('target');
             $(target).html(response);
 
-            initFormBehaviour('#modal_form', saveCheckerUrl, function (instance) {
-                console.log(instance);
+            initFormBehaviour('#modal_form', saveCheckerUrl, function (checker) {
+                $scope.checkerSaved(checker)
             }, target);
         });
     }
 
     $scope.exportChecker = function () {
         window.location.href = exportCheckerUrl + "?checker=" + JSON.stringify($scope.checker);
+    }
+
+    $scope.checkerSaved = function (checker) {
+        $rootScope.$broadcast('checkerSaved', checker)
     }
 
     $scope.$watch('checker.selectedDrugs', function (selectedDrugs) {
@@ -110,6 +114,7 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
     $rootScope.$on('verifyInteraction', function (evt, drugs) {
         $scope.checker.selectedDrugs = angular.copy(drugs);
     });
+
 
     function appendDrugsIdsOnHtmlResponse (response) {
         var html_response = $.parseHTML(response, document, true)
