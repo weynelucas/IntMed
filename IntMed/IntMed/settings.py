@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     # Third party
     'bootstrap_pagination',
     'sortable_column',
+    'rest_framework',
     # Local apps
     'IntMed',
     'drug.apps.DrugConfig',

@@ -1,12 +1,21 @@
 import ast
 from datetime import datetime
-from django.shortcuts import render
-from django.http import Http404, HttpResponse
-from IntMed.views import ModalCreateFormView
+from .models import DrugInteractionChecker
+from .serializers import DrugInteractionCheckerSerializer
 from .report import generator
 from .forms import DrugInteractionCheckerForm
+from django.shortcuts import render
+from django.http import Http404, HttpResponse
+from IntMed.views import ModalCreateFormView, ListView
+from IntMed.decorators import ajax_required
+from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
+from rest_framework import viewsets
+
+class DrugInteractionListView(viewsets.ReadOnlyModelViewSet):
+    queryset = DrugInteractionChecker.objects.all()
+    serializer_class = DrugInteractionCheckerSerializer
 
 class DrugInteractionCheckerFormView(ModalCreateFormView):
     title = _('Save Drug Interaction')

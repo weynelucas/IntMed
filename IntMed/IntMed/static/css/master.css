@@ -14,7 +14,7 @@ body {
 }
 
 textarea {
-    resize: vertical; 
+    resize: vertical;
 }
 
 /* box
@@ -129,11 +129,42 @@ textarea {
 
 /* list-group-site
 ---------------------------------------------*/
-.list-group-site p.list-group-item-text  {
+.list-group-site p.list-group-item-text{
     font-size: 12px;
     margin-bottom: 5px;
 }
-.list-group-site .list-group-item-heading {
+.list-group-site ul {
+    padding-left: 15px;
+}
+.list-group-site ul.two-columns {
+    padding-left: 15px;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+.list-group-site ul > li {
+    font-size: 12px;
+    list-style: none;
+}
+
+.list-group-site ul > li:before {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    content: "\e080";
+    margin-right: 3px;
+    color: #1fa67a;
+}
+.list-group-site .list-group-item-heading,
+.list-group-site a.list-group-item .list-group-item-heading {
     color: #1fa67a;
     margin-bottom: 0;
 }
