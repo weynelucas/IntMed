@@ -10,6 +10,7 @@ Interações Medicamentosas | Medicamentos
 <div class="container">
     <div ng-app="drugInteractions">
         <div class="col-sm-8" ng-controller="MultipleDrugsCheckerCtrl">
+            <div id="checkerModal" class="modal fade" tabindex="-1" role="dialog"></div>
             <div class="box">
                 <div class="box-title">
                     <div class="row">
@@ -20,7 +21,7 @@ Interações Medicamentosas | Medicamentos
                         <div class="col-md-6 talign-rigth" ng-show="checker.selectedDrugs.length > 1 && !loading">
                             <br/>
                             <a class="btn btn-header" ng-click="exportChecker()"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> {% trans 'Export' %}</a>
-                            <button data-toggle="modal" data-target="#mainModal" ng-click="openSaveModal($event)" class="btn btn-header"><i class="fa fa-floppy-o" aria-hidden="true"></i> {% trans 'Save' %}</button>
+                            <button data-toggle="modal" data-target="#checkerModal" ng-click="openSaveModal($event)" class="btn btn-header"><i class="fa fa-floppy-o" aria-hidden="true"></i> {% trans 'Save' %}</button>
                         </div>
                     </div>
                 </div>
@@ -114,6 +115,7 @@ Interações Medicamentosas | Medicamentos
 <script type="text/javascript">
     var language = "{{ request.LANGUAGE_CODE | safe }}";
 </script>
+<script src="/static/js/form.js" charset="utf-8"></script>
 <!-- AngularJS -->
 <script src="/static/libs/angular/angular.min.js" charset="utf-8"></script>
 <script src="/static/libs/angular/angular-cookies.min.js" charset="utf-8"></script>

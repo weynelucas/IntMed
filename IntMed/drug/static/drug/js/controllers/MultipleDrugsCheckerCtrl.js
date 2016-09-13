@@ -49,7 +49,7 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
     $scope.processInteractions = function () {
         $http({
             method: 'GET',
-            url: '/interactions/multiple/',
+            url: processInteractionsUrl,
             params: {
                 drug: $scope.selectedIds(),
             },
@@ -67,22 +67,22 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
     }
 
     $scope.openSaveModal = function (elem) {
-        remoteFunction(saveCheckerUrl, elem.target, function (response) {
-            var html_response = $.parseHTML(response, document, true)
-            var drugsContainer = $(html_response).find('.form-group:last')[0];
+        //remoteFunction(saveCheckerUrl, elem.target, appendDrugsIdsOnHtmlResponse);
+        $http({
+            method: 'GET',
+            url: saveCheckerUrl,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+        }).success(function (response){
+            response = appendDrugsIdsOnHtmlResponse(response);
 
-            var drugsInputs = $scope.checker.selectedDrugs.map(function (drug) {
-                return $('<input>').attr({
-                    type: 'hidden',
-                    name: 'selected_drugs',
-                    value: drug.id,
-                    id: 'id_drugs_' + drug.id,
-                });
-            });
+            var target = $(elem.target).data('target');
+            $(target).html(response);
 
-            $(drugsContainer).html(drugsInputs);
-
-            return html_response;
+            initFormBehaviour('#modal_form', saveCheckerUrl, function (instance) {
+                console.log(instance);
+            }, target);
         });
     }
 
@@ -90,14 +90,12 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
         window.location.href = exportCheckerUrl + "?checker=" + JSON.stringify($scope.checker);
     }
 
-    $scope.$watch(function (scope) {
-        return scope.checker.selectedDrugs.length;
-    }, function (value) {
+    $scope.$watch('checker.selectedDrugs', function (selectedDrugs) {
         $cookies.putObject("selectedDrugs", $scope.checker.selectedDrugs);
         $cookies.putObject("interactions", $scope.checker.interactions);
 
         if(!dataFromCookies) {
-            if (value > 1) {
+            if (selectedDrugs.length > 1) {
                 $scope.loading = true;
                 $scope.processInteractions();
             } else {
@@ -107,11 +105,29 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
         } else {
             dataFromCookies = false;
         }
-    });
+    }, true);
 
     $rootScope.$on('verifyInteraction', function (evt, drugs) {
-        $scope.checker.selectedDrugs = drugs;
+        $scope.checker.selectedDrugs = angular.copy(drugs);
     });
+
+    function appendDrugsIdsOnHtmlResponse (response) {
+        var html_response = $.parseHTML(response, document, true)
+        var drugsContainer = $(html_response).find('.form-group:last')[0];
+
+        var drugsInputs = $scope.checker.selectedDrugs.map(function (drug) {
+            return $('<input>').attr({
+                type: 'hidden',
+                name: 'selected_drugs',
+                value: drug.id,
+                id: 'id_drugs_' + drug.id,
+            });
+        });
+
+        $(drugsContainer).html(drugsInputs);
+
+        return html_response;
+    }
 
     $scope.init();
 });

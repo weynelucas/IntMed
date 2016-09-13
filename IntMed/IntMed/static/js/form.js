@@ -1,6 +1,9 @@
-function initFormBehaviour (formId, url) {
-    preventSubmitBehaviour(formId, url);
+var callback = null;
+
+function initFormBehaviour (formId, url, successCallback=null, target='#mainModal') {
+    preventSubmitBehaviour(formId, url, target);
     removeInputErrosOnKeyup(formId);
+    callback = successCallback;
 }
 
 function removeInputErrosOnKeyup(formId) {
@@ -9,10 +12,12 @@ function removeInputErrosOnKeyup(formId) {
     });
 }
 
-function preventSubmitBehaviour(formId, url) {
+function preventSubmitBehaviour(formId, url, target) {
+    console.log(target);
     $(formId).on('submit', function (event) {
         var form = this;
         event.preventDefault();
+
 
         $.ajax({
             url: url,
@@ -20,11 +25,14 @@ function preventSubmitBehaviour(formId, url) {
             async: true,
             data: $(form).serializeArray(),
             success: function (response) {
-                $('#mainModal').modal('hide');
+                $(target).modal('hide');
                 displayToast('success', response.message);
+
+                if(callback && typeof(callback === 'function')) {
+                    callback(response.instance);
+                }
             },
             error: function (request, status, error) {
-                console.log(request.responseJSON);
                 displayErrors(form, request.responseJSON);
             }
         });

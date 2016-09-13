@@ -134,10 +134,10 @@ textarea {
     margin-bottom: 5px;
 }
 .list-group-site ul {
-    padding-left: 15px;
+    padding-left: 0;
 }
 .list-group-site ul.two-columns {
-    padding-left: 15px;
+    padding-left: 0;
     columns: 2;
     -webkit-columns: 2;
     -moz-columns: 2;
