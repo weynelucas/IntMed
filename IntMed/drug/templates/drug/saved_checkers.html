@@ -1,6 +1,26 @@
 {% load i18n %}
 
 <div class="col-sm-4" ng-controller="SavedCheckerCtrl">
+
+    <div id="savedCheckerModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Excluir interação medicamentosa</h4>
+                </div>
+                <div class="modal-body">
+                    Tem certeza que deseja excluir esta interação?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">{% trans 'No' %}</button>
+                    <button ng-click="removeChecker(toDeleteIndex)" class="btn btn-success">{% trans 'Yes' %}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="box">
         <div class="box-title">
             <h4>Minhas Interações</h4>
@@ -9,7 +29,7 @@
         <div class="box-body">
             <div class="list-group list-group-site">
                 <a class="list-group-item" ng-repeat="checker in savedCheckers | orderBy:'-created_at' | slice:(currentPage-1)*pageSize:currentPage*pageSize" ng-click="verifyInteraction(checker)" ng-mouseover="checker.hover = true" ng-mouseleave="checker.hover = false">
-                    <span ng-click="deleteConfirmation($index)"  ng-class="{'list-card-operation-visible': checker.hover}"  class="list-card-operation icon-sm dark-hover fa fa-trash"></span>
+                    <span ng-click="deleteConfirmation(checker)" ng-class="{'list-card-operation-visible': checker.hover}"  class="list-card-operation icon-sm dark-hover fa fa-trash"></span>
                     <div class="list-group-item-heading">{[{ ::checker.title || 'Interação' }]}</div>
                     <p class="list-group-item-text"><i>{[{ ::checker.description }]}</i></p>
                     <p class="list-group-item-text">Medicamentos:</p>

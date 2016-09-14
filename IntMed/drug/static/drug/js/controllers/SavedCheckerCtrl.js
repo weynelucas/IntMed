@@ -1,4 +1,4 @@
-app.controller('SavedCheckerCtrl', function SavedCheckerCtrl ($scope, $rootScope, $http) {
+app.controller('SavedCheckerCtrl', function SavedCheckerCtrl ($scope, $rootScope, $http, modalService) {
     var urlPrefix = "/" + language + "/";
     var savedCheckersUrl = urlPrefix + "checker/list"
 
@@ -21,12 +21,18 @@ app.controller('SavedCheckerCtrl', function SavedCheckerCtrl ($scope, $rootScope
         })
     }
 
-    $scope.deleteConfirmation = function (index) {
+    $scope.deleteConfirmation = function (checker) {
         preventInsideClick();
+        $scope.toDeleteIndex = $scope.savedCheckers.indexOf(checker);
+        $('#savedCheckerModal').modal();
     }
 
     $scope.insertChecker = function (checker) {
         $scope.savedCheckers.push(checker);
+    }
+
+    $scope.removeChecker = function (index) {
+        $scope.savedCheckers.splice(index,1);
     }
 
     $scope.verifyInteraction = function (checker) {
