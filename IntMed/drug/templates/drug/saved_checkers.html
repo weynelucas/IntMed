@@ -4,21 +4,31 @@
     <div class="box">
         <div class="box-title">
             <h4>Minhas Interações</h4>
+
         </div>
         <div class="box-body">
             <div class="list-group list-group-site">
-                <a class="list-group-item" ng-repeat="checker in savedCheckers">
-                    <div ng-click="verifyInteraction(checker)">
-                        <div class="list-group-item-heading">{[{ checker.title || 'Interação' }]}</div>
-                        <p class="list-group-item-text"><i>{[{ checker.description }]}</i></p>
+                <a class="list-group-item" ng-repeat="checker in savedCheckers | orderBy:'-created_at' | slice:(currentPage-1)*pageSize:currentPage*pageSize ">
+                    <div ng-click="verifyInteraction(checker)" data-container="body">
+                        <div class="list-group-item-heading">{[{ ::checker.title || 'Interação' }]}</div>
+                        <p class="list-group-item-text"><i>{[{ ::checker.description }]}</i></p>
                         <p class="list-group-item-text">Medicamentos:</p>
                         <p class="list-group-item-text">
                             <ul>
-                                <li ng-repeat="drug in checker.selected_drugs">{[{ drug.name }]}</li>
+                                <li ng-repeat="drug in checker.selected_drugs">{[{ ::drug.name }]}</li>
                             </ul>
                         </p>
                     </div>
                 </a>
+            </div>
+            <div class="talign-center">
+                <ul uib-pagination
+                    ng-show="savedCheckers.length > pageSize"
+                    total-items="savedCheckers.length"
+                    items-per-page="pageSize"
+                    ng-model="currentPage"
+                    max-size="maxSize"
+                    class="pagination-sm"></ul>
             </div>
         </div>
     </div>

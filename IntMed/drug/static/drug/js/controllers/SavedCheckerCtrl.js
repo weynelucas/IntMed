@@ -4,6 +4,10 @@ app.controller('SavedCheckerCtrl', function SavedCheckerCtrl ($scope, $rootScope
 
     $scope.init = function () {
         $scope.savedCheckers = [];
+        $scope.currentPage = 1;
+        $scope.maxSize = 3;
+        $scope.pageSize = 3;
+
         $http({
             method: 'GET',
             url: savedCheckersUrl,

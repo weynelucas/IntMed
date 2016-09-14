@@ -20,7 +20,6 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
         $scope.loading = false;
     }
 
-
     $scope.clearSelectedDrugs = function () {
         $scope.checker.selectedDrugs = [];
     }
@@ -114,7 +113,6 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
             dataFromCookies = false;
         }
     }, true);
-
 
     function appendDrugsIdsOnHtmlResponse (response) {
         var html_response = $.parseHTML(response, document, true)
