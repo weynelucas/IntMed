@@ -1,4 +1,4 @@
-app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($scope, $rootScope, $http, $cookies) {
+app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($scope, $rootScope, $http, $cookies, modalService) {
 
     var dataFromCookies = false;
     var urlPrefix = "/" + language + "/";
@@ -66,22 +66,11 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
     }
 
     $scope.openSaveModal = function (elem) {
-        $http({
-            method: 'GET',
-            url: saveCheckerUrl,
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest'
-            },
-        }).success(function (response){
-            response = appendDrugsIdsOnHtmlResponse(response);
-
-            var target = $(elem.target).data('target');
-            $(target).html(response);
-
+        modalService.openModal(saveCheckerUrl, elem.target, appendDrugsIdsOnHtmlResponse, function () {
             initFormBehaviour('#modal_form', saveCheckerUrl, function (checker) {
                 // Called outside AngularJS
                 $scope.$apply($scope.checkerSaved(checker));
-            }, target);
+            }, $(elem.target).data('target'));
         });
     }
 

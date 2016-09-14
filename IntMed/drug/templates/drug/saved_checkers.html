@@ -8,17 +8,16 @@
         </div>
         <div class="box-body">
             <div class="list-group list-group-site">
-                <a class="list-group-item" ng-repeat="checker in savedCheckers | orderBy:'-created_at' | slice:(currentPage-1)*pageSize:currentPage*pageSize">
-                    <div ng-click="verifyInteraction(checker)">
-                        <div class="list-group-item-heading">{[{ ::checker.title || 'Interação' }]}</div>
-                        <p class="list-group-item-text"><i>{[{ ::checker.description }]}</i></p>
-                        <p class="list-group-item-text">Medicamentos:</p>
-                        <p class="list-group-item-text">
-                            <ul>
-                                <li ng-repeat="drug in checker.selected_drugs">{[{ ::drug.name }]}</li>
-                            </ul>
-                        </p>
-                    </div>
+                <a class="list-group-item" ng-repeat="checker in savedCheckers | orderBy:'-created_at' | slice:(currentPage-1)*pageSize:currentPage*pageSize" ng-click="verifyInteraction(checker)" ng-mouseover="checker.hover = true" ng-mouseleave="checker.hover = false">
+                    <span ng-click="deleteConfirmation($index)"  ng-class="{'list-card-operation-visible': checker.hover}"  class="list-card-operation icon-sm dark-hover fa fa-trash"></span>
+                    <div class="list-group-item-heading">{[{ ::checker.title || 'Interação' }]}</div>
+                    <p class="list-group-item-text"><i>{[{ ::checker.description }]}</i></p>
+                    <p class="list-group-item-text">Medicamentos:</p>
+                    <p class="list-group-item-text">
+                        <ul>
+                            <li ng-repeat="drug in checker.selected_drugs">{[{ ::drug.name }]}</li>
+                        </ul>
+                    </p>
                 </a>
             </div>
             <div class="talign-center">

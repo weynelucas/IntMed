@@ -21,6 +21,10 @@ app.controller('SavedCheckerCtrl', function SavedCheckerCtrl ($scope, $rootScope
         })
     }
 
+    $scope.deleteConfirmation = function (index) {
+        preventInsideClick();
+    }
+
     $scope.insertChecker = function (checker) {
         $scope.savedCheckers.push(checker);
     }
@@ -32,6 +36,12 @@ app.controller('SavedCheckerCtrl', function SavedCheckerCtrl ($scope, $rootScope
     $rootScope.$on('checkerSaved', function (evt, checker) {
         $scope.insertChecker(checker);
     });
+
+    function preventInsideClick(e) {
+        if (!e) var e = window.event;
+        e.cancelBubble = true;
+        if (e.stopPropagation) e.stopPropagation();
+    }
 
     $scope.init();
 });

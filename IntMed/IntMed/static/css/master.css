@@ -176,7 +176,33 @@ textarea {
 .list-group-options-title {
     line-height: 35px;
 }
-
+.list-card-operation {
+    background-color: #f5f5f5;
+    background-clip: padding-box;
+    background-origin: padding-box;
+    border-radius: 3px;
+    opacity: .8;
+    padding: 4px;
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    z-index: 40;
+    visibility: hidden;
+}
+.list-card-operation-visible {
+    visibility: visible;
+}
+.list-card-operation:hover {
+    background-color: #D6DADC;
+    opacity: 1;
+}
+.icon-sm {
+    font-size: 15px;
+    color: #999;
+}
+.dark-hover:hover {
+    color:#4d4d4d;
+}
 
 /* bs-callout
 ---------------------------------------------*/
