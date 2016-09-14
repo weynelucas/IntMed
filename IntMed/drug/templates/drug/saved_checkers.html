@@ -8,8 +8,8 @@
         </div>
         <div class="box-body">
             <div class="list-group list-group-site">
-                <a class="list-group-item" ng-repeat="checker in savedCheckers | orderBy:'-created_at' | slice:(currentPage-1)*pageSize:currentPage*pageSize ">
-                    <div ng-click="verifyInteraction(checker)" data-container="body">
+                <a class="list-group-item" ng-repeat="checker in savedCheckers | orderBy:'-created_at' | slice:(currentPage-1)*pageSize:currentPage*pageSize">
+                    <div ng-click="verifyInteraction(checker)">
                         <div class="list-group-item-heading">{[{ ::checker.title || 'Interação' }]}</div>
                         <p class="list-group-item-text"><i>{[{ ::checker.description }]}</i></p>
                         <p class="list-group-item-text">Medicamentos:</p>
