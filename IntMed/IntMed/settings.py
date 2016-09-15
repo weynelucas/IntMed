@@ -47,6 +47,7 @@ INSTALLED_APPS = (
     'drug.apps.DrugConfig',
     'checker.apps.CheckerConfig',
     'interactions.apps.InteractionsConfig',
+    'api.apps.ApiConfig',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -69,6 +70,7 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR, 'IntMed', 'templates'),
             os.path.join(BASE_DIR, 'drug', 'templates'),
+            os.path.join(BASE_DIR, 'api', 'templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {

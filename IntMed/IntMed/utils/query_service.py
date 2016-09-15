@@ -5,18 +5,16 @@ from django.db.models import Q
 from django.db.models.sql.constants import QUERY_TERMS
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-def perform_query(app_label, model_name, params, or_query=False):
+def perform_query(Model, params, or_query=False):
     """ Performs a query in a model given the request
         parameters
         Args:
-            app_label: app containing the model to perform the query
-            model_name: name of model to perform the query
+            Model: the model class
             params: request parameters
             or_query: if clauses are grouped by OR operands (default is False)
         Return:
             List of objects (queryset)
     """
-    Model = apps.get_model(app_label=app_label, model_name=model_name)
     fields = [field.name for field in Model._meta.fields]
 
     sort = params.get('sort', '')
@@ -45,22 +43,20 @@ def perform_query(app_label, model_name, params, or_query=False):
 
     return queryset
 
-def perform_lookup_query(app_label, model_name, params, query):
+def perform_lookup_query(Model, params, query):
     """ Perform a query in a model to lookup the occurrence of
         the given argument in all model fields
         Args:
-            app_label: app containing the model to perform the query
-            model_name: name of model to perform the query
+            Model: the model class
             params: request parameters
             query: value to lookup
         Return:
             List of objects (queryset)
     """
-    Model = apps.get_model(app_label=app_label, model_name=model_name)
     fields = [field.name for field in Model._meta.fields]
     new_params = params.copy()
     new_params.update({field + '__icontains': query for field in fields})
-    return perform_query(app_label=app_label, model_name=model_name, params=new_params, or_query=True)
+    return perform_query(Model, params=new_params, or_query=True)
 
 def paginate_list(instance_list, params, instances_per_page=20):
     """ Paginate a list of objects

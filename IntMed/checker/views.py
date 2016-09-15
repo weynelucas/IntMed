@@ -4,19 +4,12 @@ from .models import DrugInteractionChecker
 from .serializers import DrugInteractionCheckerSerializer
 from .report import generator
 from .forms import DrugInteractionCheckerForm
-from django.shortcuts import render
+from api.views import ApiListView
 from django.http import Http404, HttpResponse
-from IntMed.views import ModalCreateFormView, ListView
-from IntMed.decorators import ajax_required
-from django.utils.decorators import method_decorator
+from IntMed.views import ModalCreateFormView
 from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import ugettext
-from rest_framework import viewsets
 
-class DrugInteractionListView(viewsets.ReadOnlyModelViewSet):
-    queryset = DrugInteractionChecker.objects.all()
-    serializer_class = DrugInteractionCheckerSerializer
-
+# Browsable Views
 class DrugInteractionCheckerFormView(ModalCreateFormView):
     title = _('Save Drug Interaction')
     subtitle = _('Save your most searched multiple drugs interactions to check them more easily in the future.')
@@ -40,3 +33,11 @@ def export(request):
 
     response.write(pdf)
     return response
+
+
+
+# Api Views
+class DrugInteractionCheckerApiListView(ApiListView):
+    model = DrugInteractionChecker
+    serializer_class = DrugInteractionCheckerSerializer
+    many = True

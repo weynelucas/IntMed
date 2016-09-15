@@ -24,7 +24,7 @@ class ListView(View):
         items_per_page = params.get('items_per_page', '50')
 
         # Perform query
-        objects = query_service.perform_lookup_query(app_label=self.app_label, model_name=self.model_name, params=params, query=q)
+        objects = query_service.perform_lookup_query(Model=self.model, params=params, query=q)
 
         # Return JSON if request comes from AJAX
         if request.is_ajax():
@@ -60,10 +60,8 @@ class ListView(View):
 class ModalCreateFormView(FormView):
     template_name = "modal_form.html"
     subtitle = _("Complete the form bellow")
-    main_property = "name"
     url = "create/"
     append_language_code = False
-    success_message = ""
 
     def get_context_data(self, **kwargs):
         if self.append_language_code:
