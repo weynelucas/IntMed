@@ -14,7 +14,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">{% trans 'No' %}</button>
-                    <button ng-click="removeChecker(toDeleteIndex)" class="btn btn-success">{% trans 'Yes' %}</button>
+                    <button ng-click="removeChecker(toDelete)" class="btn btn-success">{% trans 'Yes' %}</button>
                 </div>
             </div>
         </div>
@@ -28,7 +28,7 @@
         </div>
         <div class="box-body">
             <div class="list-group list-group-site">
-                <a class="list-group-item" ng-repeat="checker in savedCheckers | orderBy:'-created_at' | slice:(currentPage-1)*pageSize:currentPage*pageSize" ng-click="verifyInteraction(checker)" ng-mouseover="checker.hover = true" ng-mouseleave="checker.hover = false">
+                <a class="list-group-item" ng-repeat="checker in savedCheckers | orderBy:['-uses', '-created_at'] | slice:(currentPage-1)*pageSize:currentPage*pageSize" ng-click="verifyInteraction(checker)" ng-mouseover="checker.hover = true" ng-mouseleave="checker.hover = false">
                     <span ng-click="deleteConfirmation(checker)" ng-class="{'list-card-operation-visible': checker.hover}"  class="list-card-operation icon-sm dark-hover fa fa-trash"></span>
                     <div class="list-group-item-heading">{[{ ::checker.title || 'Interação' }]}</div>
                     <p class="list-group-item-text"><i>{[{ ::checker.description }]}</i></p>

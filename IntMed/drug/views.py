@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Drug
 from .forms import DrugForm
 from .serializers import DrugSerializer
-from api.views import ApiListView
+from api.views import ApiListView, ApiDetailsView
 from IntMed.views import ListView, ModalCreateFormView
 from django.utils.translation import ugettext_lazy as _
 
@@ -28,3 +28,7 @@ class DrugApiListView(ApiListView):
     model = Drug
     serializer_class = DrugSerializer
     many = True
+
+class DrugApiDetailsView(ApiDetailsView):
+    model = Drug
+    serializer_class = DrugSerializer

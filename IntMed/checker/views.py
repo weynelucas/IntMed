@@ -4,7 +4,7 @@ from .models import DrugInteractionChecker
 from .serializers import DrugInteractionCheckerSerializer
 from .report import generator
 from .forms import DrugInteractionCheckerForm
-from api.views import ApiListView
+from api.views import ApiListView, ApiDetailsView
 from django.http import Http404, HttpResponse
 from IntMed.views import ModalCreateFormView
 from django.utils.translation import ugettext_lazy as _
@@ -41,3 +41,8 @@ class DrugInteractionCheckerApiListView(ApiListView):
     model = DrugInteractionChecker
     serializer_class = DrugInteractionCheckerSerializer
     many = True
+
+class DrugInteractionCheckerApiDetailsView(ApiDetailsView):
+    model = DrugInteractionChecker
+    serializer_class = DrugInteractionCheckerSerializer
+    delete_feedback_message = _("Drug interaction successfully removed")
