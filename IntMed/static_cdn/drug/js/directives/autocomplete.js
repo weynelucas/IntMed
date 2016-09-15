@@ -5,7 +5,7 @@ app.directive('autocomplete', ['$http', function ($http) {
             source: function (request, response) {
                 $http({
                     method: 'GET',
-                    url: '/drug/',
+                    url: '/api/drug/',
                     params: {
                         q: request.term,
                         exclude_property: 'id',

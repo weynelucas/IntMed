@@ -1,6 +1,6 @@
 app.controller('SavedCheckerCtrl', function SavedCheckerCtrl ($scope, $rootScope, $http, modalService) {
     var urlPrefix = "/" + language + "/";
-    var savedCheckersUrl = urlPrefix + "checker/list"
+    var savedCheckersUrl = urlPrefix + "api/checker/"
 
     $scope.init = function () {
         $scope.savedCheckers = [];
