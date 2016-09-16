@@ -4,6 +4,7 @@ app.controller('SavedCheckerCtrl', function SavedCheckerCtrl ($scope, $rootScope
 
     $scope.init = function () {
         $scope.savedCheckers = [];
+        $scope.editingChecker = {};
         $scope.currentPage = 1;
         $scope.maxSize = 3;
         $scope.pageSize = 3;
@@ -16,7 +17,7 @@ app.controller('SavedCheckerCtrl', function SavedCheckerCtrl ($scope, $rootScope
     }
 
     $scope.deleteConfirmation = function (checker) {
-        preventInsideClick();
+        $scope.preventInsideClick();
         $scope.toDelete = checker
         $('#savedCheckerModal').modal();
     }
@@ -34,6 +35,19 @@ app.controller('SavedCheckerCtrl', function SavedCheckerCtrl ($scope, $rootScope
         });
     }
 
+    $scope.editChecker = function (checker) {
+        $scope.editingChecker[checker.id] = true;
+        $scope.preventInsideClick();
+    }
+
+    $scope.updateChecker = function (checker) {
+        checkerApi.put(checker.id, {
+            title: checker.title,
+        }).success(function (data, status) {
+            $scope.editingChecker[checker.id] = false;
+        });
+    }
+
     $scope.verifyInteraction = function (checker) {
         checker.uses = checker.uses + 1;
 
@@ -48,7 +62,7 @@ app.controller('SavedCheckerCtrl', function SavedCheckerCtrl ($scope, $rootScope
         $scope.insertChecker(checker);
     });
 
-    function preventInsideClick(e) {
+    $scope.preventInsideClick = function (e) {
         if (!e) var e = window.event;
         e.cancelBubble = true;
         if (e.stopPropagation) e.stopPropagation();

@@ -86,7 +86,7 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
         $scope.checker.selectedDrugs = angular.copy(drugs);
     });
 
-    $scope.$watch('checker.selectedDrugs', function (selectedDrugs) {
+    $scope.$watchCollection('checker.selectedDrugs', function (selectedDrugs) {
         $cookies.putObject("selectedDrugs", $scope.checker.selectedDrugs);
         $cookies.putObject("interactions", $scope.checker.interactions);
 

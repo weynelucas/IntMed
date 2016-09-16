@@ -30,7 +30,9 @@
             <div class="list-group list-group-site">
                 <a class="list-group-item" ng-repeat="checker in savedCheckers | orderBy:['-uses', '-created_at'] | slice:(currentPage-1)*pageSize:currentPage*pageSize" ng-click="verifyInteraction(checker)" ng-mouseover="checker.hover = true" ng-mouseleave="checker.hover = false">
                     <span ng-click="deleteConfirmation(checker)" ng-class="{'list-card-operation-visible': checker.hover}"  class="list-card-operation icon-sm dark-hover fa fa-trash"></span>
-                    <div class="list-group-item-heading">{[{ ::checker.title || 'Interação' }]}</div>
+                    <span style="margin-right: 25px;" ng-click="editChecker(checker)" ng-class="{'list-card-operation-visible': checker.hover}"  class="list-card-operation icon-sm dark-hover fa fa-pencil"></span>
+                    <div ng-hide="editingChecker[checker.id]" class="list-group-item-heading">{[{ checker.title || 'Interação' }]}</div>
+                    <form ng-submit="updateChecker(checker)" ng-show="editingChecker[checker.id]" class="list-group-item-heading"><input ng-click="preventInsideClick($event)" ng-model="checker.title" class="form-control" type="text"></form>
                     <p class="list-group-item-text"><i>{[{ ::checker.description }]}</i></p>
                     <p class="list-group-item-text">Medicamentos:</p>
                     <p class="list-group-item-text">
