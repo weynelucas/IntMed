@@ -176,6 +176,9 @@ textarea {
 .list-group-options-title {
     line-height: 35px;
 }
+.list-card-operation-container {
+    visibility: hidden;
+}
 .list-card-operation {
     background-color: #f5f5f5;
     background-clip: padding-box;
@@ -187,7 +190,9 @@ textarea {
     right: 3px;
     top: 3px;
     z-index: 40;
-    visibility: hidden;
+}
+.list-card-operation:last-child {
+    margin-right: 25px;
 }
 .list-card-operation-visible {
     visibility: visible;
