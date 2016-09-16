@@ -27,7 +27,7 @@
         </div>
         <div class="box-body">
             <div class="list-group list-group-site">
-                <saved-checker ng-repeat="checker in savedCheckers | orderBy:['-uses', '-created_at'] | slice:(currentPage-1)*pageSize:currentPage*pageSize"></saved-checker>
+                <saved-checker ng-repeat="checker in savedCheckers | orderBy:['-uses', '-created_at'] | paginationSlice:currentPage:pageSize"></saved-checker>
             </div>
             <div class="talign-center">
                 <ul uib-pagination
