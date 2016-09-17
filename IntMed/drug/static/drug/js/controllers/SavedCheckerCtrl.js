@@ -1,6 +1,4 @@
 app.controller('SavedCheckerCtrl', function SavedCheckerCtrl ($scope, $rootScope, modalService, checkerApi) {
-    var urlPrefix = "/" + language + "/";
-    var savedCheckersUrl = urlPrefix + "api/checker/"
 
     $scope.init = function () {
         $scope.savedCheckers = [];
@@ -8,6 +6,8 @@ app.controller('SavedCheckerCtrl', function SavedCheckerCtrl ($scope, $rootScope
         $scope.currentPage = 1;
         $scope.maxSize = 3;
         $scope.pageSize = 3;
+
+        checkerApi.setLanguageCode(language);
 
         checkerApi.get().success(function (data, status) {
             $scope.savedCheckers = data;

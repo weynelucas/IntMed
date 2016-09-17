@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-12 20:19-0300\n"
+"POT-Creation-Date: 2016-09-17 18:06-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: .\IntMed\settings.py:108
+#: .\IntMed\settings.py:111
 msgid "Portuguese (Brazil)"
 msgstr "Português do Brasil"
 
-#: .\IntMed\settings.py:109
+#: .\IntMed\settings.py:112
 msgid "English"
 msgstr "Inglês"
 
@@ -38,7 +38,8 @@ msgstr "Exibir"
 msgid "entries"
 msgstr "registros"
 
-#: .\IntMed\templates\list.html:42 .\drug\templates\drug\interactions.html:18
+#: .\IntMed\templates\list.html:42
+#: .\drug\templates\drug\multiple_drugs_checker.html:10
 msgid "Search"
 msgstr "Pesquisar"
 
@@ -56,18 +57,17 @@ msgid "Close"
 msgstr "Sair"
 
 #: .\IntMed\templates\modal_form.html:26
-#: .\drug\templates\drug\interactions.html:23
+#: .\drug\templates\drug\multiple_drugs_checker.html:15
 msgid "Save"
 msgstr "Salvar"
 
-#: .\IntMed\views.py:59
+#: .\IntMed\views.py:62
 msgid "Complete the form bellow"
 msgstr "Preencha o formulário abaixo"
 
-#: .\IntMed\views.py:89
-#, python-format
-msgid "%(model_name)s %(main_property_value)s successfully added."
-msgstr "%(model_name)s %(main_property_value)s adicionado com successo."
+#: .\api\views.py:20
+msgid "Successfully removed"
+msgstr "Excluído com successo"
 
 #: .\checker\models.py:7
 msgid "Title (Optional)"
@@ -78,17 +78,16 @@ msgid "Description (Optional)"
 msgstr "Descrição (Opcional)"
 
 #: .\checker\models.py:14
-#, fuzzy
-#| msgid "Save Drug Interaction"
 msgid "drug interaction"
-msgstr "Salvar Interação Medicamentosa"
+msgstr "interação medicamentosa"
 
 #: .\checker\report\generator.py:14
 msgid "Selected drugs"
 msgstr "Medicamentos selecionados"
 
 #: .\checker\report\generator.py:23 .\checker\report\generator.py:36
-#: .\drug\templates\drug\interactions.html:32 .\drug\views.py:13
+#: .\drug\templates\drug\multiple_drugs_checker.html:24
+#: .\drug\templates\drug\saved_checkers.html:35 .\drug\views.py:14
 msgid "Drugs"
 msgstr "Medicamentos"
 
@@ -96,12 +95,13 @@ msgstr "Medicamentos"
 msgid "Interaction"
 msgstr "Interação"
 
-#: .\checker\report\generator.py:23 .\drug\templates\drug\interactions.html:72
+#: .\checker\report\generator.py:23
+#: .\drug\templates\drug\multiple_drugs_checker.html:72
 msgid "Evidence"
 msgstr "Evidência"
 
-#: .\checker\report\generator.py:23 .\drug\templates\drug\interactions.html:72
-#: .\drug\views.py:12
+#: .\checker\report\generator.py:23
+#: .\drug\templates\drug\multiple_drugs_checker.html:72 .\drug\views.py:13
 msgid "Action"
 msgstr "Ação"
 
@@ -113,11 +113,11 @@ msgstr "Nenhuma interação encontrada entre os medicamentos selecionados"
 msgid "Explanation"
 msgstr "Explicação"
 
-#: .\checker\views.py:11
+#: .\checker\views.py:14
 msgid "Save Drug Interaction"
 msgstr "Salvar Interação Medicamentosa"
 
-#: .\checker\views.py:12
+#: .\checker\views.py:15
 msgid ""
 "Save your most searched multiple drugs interactions to check them more "
 "easily in the future."
@@ -125,7 +125,10 @@ msgstr ""
 "Salve suas interações medicamentosas mais consultadas para visualizá-las "
 "mais facilmente no futuro."
 
-#: .\checker\views.py:13
+#: .\checker\views.py:48
+msgid "Drug interaction successfully removed"
+msgstr "Interação medicamentosa excluída com successo"
+
 msgid "Drug interaction successfully added"
 msgstr "Interação medicamentosa adicionada com successo"
 
@@ -141,41 +144,90 @@ msgstr "ação"
 msgid "drug"
 msgstr "medicamento"
 
-#: .\drug\templates\drug\interactions.html:17
+#: .\drug\templates\drug\multiple_drugs_checker.html:9
 msgid "Enter a drug"
 msgstr "Insira um medicamento"
 
-#: .\drug\templates\drug\interactions.html:22
+#: .\drug\templates\drug\multiple_drugs_checker.html:14
 msgid "Export"
 msgstr "Exportar"
 
-#: .\drug\templates\drug\interactions.html:37
+#: .\drug\templates\drug\multiple_drugs_checker.html:29
 msgid "Clear all"
 msgstr "Limpar tudo"
 
-#: .\drug\templates\drug\interactions.html:56
+#: .\drug\templates\drug\multiple_drugs_checker.html:43
+msgid "Drugs Interactions"
+msgstr "Interações Medicamentosas"
+
+#: .\drug\templates\drug\multiple_drugs_checker.html:45
+msgid "Use the search field above to look up for drugs"
+msgstr "Use o campo de pesquisa acima para pesquisar por medicamentos"
+
+#: .\drug\templates\drug\multiple_drugs_checker.html:46
+msgid ""
+"Add a drug on your selected list by choosing one of the options found for "
+"your search"
+msgstr ""
+"Adicione um medicamento à sua lista de selecionados escolhendo uma das "
+"opções encontradas para sua busca"
+
+#: .\drug\templates\drug\multiple_drugs_checker.html:47
+msgid "Add more drugs to your list to view all interactions found between them"
+msgstr ""
+"Adicione mais medicamentos à sua lista para visualizar todas as interações "
+"encontradas entre eles"
+
+#: .\drug\templates\drug\multiple_drugs_checker.html:56
 msgid "Looking for interactions"
 msgstr "Procurando interações"
 
-#: .\drug\templates\drug\interactions.html:64
+#: .\drug\templates\drug\multiple_drugs_checker.html:64
 msgid "No interactions found"
 msgstr "Nenhuma interação encontrada"
 
-#: .\drug\templates\drug\interactions.html:65
+#: .\drug\templates\drug\multiple_drugs_checker.html:65
 msgid "interaction found"
 msgstr "interação encontrada"
 
-#: .\drug\templates\drug\interactions.html:66
+#: .\drug\templates\drug\multiple_drugs_checker.html:66
 msgid "interactions found"
 msgstr "interações encontradas"
 
-#: .\drug\views.py:12
+#: .\drug\templates\drug\saved_checkers.html:10
+msgid "Remove Drug Interaction"
+msgstr "Excluir Interação Medicamentosa"
+
+#: .\drug\templates\drug\saved_checkers.html:13
+msgid "Are you sure you want to delete this interaction?"
+msgstr "Você tem certeza que deseja excluir esta interação medicamentosa?"
+
+#: .\drug\templates\drug\saved_checkers.html:16
+msgid "No"
+msgstr "Não"
+
+#: .\drug\templates\drug\saved_checkers.html:17
+msgid "Yes"
+msgstr "Sim"
+
+#: .\drug\templates\drug\saved_checkers.html:26
+msgid "My Interactions"
+msgstr "Minhas Interações"
+
+#: .\drug\templates\drug\saved_checkers.html:31
+msgid "You have no interactions saved"
+msgstr "Você não possui nenhuma interação salva"
+
+#: .\drug\views.py:13
 msgid "Drug"
 msgstr "Medicamento"
 
 #: .\drug\views.py:18
 msgid "Add Drug"
 msgstr "Adicionar Medicamento"
+
+msgid "%(model_name)s %(main_property_value)s successfully added."
+msgstr "%(model_name)s %(main_property_value)s adicionado com successo."
 
 msgid "title"
 msgstr "título"

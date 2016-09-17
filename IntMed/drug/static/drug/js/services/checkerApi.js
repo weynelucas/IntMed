@@ -1,5 +1,6 @@
 app.factory('checkerApi', function ($http) {
     var url = "/api/checker/";
+    var languageCode = "";
 
     var request = function (method, pk, data) {
         var requestData = {
@@ -8,7 +9,7 @@ app.factory('checkerApi', function ($http) {
                 'X-Requested-With': 'XMLHttpRequest'
             },
         }
-        requestData.url = url + (pk ? pk + "/" : "");
+        requestData.url = (languageCode ? "/" + languageCode : "") + url + (pk ? pk + "/" : "");
         if(data) {
             requestData.data = data;
         }
@@ -16,6 +17,9 @@ app.factory('checkerApi', function ($http) {
     }
 
     return {
+        setLanguageCode: function (language) {
+            languageCode = language;
+        },
         get: function (pk) {
             return request("GET", pk);
         },
@@ -24,6 +28,6 @@ app.factory('checkerApi', function ($http) {
         },
         delete: function (pk) {
             return request("DELETE", pk);
-        }
+        },
     }
 })

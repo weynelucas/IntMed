@@ -3,6 +3,9 @@ app.directive('savedChecker', function () {
         templateUrl: '/static/drug/js/views/savedChecker.html',
         replace: true,
         restrict: 'E',
-        scope: true
+        scope: true,
+        link: function (scope, elem, attrs) {
+            scope.drugsLabel = attrs.drugsLabel;
+        }
     }
 });

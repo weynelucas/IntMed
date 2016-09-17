@@ -28,7 +28,12 @@ textarea {
 .box-body {
     background-color: #fff;
     padding: 15px;
-    border: 1px solid #ccc;
+    border-style: solid;
+    border-color: #ccc;
+    border-width: 0 1px 1px 1px;
+}
+.box-body-xs {
+    min-height: 255px;
 }
 .box-row {
     padding: 0 0 10px 0;
@@ -126,27 +131,20 @@ textarea {
     font-size: 10px;
 }
 
-
-/* list-group-site
+/* list-info
 ---------------------------------------------*/
-.list-group-site p.list-group-item-text{
-    font-size: 12px;
-    margin-bottom: 5px;
+.list-info-title {
+    color: #1fa67a;
 }
-.list-group-site ul {
-    padding-left: 0;
+ul.list-info {
+    padding-left:10px;
+    font-size: 13px;
 }
-.list-group-site ul.two-columns {
-    padding-left: 0;
-    columns: 2;
-    -webkit-columns: 2;
-    -moz-columns: 2;
-}
-.list-group-site ul > li {
-    font-size: 12px;
+ul.list-info > li {
     list-style: none;
+    margin-bottom: 7px;
 }
-.list-group-site ul > li:before {
+ul.list-info > li:before {
     position: relative;
     top: 1px;
     display: inline-block;
@@ -161,6 +159,21 @@ textarea {
     content: "\e080";
     margin-right: 3px;
     color: #1fa67a;
+}
+
+
+/* list-group-site
+---------------------------------------------*/
+.list-group-site ul.list-info {
+    padding-left: 0;
+}
+.list-group-site ul.list-info > li {
+    font-size: 12px;
+    margin-bottom: 0;
+}
+.list-group-site p.list-group-item-text{
+    font-size: 12px;
+    margin-bottom: 5px;
 }
 .list-group-site a.list-group-item {
     cursor: pointer;
@@ -201,13 +214,37 @@ textarea {
     background-color: rgba(214, 218, 217, 0.75);
     opacity: 1;
 }
+
+
+/* icon-sm
+---------------------------------------------*/
 .icon-sm {
     font-size: 15px;
     color: #999;
 }
+
+
+/* dark-hover
+---------------------------------------------*/
 .dark-hover:hover {
     color:#4d4d4d;
 }
+
+
+/* empty-info
+---------------------------------------------*/
+.empty-info-container {
+    position: relative;
+    height: 229px;
+    text-align: center;
+}
+.empty-info-content {
+    width: 280px;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+}
+
 
 /* bs-callout
 ---------------------------------------------*/

@@ -16,7 +16,7 @@
                 </div>
             </div>
         </div>
-        <div class="box-body">
+        <div class="box-body box-body-xs">
             <div class="row">
                 <div class="col-sm-6" >
                     <div class="list-group-options row" ng-show="checker.selectedDrugs.length">
@@ -39,6 +39,14 @@
                     </div>
                 </div>
                 <div class="col-sm-6">
+                    <div class="list-info-container" ng-show="!checker.selectedDrugs.length">
+                        <h4 class="list-info-title">{% trans 'Drugs Interactions' %}</h4>
+                        <ul class="list-info">
+                            <li>{% trans 'Use the search field above to look up for drugs' %}</li>
+                            <li>{% trans 'Add a drug on your selected list by choosing one of the options found for your search' %}</li>
+                            <li>{% trans 'Add more drugs to your list to view all interactions found between them' %}</li>
+                        </ul>
+                    </div>
                     <div class="jumbotron loading-box" ng-if="loading">
                         <div class="loading-icon row">
                             <i class="fa fa-spinner fa-spin fa-4x fast-spin"></i>
