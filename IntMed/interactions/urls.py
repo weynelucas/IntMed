@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .drug_interaction.connection import get_drug_interactions, get_multiple_drugs_interactions
+from .neo4j_interface.connection import get_drug_interactions, get_multiple_drugs_interactions
 from . import views
 
 urlpatterns = [

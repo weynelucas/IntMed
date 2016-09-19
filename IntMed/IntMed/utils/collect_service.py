@@ -1,7 +1,7 @@
 import http.client as http
 from bs4 import BeautifulSoup
 from .database_service import db_table_exists
-from interactions.drug_interaction import connection
+from interactions.neo4j_interface import connection
 
 
 def load_drugs(DrugClass=None):

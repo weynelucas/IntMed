@@ -12,7 +12,7 @@ def get_multiple_drugs_interactions(drugs_ids):
     return perform_query(query.MULTIPLE_DRUGS_INTERACTIONS, {'drugs_ids': [int(drug_id) for drug_id in drugs_ids]})
 
 def get_drug_interactions(drug_id):
-    return perform_query(query.INTERACTIONS_PER_DRUG, {'drug_id':drug_id})
+    return perform_query(query.INTERACTIONS_PER_DRUG, {'drug_id': int(drug_id)})
 
 def perform_query(query, arg=None):
     driver = get_driver()
