@@ -10,7 +10,6 @@ app.factory('checkerApi', function ($http) {
         if(data) {
             requestData.data = data;
         }
-        console.log(requestData);
         return $http(requestData);
     }
 

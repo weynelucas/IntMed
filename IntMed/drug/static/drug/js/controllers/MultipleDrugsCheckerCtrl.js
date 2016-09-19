@@ -75,7 +75,9 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
     }
 
     $scope.exportChecker = function () {
-        window.location.href = exportCheckerUrl + "?checker=" + JSON.stringify($scope.checker);
+        // Encode semicolons to send by url
+        var jsonString = JSON.stringify($scope.checker).split(';').join('%3B');
+        window.location.href = exportCheckerUrl + "?checker=" + jsonString;
     }
 
     $scope.checkerSaved = function (checker) {
