@@ -11,12 +11,27 @@
 
 body {
     font-family: LetterGothicStd;
+    background-color: #f3f3f4;
 }
 
 textarea {
     resize: vertical;
 }
 
+@media (min-width: 768px)
+.sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;
+}
 /* box
 ---------------------------------------------*/
 .box {
@@ -31,6 +46,7 @@ textarea {
     border-style: solid;
     border-color: #ccc;
     border-width: 0 1px 1px 1px;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .box-body-xs {
     min-height: 255px;
@@ -42,6 +58,7 @@ textarea {
     color: #fff;
     background-color: #1fa67a;
     border-radius: 10px 10px 0 0;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding: 15px;
 }
 .box-title > h1,

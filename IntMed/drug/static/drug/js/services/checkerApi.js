@@ -5,14 +5,12 @@ app.factory('checkerApi', function ($http) {
     var request = function (method, pk, data) {
         var requestData = {
             method: method,
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest'
-            },
         }
         requestData.url = (languageCode ? "/" + languageCode : "") + url + (pk ? pk + "/" : "");
         if(data) {
             requestData.data = data;
         }
+        console.log(requestData);
         return $http(requestData);
     }
 
