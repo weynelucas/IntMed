@@ -12,7 +12,12 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from rest_framework.response import Response
 
+def home(request):
+    return render(request, 'home.html')
 
+
+
+# Generic views
 class ListView(View):
     template = "list.html"
     enable_create = True

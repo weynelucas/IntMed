@@ -11,7 +11,7 @@
 
 body {
     font-family: LetterGothicStd;
-    background-color: #f3f3f4;
+    background-color: #f2f2f2;
 }
 
 textarea {
@@ -34,6 +34,9 @@ textarea {
 }
 /* box
 ---------------------------------------------*/
+.fa-anchor{
+    font-size: 200px;
+}
 .box {
     margin: 15px 0;
 }
@@ -76,6 +79,11 @@ textarea {
     text-shadow: 2px 2px #1f8048;
 }
 
+
+.w3-site {
+    background-color: #1fa67a;
+    color: #fff;
+}
 
 /* loading-box
 ---------------------------------------------*/
