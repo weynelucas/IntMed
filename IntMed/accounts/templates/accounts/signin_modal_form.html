@@ -1,0 +1,36 @@
+{% load widget_attr %}
+{% load i18n %}
+
+
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">{% trans 'Sign in' %}</h4>
+        </div>
+        <!-- Modal Body -->
+        <form id="modal_form" action="/{{ request.LANGUAGE_CODE }}/accounts/login/" method="post">{% csrf_token %}
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="hidden" name="__all__" value="">
+                </div>
+                <div class="form-group">
+                    {{ form.username | placeholder:form.username.label }}
+                </div>
+                <div class="form-group">
+                    {{ form.password | placeholder:form.password.label }}
+                </div>
+                <button type="submit" class="btn btn-system btn-full">
+                    {% trans 'Sign in' %}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/static/js/form.js" charset="utf-8"></script>
+<script type="text/javascript">
+    initFormBehaviour("#modal_form", "/{{ request.LANGUAGE_CODE }}/accounts/login/");
+    
+</script>

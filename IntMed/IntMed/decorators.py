@@ -6,7 +6,7 @@ def ajax_required(view_function):
         only if the request is ajax
     """
     def wrap(request, *args, **kwargs):
-        if request.is_ajax():
+        if request.method != 'GET' or (request.method == 'GET' and request.is_ajax()):
             return view_function(request, *args, **kwargs)
         else:
             raise Http404

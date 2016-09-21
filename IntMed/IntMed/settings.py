@@ -47,6 +47,7 @@ INSTALLED_APPS = (
     'drug.apps.DrugConfig',
     'checker.apps.CheckerConfig',
     'interactions.apps.InteractionsConfig',
+    'accounts.apps.AccountsConfig',
     'api.apps.ApiConfig',
 )
 

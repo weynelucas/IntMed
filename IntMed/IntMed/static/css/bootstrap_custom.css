@@ -8,6 +8,10 @@
     transition: background-color .3s,color .15s,box-shadow .3s,opacity 0.3s;
 }
 
+.checkbox {
+    cursor: pointer;
+}
+
 /* Bootstrap Pagination */
 .pagination > li > a,
 .pagination > li > span {

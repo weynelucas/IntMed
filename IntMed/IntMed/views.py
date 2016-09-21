@@ -83,6 +83,7 @@ class ModalCreateFormView(FormView):
         return context
 
     def form_invalid(self, form):
+        print('Teste')
         return JsonResponse(form.errors, status=404)
 
     def form_valid(self, form):
