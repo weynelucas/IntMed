@@ -10,7 +10,7 @@
             <h4 class="modal-title">{% trans 'Sign in' %}</h4>
         </div>
         <!-- Modal Body -->
-        <form id="modal_form" action="/{{ request.LANGUAGE_CODE }}/accounts/login/" method="post">{% csrf_token %}
+        <form id="modal_form" action="{{ url }}" method="post">{% csrf_token %}
             <div class="modal-body">
                 <div class="form-group">
                     <input type="hidden" name="__all__" value="">
@@ -31,6 +31,11 @@
 
 <script src="/static/js/form.js" charset="utf-8"></script>
 <script type="text/javascript">
-    initFormBehaviour("#modal_form", "/{{ request.LANGUAGE_CODE }}/accounts/login/");
-    
+    initFormBehaviour({
+        formId: "#modal_form",
+        success: function (response) {
+            window.location.href = "/drug/interactions"
+        }
+    });
+
 </script>

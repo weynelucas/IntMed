@@ -1,18 +1,19 @@
-var callback = null;
+var formOptions = {}
 
-function initFormBehaviour (formId, url, successCallback=null, target='#mainModal') {
-    preventSubmitBehaviour(formId, url, target);
-    removeInputErrosOnKeyup(formId);
-    callback = successCallback;
+function initFormBehaviour (options) {
+    formOptions = options;
+    formOptions.url = formOptions.url || $(formOptions.formId).attr('action');
+    preventSubmitBehaviour(formOptions.formId, formOptions.url);
+    removeInputErrosOnKeypress(formOptions.formId);
 }
 
-function removeInputErrosOnKeyup(formId) {
-    $(formId).find('input').on('keyup', function (event) {
+function removeInputErrosOnKeypress(formId) {
+    $(formId).find('input').on('keypress', function (event) {
         $(this).parent().removeClass('has-error').find('.help-block').remove();
     });
 }
 
-function preventSubmitBehaviour(formId, url, target) {
+function preventSubmitBehaviour(formId, url) {
     $(formId).on('submit', function (event) {
         var form = this;
         event.preventDefault();
@@ -23,16 +24,11 @@ function preventSubmitBehaviour(formId, url, target) {
             async: true,
             data: $(form).serializeArray(),
             success: function (response) {
-                $(target).modal('hide');
-                displayToast('success', response.message);
-
-                if(callback && typeof(callback === 'function')) {
-                    callback(response.data);
-                }
+                formOptions.success(response);
             },
             error: function (request, status, error) {
-                displayErrors(form, request.responseJSON);
-            }
+                formOptions.error ? formOptions.error(request, status, error) : displayErrors(form, request.responseJSON);
+            },
         });
     });
 }
