@@ -6,11 +6,12 @@ from .report import generator
 from .forms import DrugInteractionCheckerForm
 from api.views import ApiListView, ApiDetailsView
 from django.http import Http404, HttpResponse
-from IntMed.views import ModalCreateFormView
+from IntMed.views import AjaxFormView
+from IntMed.mixins import RemoteCreateFormMixin
 from django.utils.translation import ugettext_lazy as _
 
 # Browsable Views
-class DrugInteractionCheckerFormView(ModalCreateFormView):
+class DrugInteractionCheckerFormView(RemoteCreateFormMixin, AjaxFormView):
     title = _('Save Drug Interaction')
     subtitle = _('Save your most searched multiple drugs interactions to check them more easily in the future.')
     success_message = 'Drug interaction successfully added'

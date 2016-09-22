@@ -62,7 +62,7 @@ class ListView(View):
         abstract = True
 
 @method_decorator(ajax_required, name='dispatch')
-class ModalCreateFormView(FormView):
+class AjaxFormView(FormView):
     template_name = "modal_form.html"
     subtitle = _("Complete the form bellow")
     url = "create/"
@@ -74,7 +74,7 @@ class ModalCreateFormView(FormView):
         else:
             url = self.url
 
-        context = super(ModalCreateFormView, self).get_context_data(**kwargs)
+        context = super(AjaxFormView, self).get_context_data(**kwargs)
         context.update({
             'title': self.title,
             'subtitle': self.subtitle,
@@ -83,23 +83,7 @@ class ModalCreateFormView(FormView):
         return context
 
     def form_invalid(self, form):
-        print('Teste')
         return JsonResponse(form.errors, status=404)
-
-    def form_valid(self, form):
-        form.save()
-
-        if self.serializer_class:
-            data = self.serializer_class(form.instance).data
-        else:
-            data = model_to_dict(form.instance)
-
-        success_context = {
-            'message': ugettext(self.success_message),
-            'data': data,
-        }
-
-        return JsonResponse(success_context)
 
     class Meta:
         abstract = True

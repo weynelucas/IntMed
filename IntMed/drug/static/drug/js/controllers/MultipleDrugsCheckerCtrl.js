@@ -67,10 +67,23 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
 
     $scope.openSaveModal = function (elem) {
         modalService.openModal(saveCheckerUrl, elem.target, appendDrugsIdsOnHtmlResponse, function () {
-            initFormBehaviour('#modal_form', saveCheckerUrl, function (checker) {
-                // Called outside AngularJS
-                $scope.$apply($scope.checkerSaved(checker));
-            }, $(elem.target).data('target'));
+            initFormBehaviour({
+                formId: '#modal_form',
+                url: saveCheckerUrl,
+                success: function (response) {
+                    $scope.$apply($scope.checkerSaved(response.data));
+
+                    var target = $(elem.target).data('target');
+                    $(target).modal('hide');
+
+                    displayToast('success', response.message);
+                }
+            }
+            //     '#modal_form', saveCheckerUrl, function (checker) {
+            //     // Called outside AngularJS
+            //     $scope.$apply($scope.checkerSaved(checker));
+            // }, $(elem.target).data('target')
+        );
         });
     }
 

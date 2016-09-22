@@ -3,7 +3,8 @@ from .models import Drug
 from .forms import DrugForm
 from .serializers import DrugSerializer
 from api.views import ApiListView, ApiDetailsView
-from IntMed.views import ListView, ModalCreateFormView
+from IntMed.views import ListView, AjaxFormView
+from IntMed.mixins import RemoteCreateFormMixin
 from django.utils.translation import ugettext_lazy as _
 
 # Browsable Views
@@ -14,7 +15,7 @@ class DrugListView(ListView):
     title = _("Drugs")
     enable_create = False
 
-class DrugFormView(ModalCreateFormView):
+class DrugFormView(RemoteCreateFormMixin, AjaxFormView):
     title = _("Add Drug")
     form_class = DrugForm
 
