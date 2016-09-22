@@ -3,6 +3,7 @@ from IntMed.utils import query_service
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
+from rest_framework import permissions
 from django.utils.translation import ugettext_lazy as _
 # Create your views here.
 

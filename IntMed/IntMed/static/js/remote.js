@@ -7,7 +7,7 @@ function remoteFunction(url, elem, interceptResponse=null) {
                 response = interceptResponse(response);
             }
 
-            var target = $(elem).data('target');
+            var target = $(elem).data('target') || elem;
             $(target).html(response);
         }
     });
