@@ -9,7 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 
 class ApiListView(APIView):
     def get(self, request, format=None):
-        queryset = query_service.perform_lookup_query(self.model, request.GET.copy(), request.GET.get('q', ''))
+        queryset = query_service.perform_lookup_query(self.model, request.GET.copy())
         serializer = self.serializer_class(queryset, many=self.many)
 
         return Response(serializer.data)

@@ -1,16 +1,12 @@
 from .utils import query_service
-from .decorators import ajax_required
-from django.apps import apps
-from django.http import JsonResponse
 from django.shortcuts import render
-from django.utils.decorators import method_decorator
+from django.http import JsonResponse
 from django.views.generic import View
+from .decorators import ajax_required, append_owner
 from django.views.generic.edit import FormView
-from django.forms.models import model_to_dict
-from django.contrib import messages
+from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import ugettext
-from rest_framework.response import Response
+from django.contrib.auth.decorators import login_required
 
 def home(request):
     return render(request, 'home.html')
@@ -18,35 +14,38 @@ def home(request):
 
 
 # Generic views
+@method_decorator(login_required, name='dispatch')
 class ListView(View):
     template = "list.html"
     enable_create = True
+    append_owner = False
+    params = {}
 
-    def get(self, request):
-        # Manage params of request
-        params = request.GET.copy()
-        q = params.get('q', '')
-        items_per_page = params.get('items_per_page', '50')
+    def configure(self):
+        self.params = request.GET.copy()
 
-        # Perform query
-        objects = query_service.perform_lookup_query(Model=self.model, params=params, query=q)
-
-        # Return JSON if request comes from AJAX
-        if request.is_ajax():
-            return JsonResponse(list(objects.values()), safe=False)
-
-        # Pagination
-        objects = query_service.paginate_list(objects, params, items_per_page)
+        # Append owner field lookup
+        if self.append_owner:
+            self.params.update({'user__id': self.request.user.id})
 
         # Pack fields and labels
         if len(self.fields) == len(self.labels):
             self.fields_tuple = zip(self.fields, self.labels)
 
+    def get(self, request):
+        self.configure()
+
+        # Perform query
+        objects = query_service.perform_lookup_query(Model=self.model, params=self.params)
+
+        # Pagination
+        objects = query_service.paginate_list(objects, self.params)
+
         # Context
         context = {
             'title': self.title,
-            'query': params,
-            'items_per_page': items_per_page,
+            'query': self.params,
+            'items_per_page': str(objects.end_index() - (objects.start_index() - 1)),
             'objects': objects,
             'objects_total': objects.paginator.count,
             'start_index': objects.start_index,

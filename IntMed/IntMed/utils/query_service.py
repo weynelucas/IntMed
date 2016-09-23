@@ -43,7 +43,7 @@ def perform_query(Model, params, or_query=False):
 
     return queryset
 
-def perform_lookup_query(Model, params, query):
+def perform_lookup_query(Model, params):
     """ Perform a query in a model to lookup the occurrence of
         the given argument in all model fields
         Args:
@@ -54,11 +54,13 @@ def perform_lookup_query(Model, params, query):
             List of objects (queryset)
     """
     fields = [field.name for field in Model._meta.fields]
+    query = params.get('q', '')
+
     new_params = params.copy()
     new_params.update({field + '__icontains': query for field in fields})
     return perform_query(Model, params=new_params, or_query=True)
 
-def paginate_list(instance_list, params, instances_per_page=20):
+def paginate_list(instance_list, params):
     """ Paginate a list of objects
         Args:
             instance_list: list of objects to paginate
@@ -68,7 +70,8 @@ def paginate_list(instance_list, params, instances_per_page=20):
             List of objects paginated
     """
     # Prepare paginator
-    paginator = Paginator(instance_list, instances_per_page)
+    items_per_page = params.get('items_per_page', '50')
+    paginator = Paginator(instance_list, items_per_page)
     page = params.get('page', 1)
 
     # Paginate queryset
