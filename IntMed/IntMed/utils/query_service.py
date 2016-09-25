@@ -53,7 +53,7 @@ def perform_lookup_query(Model, params):
         Return:
             List of objects (queryset)
     """
-    fields = [field.name for field in Model._meta.fields]
+    fields = [field.name for field in Model._meta.fields if not field.remote_field]
     query = params.get('q', '')
 
     new_params = params.copy()

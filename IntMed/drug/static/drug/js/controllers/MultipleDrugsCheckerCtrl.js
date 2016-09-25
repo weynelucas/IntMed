@@ -1,21 +1,14 @@
 app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($scope, $rootScope, $http, $cookies, modalService) {
 
-    var dataFromCookies = false;
     var urlPrefix = "/" + language + "/";
     var saveCheckerUrl = urlPrefix + "checker/create/";
     var exportCheckerUrl = urlPrefix + "checker/export/";
     var processInteractionsUrl = urlPrefix + "interactions/multiple/";
 
     $scope.init = function () {
-        var selectedDrugsFromCookies = $cookies.getObject("selectedDrugs");
-        var interactionsFromCookies = $cookies.getObject("interactions");
-
-        if(selectedDrugsFromCookies && interactionsFromCookies) {
-            dataFromCookies = true;
-        }
         $scope.checker = {
-            selectedDrugs: selectedDrugsFromCookies || [],
-            interactions: interactionsFromCookies || [],
+            selectedDrugs: [],
+            interactions:  [],
         }
         $scope.loading = false;
     }
@@ -61,7 +54,6 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
             $scope.checker.interactions = [];
         }).then(function (data) {
             $scope.loading = false;
-            $cookies.putObject("interactions", $scope.checker.interactions);
         });
     }
 
@@ -78,12 +70,7 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
 
                     displayToast('success', response.message);
                 }
-            }
-            //     '#modal_form', saveCheckerUrl, function (checker) {
-            //     // Called outside AngularJS
-            //     $scope.$apply($scope.checkerSaved(checker));
-            // }, $(elem.target).data('target')
-        );
+            });
         });
     }
 
@@ -102,19 +89,12 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
     });
 
     $scope.$watchCollection('checker.selectedDrugs', function (selectedDrugs) {
-        $cookies.putObject("selectedDrugs", $scope.checker.selectedDrugs);
-        $cookies.putObject("interactions", $scope.checker.interactions);
-
-        if(!dataFromCookies) {
-            if (selectedDrugs.length > 1) {
-                $scope.loading = true;
-                $scope.processInteractions();
-            } else {
-                $scope.checker.interactions = [];
-                $scope.loading = false;
-            }
+        if (selectedDrugs.length > 1) {
+            $scope.loading = true;
+            $scope.processInteractions();
         } else {
-            dataFromCookies = false;
+            $scope.checker.interactions = [];
+            $scope.loading = false;
         }
     }, true);
 

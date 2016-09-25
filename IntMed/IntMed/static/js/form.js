@@ -5,11 +5,19 @@ function initFormBehaviour (options) {
     formOptions.url = formOptions.url || $(formOptions.formId).attr('action');
     preventSubmitBehaviour(formOptions.formId, formOptions.url);
     removeInputErrosOnKeypress(formOptions.formId);
+    removeInputErrosOnCheckboxClick(formOptions.formId);
 }
 
 function removeInputErrosOnKeypress(formId) {
     $(formId).find('input').on('keypress', function (event) {
         $(this).parent().removeClass('has-error').find('.help-block').remove();
+        $(this).parent().removeClass('has-error').find('.form-control-feedback').remove();
+    });
+}
+
+function removeInputErrosOnCheckboxClick(formId) {
+    $(formId).find("input[type='checkbox']").on('click', function (event) {
+        $(this).parent().removeClass('has-error');
     });
 }
 
@@ -37,16 +45,21 @@ function displayErrors(form, response) {
     var first = true;
     for (field in response) {
         var input = $(form).find("[name='" + field + "']");
+        var type = $(input).attr('type');
         var formGroup = $(input).parent();
         var helpBlock = null;
+        var errorIcon = null;
 
         if(!$(formGroup).find(".help-block").length) {
-            helpBlock = $('<span>').addClass("help-block").html(response[field]);
+            if(type !== 'checkbox') {
+                helpBlock = $('<span>').addClass("help-block").html(response[field]);
+                errorIcon = $('<span>').addClass("glyphicon form-control-feedback glyphicon-exclamation-sign");
+            }
         }
         if(first) {
             $(input).focus();
             first = false;
         }
-        $(formGroup).addClass("has-error").append(helpBlock);
+        $(formGroup).addClass("has-error").append(helpBlock).append(errorIcon);
     }
 }

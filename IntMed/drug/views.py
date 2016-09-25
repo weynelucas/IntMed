@@ -5,7 +5,12 @@ from .serializers import DrugSerializer
 from api.views import ApiListView, ApiDetailsView
 from IntMed.views import ListView, AjaxFormView
 from IntMed.mixins import RemoteCreateFormMixin
+from django.contrib.auth.decorators import login_required
 from django.utils.translation import ugettext_lazy as _
+
+@login_required
+def interactions(request):
+    return render(request, 'drug/interactions.html')
 
 # Browsable Views
 class DrugListView(ListView):
@@ -19,8 +24,6 @@ class DrugFormView(RemoteCreateFormMixin, AjaxFormView):
     title = _("Add Drug")
     form_class = DrugForm
 
-def interactions(request):
-    return render(request, 'drug/interactions.html')
 
 
 

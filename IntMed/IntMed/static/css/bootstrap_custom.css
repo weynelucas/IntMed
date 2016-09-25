@@ -12,6 +12,14 @@
     cursor: pointer;
 }
 
+.row > .form-group > .form-control-feedback {
+    right: 15px;
+}
+
+.has-error label {
+    color: #a94442;
+}
+
 /* Bootstrap Pagination */
 .pagination > li > a,
 .pagination > li > span {

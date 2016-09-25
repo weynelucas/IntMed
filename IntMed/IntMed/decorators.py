@@ -11,12 +11,3 @@ def ajax_required(view_function):
         else:
             raise Http404
     return wrap
-
-
-def append_owner(view_function):
-
-    def wrap(request, *args, **kwargs):
-        request.GET.update({ 'user': request.user })
-        return view_function(request, *args, **kwargs)
-
-    return wrap

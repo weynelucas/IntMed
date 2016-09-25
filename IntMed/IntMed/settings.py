@@ -152,3 +152,6 @@ SORTABLE_COLUMN_SETTINGS = {
   'icon-asc':'fa fa-sort-asc',
   'icon-desc':'fa fa-sort-desc',
 }
+
+
+LOGIN_URL = '/'

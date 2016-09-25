@@ -8,6 +8,7 @@ from api.views import ApiListView, ApiDetailsView
 from django.http import Http404, HttpResponse
 from IntMed.views import AjaxFormView
 from IntMed.mixins import RemoteCreateFormMixin
+from api.permissions import IsOwnerOrReadOnly
 from django.utils.translation import ugettext_lazy as _
 
 # Browsable Views
@@ -18,6 +19,7 @@ class DrugInteractionCheckerFormView(RemoteCreateFormMixin, AjaxFormView):
     form_class = DrugInteractionCheckerForm
     url = '/checker/create/'
     append_language_code = True
+    has_owner = True
     serializer_class = DrugInteractionCheckerSerializer
 
 def export(request):
@@ -42,6 +44,7 @@ class DrugInteractionCheckerApiListView(ApiListView):
     model = DrugInteractionChecker
     serializer_class = DrugInteractionCheckerSerializer
     many = True
+    has_owner = True
 
 class DrugInteractionCheckerApiDetailsView(ApiDetailsView):
     model = DrugInteractionChecker

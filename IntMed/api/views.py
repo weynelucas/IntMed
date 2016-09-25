@@ -4,12 +4,22 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework import permissions
+from rest_framework.permissions import IsAuthenticated
+from .permissions import IsOwnerOrReadOnly
 from django.utils.translation import ugettext_lazy as _
 # Create your views here.
 
 class ApiListView(APIView):
+    permission_classes = (IsAuthenticated,)
+    has_owner = False
+
     def get(self, request, format=None):
-        queryset = query_service.perform_lookup_query(self.model, request.GET.copy())
+        params = request.GET.copy()
+        queryset = query_service.perform_lookup_query(self.model, params)
+
+        if self.has_owner:
+            queryset = queryset.filter(owner__id=request.user.id)
+
         serializer = self.serializer_class(queryset, many=self.many)
 
         return Response(serializer.data)
@@ -18,6 +28,7 @@ class ApiListView(APIView):
         abstract = True
 
 class ApiDetailsView(APIView):
+    permission_classes = (IsAuthenticated, IsOwnerOrReadOnly)
     delete_feedback_message = _("Successfully removed")
 
     def get_object(self, pk):

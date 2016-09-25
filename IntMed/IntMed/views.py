@@ -2,15 +2,18 @@ from .utils import query_service
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.generic import View
-from .decorators import ajax_required, append_owner
+from .decorators import ajax_required
+from accounts.forms import  SignUpForm
 from django.views.generic.edit import FormView
 from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.decorators import login_required
 
 def home(request):
-    return render(request, 'home.html')
-
+    context = {
+        'form': SignUpForm,
+    }
+    return render(request, 'home.html', context)
 
 
 # Generic views
@@ -22,7 +25,7 @@ class ListView(View):
     params = {}
 
     def configure(self):
-        self.params = request.GET.copy()
+        self.params = self.request.GET.copy()
 
         # Append owner field lookup
         if self.append_owner:
@@ -66,6 +69,14 @@ class AjaxFormView(FormView):
     subtitle = _("Complete the form bellow")
     url = "create/"
     append_language_code = False
+    has_owner = False
+
+    def get_initial(self):
+        initial = super(AjaxFormView, self).get_initial()
+        if self.has_owner:
+            initial['owner'] = self.request.user.id
+
+        return initial
 
     def get_context_data(self, **kwargs):
         if self.append_language_code:

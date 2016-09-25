@@ -4,12 +4,14 @@ from django.shortcuts import redirect
 from django.forms.models import model_to_dict
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
+from IntMed.utils.request_service import get_params
 
 
 class LoginFormMixin(object):
 
     def form_valid(self, form):
-        print(self.success_url)
+        params = get_params(self.request)
+
         if self.append_language_code:
             self.success_url = '/' + self.request.LANGUAGE_CODE + self.success_url
 
@@ -18,7 +20,8 @@ class LoginFormMixin(object):
         if self.request.is_ajax():
             return JsonResponse({'success_url': self.success_url})
 
-        return redirect(self.success_url)
+
+        return redirect(params.get('next', '') or self.success_url)
 
 
 class RemoteCreateFormMixin(object):
