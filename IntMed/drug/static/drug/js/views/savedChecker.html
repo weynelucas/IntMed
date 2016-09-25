@@ -4,12 +4,11 @@
         <span ng-click="editChecker(checker)"  class="list-card-operation icon-sm dark-hover fa fa-pencil"></span>
     </div>
 
-    <div ng-hide="editingChecker[checker.id]" class="list-group-item-heading">{[{ checker.title || 'Interação' }]}</div>
+    <div ng-hide="editingChecker[checker.id]" class="list-group-item-heading">{[{ checker.title || defaultTitle }]}</div>
     <form ng-submit="updateChecker(checker)" ng-show="editingChecker[checker.id]" class="list-group-item-heading">
         <input  ng-click="preventInsideClick($event)" ng-model="checker.title" class="form-control" type="text" focus="editingChecker[checker.id]">
     </form>
 
-    <p class="list-group-item-text"><i>{[{ ::checker.description }]}</i></p>
     <p class="list-group-item-text">{[{ drugsLabel }]}:</p>
     <p class="list-group-item-text">
         <ul class="list-info">

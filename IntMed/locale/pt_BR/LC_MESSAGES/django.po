@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-17 18:06-0300\n"
+"POT-Creation-Date: 2016-09-25 20:42-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,13 +18,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: .\IntMed\settings.py:111
+#: .\IntMed\settings.py:112
 msgid "Portuguese (Brazil)"
 msgstr "Português do Brasil"
 
-#: .\IntMed\settings.py:112
+#: .\IntMed\settings.py:113
 msgid "English"
 msgstr "Inglês"
+
+#: .\IntMed\templates\home.html:13
+msgid "Start right now"
+msgstr "Comece agora"
+
+#: .\IntMed\templates\home.html:41
+msgid "Sign up for free"
+msgstr "Registre-se gratuitamente"
 
 #: .\IntMed\templates\list.html:21
 msgid "Add"
@@ -61,23 +69,77 @@ msgstr "Sair"
 msgid "Save"
 msgstr "Salvar"
 
-#: .\IntMed\views.py:62
+#: .\IntMed\templates\navbar.html:20
+msgid "Wellcome"
+msgstr "Bem vindo"
+
+#: .\IntMed\templates\navbar.html:25
+#: .\accounts\templates\accounts\signin_modal_form.html:20
+#: .\accounts\views.py:11
+msgid "Sign in"
+msgstr "Acessar conta"
+
+#: .\IntMed\views.py:70
 msgid "Complete the form bellow"
 msgstr "Preencha o formulário abaixo"
 
-#: .\api\views.py:20
+#: .\accounts\forms.py:9 .\accounts\forms.py:30
+msgid "E-mail"
+msgstr "E-mail"
+
+#: .\accounts\forms.py:10
+msgid "First name"
+msgstr "Nome"
+
+#: .\accounts\forms.py:11
+msgid "Last name"
+msgstr "Sobrenome"
+
+#: .\accounts\forms.py:12 .\accounts\forms.py:31
+msgid "Password"
+msgstr "Senha"
+
+#: .\accounts\forms.py:13
+msgid "Password confirmation"
+msgstr "Confirmação de senha"
+
+#: .\accounts\forms.py:14
+msgid "IntMed terms"
+msgstr "termos do IntMed"
+
+#: .\accounts\forms.py:14
+msgid "I agree to"
+msgstr "Eu concordo com os"
+
+#: .\accounts\forms.py:34
+msgid "E-mail or password is incorrect."
+msgstr "E-mail e/ou senha estão incorretos"
+
+#: .\accounts\forms.py:35
+msgid "This account is inactive."
+msgstr "Esta conta está inativa"
+
+#: .\accounts\templates\accounts\signin_modal_form.html:18
+msgid "Forget the password"
+msgstr "Esqueceu a senha"
+
+#: .\accounts\templates\accounts\signin_modal_form.html:25
+msgid "New here"
+msgstr "Novo aqui"
+
+#: .\accounts\templates\accounts\signin_modal_form.html:25
+msgid "Join Us"
+msgstr "Junte-se a Nós"
+
+#: .\api\views.py:32
 msgid "Successfully removed"
 msgstr "Excluído com successo"
 
-#: .\checker\models.py:7
+#: .\checker\models.py:8
 msgid "Title (Optional)"
 msgstr "Título (Opcional)"
 
-#: .\checker\models.py:8
-msgid "Description (Optional)"
-msgstr "Descrição (Opcional)"
-
-#: .\checker\models.py:14
+#: .\checker\models.py:15
 msgid "drug interaction"
 msgstr "interação medicamentosa"
 
@@ -87,11 +149,12 @@ msgstr "Medicamentos selecionados"
 
 #: .\checker\report\generator.py:23 .\checker\report\generator.py:36
 #: .\drug\templates\drug\multiple_drugs_checker.html:24
-#: .\drug\templates\drug\saved_checkers.html:35 .\drug\views.py:14
+#: .\drug\templates\drug\saved_checkers.html:35 .\drug\views.py:20
 msgid "Drugs"
 msgstr "Medicamentos"
 
 #: .\checker\report\generator.py:23
+#: .\drug\templates\drug\saved_checkers.html:35
 msgid "Interaction"
 msgstr "Interação"
 
@@ -101,7 +164,7 @@ msgid "Evidence"
 msgstr "Evidência"
 
 #: .\checker\report\generator.py:23
-#: .\drug\templates\drug\multiple_drugs_checker.html:72 .\drug\views.py:13
+#: .\drug\templates\drug\multiple_drugs_checker.html:72 .\drug\views.py:19
 msgid "Action"
 msgstr "Ação"
 
@@ -113,11 +176,11 @@ msgstr "Nenhuma interação encontrada entre os medicamentos selecionados"
 msgid "Explanation"
 msgstr "Explicação"
 
-#: .\checker\views.py:14
+#: .\checker\views.py:16
 msgid "Save Drug Interaction"
 msgstr "Salvar Interação Medicamentosa"
 
-#: .\checker\views.py:15
+#: .\checker\views.py:17
 msgid ""
 "Save your most searched multiple drugs interactions to check them more "
 "easily in the future."
@@ -125,12 +188,9 @@ msgstr ""
 "Salve suas interações medicamentosas mais consultadas para visualizá-las "
 "mais facilmente no futuro."
 
-#: .\checker\views.py:48
+#: .\checker\views.py:52
 msgid "Drug interaction successfully removed"
 msgstr "Interação medicamentosa excluída com successo"
-
-msgid "Drug interaction successfully added"
-msgstr "Interação medicamentosa adicionada com successo"
 
 #: .\drug\models.py:7
 msgid "name"
@@ -218,64 +278,78 @@ msgstr "Minhas Interações"
 msgid "You have no interactions saved"
 msgstr "Você não possui nenhuma interação salva"
 
-#: .\drug\views.py:13
+#: .\drug\templates\drug\saved_checkers.html:44
+msgid "Next"
+msgstr "Próximo"
+
+#: .\drug\templates\drug\saved_checkers.html:45
+msgid "Previous"
+msgstr "Anterior"
+
+#: .\drug\views.py:19
 msgid "Drug"
 msgstr "Medicamento"
 
-#: .\drug\views.py:18
+#: .\drug\views.py:24
 msgid "Add Drug"
 msgstr "Adicionar Medicamento"
 
-msgid "%(model_name)s %(main_property_value)s successfully added."
-msgstr "%(model_name)s %(main_property_value)s adicionado com successo."
+#~ msgid "Description (Optional)"
+#~ msgstr "Descrição (Opcional)"
 
-msgid "title"
-msgstr "título"
+#~ msgid "Drug interaction successfully added"
+#~ msgstr "Interação medicamentosa adicionada com successo"
 
-msgid "description"
-msgstr "descrição"
+#~ msgid "%(model_name)s %(main_property_value)s successfully added."
+#~ msgstr "%(model_name)s %(main_property_value)s adicionado com successo."
 
-msgid "consultation"
-msgstr "Consulta"
+#~ msgid "title"
+#~ msgstr "título"
 
-msgid "Severe"
-msgstr "Grave"
+#~ msgid "description"
+#~ msgstr "descrição"
 
-msgid "Moderate"
-msgstr "Moderada"
+#~ msgid "consultation"
+#~ msgstr "Consulta"
 
-msgid "Mild"
-msgstr "Leve"
+#~ msgid "Severe"
+#~ msgstr "Grave"
 
-msgid "Unknown severity"
-msgstr "Gravidade desconhecida"
+#~ msgid "Moderate"
+#~ msgstr "Moderada"
 
-msgid "Nothing expected"
-msgstr "Nada esperado"
+#~ msgid "Mild"
+#~ msgstr "Leve"
 
-msgid "Study"
-msgstr "Estudo"
+#~ msgid "Unknown severity"
+#~ msgstr "Gravidade desconhecida"
 
-msgid "Theoretical"
-msgstr "Teórica"
+#~ msgid "Nothing expected"
+#~ msgstr "Nada esperado"
 
-msgid "Case"
-msgstr "Caso"
+#~ msgid "Study"
+#~ msgstr "Estudo"
 
-msgid "Extensive"
-msgstr "Extensiva"
+#~ msgid "Theoretical"
+#~ msgstr "Teórica"
 
-msgid "Informative"
-msgstr "Informativa"
+#~ msgid "Case"
+#~ msgstr "Caso"
 
-msgid "No action"
-msgstr "Nenhuma"
+#~ msgid "Extensive"
+#~ msgstr "Extensiva"
 
-msgid "Avoid"
-msgstr "Evitar"
+#~ msgid "Informative"
+#~ msgstr "Informativa"
 
-msgid "Adjust"
-msgstr "Ajustar"
+#~ msgid "No action"
+#~ msgstr "Nenhuma"
 
-msgid "Monitor"
-msgstr "Monitorar"
+#~ msgid "Avoid"
+#~ msgstr "Evitar"
+
+#~ msgid "Adjust"
+#~ msgstr "Ajustar"
+
+#~ msgid "Monitor"
+#~ msgstr "Monitorar"

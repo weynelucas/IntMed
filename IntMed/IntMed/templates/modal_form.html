@@ -11,7 +11,7 @@
         <form id="modal_form" action="." method="post">{% csrf_token %}
             <div class="modal-body">
                 {% for field in form %}
-                    <div class="form-group">
+                    <div class="form-group has-feedback">
                         {% if field.help_text %}
                         {{ field | placeholder:field.help_text }}
                         {% else %}

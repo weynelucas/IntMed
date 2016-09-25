@@ -2,13 +2,14 @@ from .utils import query_service
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.generic import View
-from .decorators import ajax_required
+from .decorators import ajax_required, redirect_when_authenticated
 from accounts.forms import  SignUpForm
 from django.views.generic.edit import FormView
 from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.decorators import login_required
 
+@redirect_when_authenticated
 def home(request):
     context = {
         'form': SignUpForm,

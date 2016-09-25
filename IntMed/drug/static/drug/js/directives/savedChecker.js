@@ -6,6 +6,7 @@ app.directive('savedChecker', function () {
         scope: true,
         link: function (scope, elem, attrs) {
             scope.drugsLabel = attrs.drugsLabel;
+            scope.defaultTitle = attrs.defaultTitle;
         }
     }
 });

@@ -615,6 +615,13 @@ fieldset[disabled] .btn-system.focus {
 
 /* login
 ---------------------------------------------*/
+.login-help-block {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: #737373;
+}
 #login-dp{
     min-width: 250px;
     padding: 14px 14px 0;

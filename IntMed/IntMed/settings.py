@@ -155,3 +155,4 @@ SORTABLE_COLUMN_SETTINGS = {
 
 
 LOGIN_URL = '/'
+AUTH_REDIRECT_URL = '/drug/interactions/'

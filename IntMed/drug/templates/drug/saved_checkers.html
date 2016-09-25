@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div class="list-group list-group-site">
-                <saved-checker ng-repeat="checker in savedCheckers | orderBy:['-uses', '-created_at'] | paginationSlice:currentPage:pageSize" checker="checker" drugs-label="{% trans 'Drugs' %}"></saved-checker>
+                <saved-checker ng-repeat="checker in savedCheckers | orderBy:['-uses', '-created_at'] | paginationSlice:currentPage:pageSize" checker="checker" default-title="{% trans 'Interaction' %}" drugs-label="{% trans 'Drugs' %}"></saved-checker>
             </div>
             <div class="talign-center">
                 <ul uib-pagination
@@ -41,6 +41,8 @@
                     items-per-page="pageSize"
                     ng-model="currentPage"
                     max-size="maxSize"
+                    next-text="{% trans 'Next' %}"
+                    previous-text="{% trans 'Previous' %}"
                     class="pagination-sm"></ul>
             </div>
         </div>

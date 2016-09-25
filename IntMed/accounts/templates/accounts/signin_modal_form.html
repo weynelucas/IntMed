@@ -15,14 +15,14 @@
                     {{ form.password | placeholder:form.password.label }}
                 </div>
                 <input type="hidden" name="next" value="{{ next | escape }}">
-                <div class="help-block text-right"><a href="#">Forget the password ?</a></div>
+                <div class="login-help-block text-right"><a href="#">{% trans 'Forget the password' %} ?</a></div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-system btn-full">{% trans 'Sign in' %}</button>
                 </div>
             </form>
         </div>
         <div class="bottom text-center">
-            New here ? <a href="#"><b>Join Us</b></a>
+            {% trans 'New here' %} ? <a href="#"><b>{% trans 'Join Us' %}</b></a>
         </div>
     </div>
 </li>

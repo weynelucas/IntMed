@@ -3,9 +3,9 @@ from IntMed.report.writer import wrap_word_cell
 from reportlab.lib.units import mm
 from django.utils.translation import ugettext as _
 from IntMed.formatters import format_interaction_type
+from datetime import datetime
 
-
-def generateCheckerPdfReport(checker):
+def generateCheckerPdfReport(checker, request):
     report = ReportGenerator()
 
     selected_drugs_table = {

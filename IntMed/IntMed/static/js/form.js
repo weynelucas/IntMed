@@ -21,10 +21,19 @@ function removeInputErrosOnCheckboxClick(formId) {
     });
 }
 
+function removeAllErrors(formId) {
+    $(formId).find('input').each(function () {
+        $(this).parent().removeClass('has-error').find('.help-block').remove();
+        $(this).parent().removeClass('has-error').find('.form-control-feedback').remove();
+    });
+}
+
 function preventSubmitBehaviour(formId, url) {
     $(formId).on('submit', function (event) {
         var form = this;
         event.preventDefault();
+
+        removeAllErrors(formId);
 
         $.ajax({
             url: url,

@@ -32,7 +32,7 @@ def export(request):
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = 'attachement; filename=%(filename)s.pdf' % {'filename': filename}
 
-    pdf = generator.generateCheckerPdfReport(checker)
+    pdf = generator.generateCheckerPdfReport(checker, request)
 
     response.write(pdf)
     return response

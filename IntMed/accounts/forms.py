@@ -13,6 +13,15 @@ class SignUpForm(UserCreationForm):
     password2 = forms.CharField(widget=forms.PasswordInput(attrs=form_control), required=True, label=_('Password confirmation'))
     accepted_terms = forms.BooleanField(required=True, label=_('IntMed terms'), help_text=_("I agree to"))
 
+    def save(self, commit=True):
+        super(SignUpForm, self).save(commit=False)
+        # Save first and last names
+        user = self.instance
+        user.first_name = self.cleaned_data['first_name']
+        user.last_name = self.cleaned_data['last_name']
+        user.save()
+        return user
+
     class Model:
         model = User
         fields = ['username', 'first_name', 'last_name', 'password1', 'password2']
