@@ -11,7 +11,6 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
             interactions:  [],
         }
         $scope.loading = false;
-        interactionsApi.loadToken();
     }
 
     $scope.clearSelectedDrugs = function () {
