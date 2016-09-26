@@ -1,4 +1,4 @@
-app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($scope, $rootScope, $http, $cookies, modalService) {
+app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($scope, $rootScope, $http, $cookies, modalService, interactionsApi) {
 
     var urlPrefix = "/" + language + "/";
     var saveCheckerUrl = urlPrefix + "checker/create/";
@@ -11,6 +11,7 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
             interactions:  [],
         }
         $scope.loading = false;
+        interactionsApi.loadToken();
     }
 
     $scope.clearSelectedDrugs = function () {
@@ -39,16 +40,7 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
     }
 
     $scope.processInteractions = function () {
-        $http({
-            method: 'GET',
-            url: processInteractionsUrl,
-            params: {
-                drug: $scope.selectedIds(),
-            },
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest'
-            },
-        }).success(function (data, status) {
+        interactionsApi.proccessMultipleInteractions($scope.selectedIds()).success(function (data, status) {
             $scope.checker.interactions = data;
         }).error(function (data) {
             $scope.checker.interactions = [];
