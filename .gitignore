@@ -87,3 +87,10 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# Exceptions
+!admin-lte/build/
+!admin-lte/dist/
+
+# Node modules
+node_modules/
