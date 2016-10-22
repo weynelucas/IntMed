@@ -69,9 +69,11 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'IntMed', 'templates'),
-            os.path.join(BASE_DIR, 'drug', 'templates'),
             os.path.join(BASE_DIR, 'api', 'templates'),
+            os.path.join(BASE_DIR, 'checker', 'templates'),
+            os.path.join(BASE_DIR, 'drug', 'templates'),
+            os.path.join(BASE_DIR, 'interactions', 'templates'),
+            os.path.join(BASE_DIR, 'IntMed', 'templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -133,8 +135,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'IntMed', 'static'),
+    os.path.join(BASE_DIR, 'api', 'static'),
+    os.path.join(BASE_DIR, 'checker', 'static'),
     os.path.join(BASE_DIR, 'drug', 'static'),
+    os.path.join(BASE_DIR, 'interactions', 'static'),
+    os.path.join(BASE_DIR, 'IntMed', 'static'),
 ]
 
 # Media files
@@ -155,4 +160,4 @@ SORTABLE_COLUMN_SETTINGS = {
 
 
 LOGIN_URL = '/'
-AUTH_REDIRECT_URL = '/drug/interactions/'
+AUTH_REDIRECT_URL = '/interactions/'

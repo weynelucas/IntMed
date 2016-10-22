@@ -11,7 +11,7 @@ class SignInFormView(LoginFormMixin, AjaxFormView):
     title = _('Sign in')
     template_name = 'accounts/signin_modal_form.html'
     url = '/accounts/login/'
-    success_url = '/drug/interactions/'
+    success_url = '/interactions/'
     append_language_code = True
 
 def signup(request):
@@ -23,8 +23,8 @@ def signup(request):
             if new_user is not None and new_user.is_active:
                 auth.login(request, new_user)
                 if request.is_ajax():
-                    return JsonResponse({'success_url': '/drug/interactions/'})
-                return redirect('/drug/interactions/')
+                    return JsonResponse({'success_url': '/interactions/'})
+                return redirect('/interactions/')
         else:
             if request.is_ajax():
                 return JsonResponse(form.errors, status=404)
