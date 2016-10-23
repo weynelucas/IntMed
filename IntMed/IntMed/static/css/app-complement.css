@@ -1,0 +1,39 @@
+a {
+    color: #38a1a1;
+    cursor: pointer;
+}
+
+.text-right {
+    text-align: right;
+}
+.text-left {
+    text-align: left;
+}
+
+
+.login-logo {
+    margin-bottom: inherit;
+}
+
+.login-page {
+    background-image: linear-gradient(to right, #2b7551 0%, #6bb2b5 60%);
+    background-repeat: repeat-x;
+}
+
+.login-helper {
+    text-align: right;
+    margin-bottom: 15px;
+}
+
+.btn {
+    -webkit-transition: background-color .3s,color .15s,box-shadow .3s,opacity 0.3s;
+    transition: background-color .3s,color .15s,box-shadow .3s,opacity 0.3s;
+}
+
+.login-box-msg {
+    padding-top: 15px;
+}
+
+.has-feedback.has-error > .form-control-feedback {
+    color: #a94442;
+}

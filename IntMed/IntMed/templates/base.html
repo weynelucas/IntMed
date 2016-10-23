@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="/static/libs/vendors/jquery-ui/css/jquery-ui.min.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
-    <link rel="stylesheet" href="/static/css/master.css" media="screen" title="no title" charset="utf-8">
-    <link rel="stylesheet" href="/static/css/bootstrap_custom.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="/static/libs/vendors/admin-lte/dist/css/AdminLTE.min.css" media="screen" title="no title">
+    <link rel="stylesheet" href="/static/css/app-complement.css" media="screen" title="no title" charset="utf-8">
+    <!-- <link rel="stylesheet" href="/static/css/master.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="/static/css/bootstrap_custom.css" media="screen" title="no title" charset="utf-8"> -->
     {% block head %}
     {% endblock %}
 
@@ -17,9 +19,7 @@
     <title>{% block title %}{% endblock %} | IntMed</title>
     {% endblock %}
 </head>
-<body>
-    {% include 'navbar.html' %}
-    <div class="navbar-fixed-top-space"></div>
+<body class="{% block body_class %}skin-keppel{% endblock %}">
 
     <div id="mainModal" class="modal fade" tabindex="-1" role="dialog"></div>
 
@@ -31,6 +31,7 @@
     <script src="/static/libs/vendors/jquery-ui/js/jquery-ui.min.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.fileDownload/1.4.2/jquery.fileDownload.min.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="/static/libs/vendors/admin-lte/dist/js/app.min.js" charset="utf-8"></script>
     <script src="/static/js/datetime.js" charset="utf-8"></script>
     <script src="/static/js/remote.js" charset="utf-8"></script>
     <script src="/static/js/display_toast.js" charset="utf-8"></script>

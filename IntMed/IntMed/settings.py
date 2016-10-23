@@ -69,6 +69,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
+            os.path.join(BASE_DIR, 'accounts', 'templates'),
             os.path.join(BASE_DIR, 'api', 'templates'),
             os.path.join(BASE_DIR, 'checker', 'templates'),
             os.path.join(BASE_DIR, 'drug', 'templates'),
@@ -135,6 +136,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
 STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'accounts', 'static'),
     os.path.join(BASE_DIR, 'api', 'static'),
     os.path.join(BASE_DIR, 'checker', 'static'),
     os.path.join(BASE_DIR, 'drug', 'static'),

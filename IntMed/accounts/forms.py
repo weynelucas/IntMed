@@ -11,7 +11,6 @@ class SignUpForm(UserCreationForm):
     last_name = forms.CharField(widget=forms.TextInput(attrs=form_control), max_length=30, required=True, label=_('Last name'))
     password1 = forms.CharField(widget=forms.PasswordInput(attrs=form_control), required=True, label=_('Password'))
     password2 = forms.CharField(widget=forms.PasswordInput(attrs=form_control), required=True, label=_('Password confirmation'))
-    accepted_terms = forms.BooleanField(required=True, label=_('IntMed terms'), help_text=_("I agree to"))
 
     def save(self, commit=True):
         super(SignUpForm, self).save(commit=False)
@@ -19,6 +18,7 @@ class SignUpForm(UserCreationForm):
         user = self.instance
         user.first_name = self.cleaned_data['first_name']
         user.last_name = self.cleaned_data['last_name']
+        user.email = self.cleaned_data['username']
         user.save()
         return user
 

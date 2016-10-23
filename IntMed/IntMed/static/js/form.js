@@ -11,7 +11,10 @@ function initFormBehaviour (options) {
 function removeInputErrosOnKeypress(formId) {
     $(formId).find('input').on('keypress', function (event) {
         $(this).parent().removeClass('has-error').find('.help-block').remove();
-        $(this).parent().removeClass('has-error').find('.form-control-feedback').remove();
+
+        if(!$(this).parent().hasClass('has-feedback-fixed')) {
+            $(this).parent().removeClass('has-error').find('.form-control-feedback').remove();
+        }
     });
 }
 
@@ -23,8 +26,12 @@ function removeInputErrosOnCheckboxClick(formId) {
 
 function removeAllErrors(formId) {
     $(formId).find('input').each(function () {
-        $(this).parent().removeClass('has-error').find('.help-block').remove();
-        $(this).parent().removeClass('has-error').find('.form-control-feedback').remove();
+        var formGroup = $(this).parent('form-group');
+        formGroup.removeClass('has-error').find('.help-block').remove();
+
+        if(formGroup && !formGroup.hasClass('has-feedback-fixed')) {
+            formGroup.removeClass('has-error').find('.form-control-feedback').remove();
+        }
     });
 }
 
@@ -58,11 +65,14 @@ function displayErrors(form, response) {
         var formGroup = $(input).parent();
         var helpBlock = null;
         var errorIcon = null;
+        var fieldValue = response[field];
 
         if(!$(formGroup).find(".help-block").length) {
             if(type !== 'checkbox') {
-                helpBlock = $('<span>').addClass("help-block").html(response[field]);
-                errorIcon = $('<span>').addClass("glyphicon form-control-feedback glyphicon-exclamation-sign");
+                helpBlock = $('<span>').addClass("help-block").html(fieldValue);
+                if(!formGroup.hasClass('has-feedback-fixed')) {
+                    errorIcon = $('<span>').addClass("glyphicon form-control-feedback glyphicon-exclamation-sign");
+                }
             }
         }
         if(first) {
