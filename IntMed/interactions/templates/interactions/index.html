@@ -6,10 +6,12 @@ Interações Medicamentosas | Medicamentos
 
 
 {% block main_content %}
-<div class="container">
-    <div ng-app="drugInteractions">
-        {% include 'interactions/multiple_drugs_checker.html' %}
-        {% include 'interactions/saved_checkers.html' %}
+<div class="content-wrapper">
+    <div class="container">
+        <div ng-app="drugInteractions">
+            {% include 'interactions/multiple_drugs_checker.html' %}
+            {% include 'interactions/saved_checkers.html' %}
+        </div>
     </div>
 </div>
 

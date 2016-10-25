@@ -1,30 +1,29 @@
 {% load i18n %}
 
-<div class="col-sm-8" ng-controller="MultipleDrugsCheckerCtrl">
+<div class="col-md-8" ng-controller="MultipleDrugsCheckerCtrl">
     <div id="checkerModal" class="modal fade" tabindex="-1" role="dialog"></div>
-    <div class="box">
-        <div class="box-title">
+    <div class="box box-solid box-primary">
+        <div class="box-header">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-xs-8 col-sm-6">
                     {% trans 'Enter a drug' %}:
                     <input class="form-control" type="text" name="name" value="" placeholder="{% trans 'Search' %}" autocomplete>
                 </div>
-                <div class="col-md-6 talign-rigth" ng-show="checker.selectedDrugs.length > 1 && !loading">
-                    <br/>
-                    <a class="btn btn-header" ng-click="exportChecker()"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> {% trans 'Export' %}</a>
-                    <button data-toggle="modal" data-target="#checkerModal" ng-click="openSaveModal($event)" class="btn btn-header"><i class="fa fa-floppy-o" aria-hidden="true"></i> {% trans 'Save' %}</button>
+                <div class="col-xs-4 col-sm-6 text-right" ng-show="checker.selectedDrugs.length > 1">
+                    <a class="btn btn-app btn-header" ng-click="exportChecker()"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> {% trans 'Export' %}</a>
+                    <a class="btn btn-app btn-header" data-toggle="modal" data-target="#checkerModal" ng-click="openSaveModal($event)"><i class="fa fa-floppy-o" aria-hidden="true"></i> {% trans 'Save' %}</a>
                 </div>
             </div>
         </div>
-        <div class="box-body box-body-xs">
+        <div class="box-body">
             <div class="row">
-                <div class="col-sm-6" >
+                <div class="col-sm-6">
                     <div class="list-group-options row" ng-show="checker.selectedDrugs.length">
                         <div class="col-xs-6 col-sm-6">
                             <div class="list-group-options-title">{% trans 'Drugs' %}</div>
                         </div>
                         <div class="col-xs-6 col-sm-6">
-                            <div class="talign-rigth">
+                            <div class="text-right">
                                 <span class="chip chip-deletable">
                                     <span class="chip-text">{% trans 'Clear all' %}</span>
                                     <button ng-click="clearSelectedDrugs()" class="chip-action"><i class="material-icons">cancel</i></button>
@@ -47,7 +46,7 @@
                             <li>{% trans 'Add more drugs to your list to view all interactions found between them' %}</li>
                         </ul>
                     </div>
-                    <div class="jumbotron loading-box" ng-if="loading">
+                    <!-- <div class="jumbotron loading-box" ng-if="loading">
                         <div class="loading-icon row">
                             <i class="fa fa-spinner fa-spin fa-4x fast-spin"></i>
                             <span class="sr-only">Loading...</span>
@@ -55,8 +54,8 @@
                         <div class="row">
                             {% trans 'Looking for interactions' %}
                         </div>
-                    </div>
-                    <div ng-if="!loading">
+                    </div> -->
+                    <div>
                         <div ng-show="checker.selectedDrugs.length > 1">
                             <div class="result-row">
                                 <span class="result-info">
@@ -76,6 +75,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="overlay" ng-if="loading">
+            <i class="fa fa-refresh fa-spin"></i>
         </div>
     </div>
 </div>

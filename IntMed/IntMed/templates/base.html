@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/static/libs/vendors/jquery-ui/css/jquery-ui.min.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="/static/libs/vendors/admin-lte/dist/css/skins/_all-skins.min.css" media="screen" title="no title">
     <link rel="stylesheet" href="/static/libs/vendors/admin-lte/dist/css/AdminLTE.min.css" media="screen" title="no title">
     <link rel="stylesheet" href="/static/css/app-complement.css" media="screen" title="no title" charset="utf-8">
     <!-- <link rel="stylesheet" href="/static/css/master.css" media="screen" title="no title" charset="utf-8">
@@ -22,9 +23,14 @@
 <body class="{% block body_class %}skin-keppel{% endblock %}">
 
     <div id="mainModal" class="modal fade" tabindex="-1" role="dialog"></div>
+    <di class="wrapper">
+        {% if request.user.is_authenticated %}
+            {% include 'navbar.html' %}
+        {% endif %}
 
-    {% block main_content %}
-    {% endblock %}
+        {% block main_content %}
+        {% endblock %}
+    </div>
 
     <script src="/static/libs/vendors/jquery/jquery-3.1.0.min.js"></script>
     <script src="/static/libs/vendors/bootstrap/js/bootstrap.min.js" charset="utf-8"></script>

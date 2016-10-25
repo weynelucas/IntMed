@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<div class="col-sm-4" ng-controller="SavedCheckerCtrl">
+<div class="col-md-4" ng-controller="SavedCheckerCtrl">
 
     <div id="savedCheckerModal" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
@@ -20,21 +20,18 @@
         </div>
     </div>
 
-
-    <div class="box">
-        <div class="box-title">
+    <div class="box box-solid box-primary">
+        <div class="box-header">
             <h4>{% trans 'My Interactions' %}</h4>
         </div>
         <div class="box-body">
-            <div class="empty-info-container" ng-show="!savedCheckers.length">
-                <div class="empty-info-content">
-                    {% trans 'You have no interactions saved' %}
-                </div>
+            <div class="text-center" ng-show="!savedCheckers.length">
+                {% trans 'You have no interactions saved' %}
             </div>
             <div class="list-group list-group-site">
                 <saved-checker ng-repeat="checker in savedCheckers | orderBy:['-uses', '-created_at'] | paginationSlice:currentPage:pageSize" checker="checker" default-title="{% trans 'Interaction' %}" drugs-label="{% trans 'Drugs' %}"></saved-checker>
             </div>
-            <div class="talign-center">
+            <div class="text-center">
                 <ul uib-pagination
                     ng-show="savedCheckers.length > pageSize"
                     total-items="savedCheckers.length"
@@ -45,6 +42,9 @@
                     previous-text="{% trans 'Previous' %}"
                     class="pagination-sm"></ul>
             </div>
+        </div>
+        <div class="overlay" ng-show="loading">
+            <i class="fa fa-refresh fa-spin"></i>
         </div>
     </div>
 </div>

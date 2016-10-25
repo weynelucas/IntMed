@@ -6,11 +6,13 @@ app.controller('SavedCheckerCtrl', function SavedCheckerCtrl ($scope, $rootScope
         $scope.currentPage = 1;
         $scope.maxSize = 3;
         $scope.pageSize = 3;
+        $scope.loading = true;
 
         checkerApi.setLanguageCode(language);
 
         checkerApi.get().success(function (data, status) {
             $scope.savedCheckers = data;
+            $scope.loading = false;
         }).error(function (data) {
             $scope.savedCheckers = [];
         })

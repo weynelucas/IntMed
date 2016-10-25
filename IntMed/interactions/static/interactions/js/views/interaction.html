@@ -1,6 +1,17 @@
 <div>
-    <div class="list-group-item-heading">{[{ ::model.startNode }]} + {[{ ::model.endNode }]}</div>
-    <p class="list-group-item-text"><span class="label {[{ ::model.type | lowercase }]}">{[{ ::model.type | replaceUnderscores }]}</span></p>
+    <div class="list-group-item-heading">
+        <div class="row">
+            <div class="col-xs-8 col-sm-8">
+                {[{ ::model.startNode }]}<br/>{[{ ::model.endNode }]}
+            </div>
+            <div class="col-xs-4 col-sm-4 text-right">
+                <span class="severity {[{ ::model.type | lowercase }]}">
+                    <i class="fa"></i>
+                    <span class="severity-text"></span>
+                </span>
+            </div>
+        </div>
+    </div>
     <p class="list-group-item-text"><strong>{[{ evidenceLabel }]}:</strong> {[{ ::model.evidence }]}</p>
     <p class="list-group-item-text"><strong>{[{ actionLabel }]}:</strong> {[{ ::model.action }]}</p>
     <p class="list-group-item-text">{[{ ::model.explanation }]}</i></p>
