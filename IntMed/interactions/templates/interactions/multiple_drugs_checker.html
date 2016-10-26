@@ -2,7 +2,7 @@
 
 <div class="col-md-8" ng-controller="MultipleDrugsCheckerCtrl">
     <div id="checkerModal" class="modal fade" tabindex="-1" role="dialog"></div>
-    <div class="box box-solid box-primary">
+    <div id="interactions" class="box box-solid box-primary">
         <div class="box-header">
             <div class="row">
                 <div class="col-xs-8 col-sm-6">
@@ -46,15 +46,6 @@
                             <li>{% trans 'Add more drugs to your list to view all interactions found between them' %}</li>
                         </ul>
                     </div>
-                    <!-- <div class="jumbotron loading-box" ng-if="loading">
-                        <div class="loading-icon row">
-                            <i class="fa fa-spinner fa-spin fa-4x fast-spin"></i>
-                            <span class="sr-only">Loading...</span>
-                        </div>
-                        <div class="row">
-                            {% trans 'Looking for interactions' %}
-                        </div>
-                    </div> -->
                     <div>
                         <div ng-show="checker.selectedDrugs.length > 1">
                             <div class="result-row">

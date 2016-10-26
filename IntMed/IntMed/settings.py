@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'bootstrap_pagination',
     'sortable_column',
     'rest_framework',
+    'favicon',
     # Local apps
     'IntMed',
     'drug.apps.DrugConfig',
@@ -163,3 +164,6 @@ SORTABLE_COLUMN_SETTINGS = {
 
 LOGIN_URL = '/'
 AUTH_REDIRECT_URL = '/interactions/'
+
+# Favicon
+FAVICON_PATH = STATIC_URL + 'img/icon.png'
