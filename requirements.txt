@@ -6,3 +6,4 @@ reportlab==3.3.0
 neo4j-driver==1.0.2
 djangorestframework==3.4.6
 requests==2.11.1
+django-favicon==0.1.2
