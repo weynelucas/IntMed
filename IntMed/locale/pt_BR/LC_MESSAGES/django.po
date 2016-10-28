@@ -27,10 +27,8 @@ msgid "English"
 msgstr "Inglês"
 
 #: .\IntMed\templates\home.html:45
-#, fuzzy
-#| msgid "Sign in"
 msgid "Sign up"
-msgstr "Acessar conta"
+msgstr "Registrar-se"
 
 #: .\IntMed\templates\home.html:47
 msgid "Already have an account"
@@ -43,7 +41,7 @@ msgstr "Esqueceu a senha"
 
 #: .\IntMed\templates\home.html:68
 msgid "Login"
-msgstr ""
+msgstr "Login"
 
 #: .\IntMed\templates\home.html:70
 #: .\accounts\templates\accounts\signin_modal_form.html:25
@@ -304,68 +302,68 @@ msgstr "Próximo"
 msgid "Previous"
 msgstr "Anterior"
 
-#msgid "Start right now"
-#msgstr "Comece agora"
+msgid "Start right now"
+msgstr "Comece agora"
 
-#msgid "Sign up for free"
-#msgstr "Registre-se gratuitamente"
+msgid "Sign up for free"
+msgstr "Registre-se gratuitamente"
 
-#msgid "Description (Optional)"
-#msgstr "Descrição (Opcional)"
+msgid "Description (Optional)"
+msgstr "Descrição (Opcional)"
 
-#msgid "Drug interaction successfully added"
-#msgstr "Interação medicamentosa adicionada com successo"
+msgid "Drug interaction successfully added"
+msgstr "Interação medicamentosa adicionada com successo"
 
-#msgid "%(model_name)s %(main_property_value)s successfully added."
-#msgstr "%(model_name)s %(main_property_value)s adicionado com successo."
+msgid "%(model_name)s %(main_property_value)s successfully added."
+msgstr "%(model_name)s %(main_property_value)s adicionado com successo."
 
-#msgid "title"
-#msgstr "título"
+msgid "title"
+msgstr "título"
 
-#msgid "description"
-#msgstr "descrição"
+msgid "description"
+msgstr "descrição"
 
-#msgid "consultation"
-#msgstr "Consulta"
+msgid "consultation"
+msgstr "Consulta"
 
-#msgid "Severe"
-#msgstr "Grave"
+msgid "Severe"
+msgstr "Grave"
 
-#msgid "Moderate"
-#msgstr "Moderada"
+msgid "Moderate"
+msgstr "Moderada"
 
-#msgid "Mild"
-#msgstr "Leve"
+msgid "Mild"
+msgstr "Leve"
 
-#msgid "Unknown severity"
-#msgstr "Gravidade desconhecida"
+msgid "Unknown severity"
+msgstr "Gravidade desconhecida"
 
-#msgid "Nothing expected"
-#msgstr "Nada esperado"
+msgid "Nothing expected"
+msgstr "Nada esperado"
 
-#msgid "Study"
-#msgstr "Estudo"
+msgid "Study"
+msgstr "Estudo"
 
-#msgid "Theoretical"
-#msgstr "Teórica"
+msgid "Theoretical"
+msgstr "Teórica"
 
-#msgid "Case"
-#msgstr "Caso"
+msgid "Case"
+msgstr "Caso"
 
-#msgid "Extensive"
-#msgstr "Extensiva"
+msgid "Extensive"
+msgstr "Extensiva"
 
-#msgid "Informative"
-#msgstr "Informativa"
+msgid "Informative"
+msgstr "Informativa"
 
-#msgid "No action"
-#msgstr "Nenhuma"
+msgid "No action"
+msgstr "Nenhuma"
 
-#msgid "Avoid"
-#msgstr "Evitar"
+msgid "Avoid"
+msgstr "Evitar"
 
-#msgid "Adjust"
-#msgstr "Ajustar"
+msgid "Adjust"
+msgstr "Ajustar"
 
-#msgid "Monitor"
-#msgstr "Monitorar"
+msgid "Monitor"
+msgstr "Monitorar"
