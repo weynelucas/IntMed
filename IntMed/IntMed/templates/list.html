@@ -20,10 +20,10 @@
             <div class="row">
                 <h3 class="col-md-8">{{ title }}</h3>
                 {% if enable_create %}
-                <div class="col-md-4 talign-rigth">
-                    <button class="btn btn-header" type="button" name="button" onclick="remoteFunction('create/', this)" data-toggle="modal" data-target="#mainModal">
-                        {% trans 'Add' %}
+                <div class="col-md-4 text-right">
+                    <button class="btn btn-app btn-header" type="button" name="button" onclick="remoteFunction('create/', this)" data-toggle="modal" data-target="#mainModal">
                         <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                        {% trans 'Add' %}
                     </button>
                 </div>
                 {% endif %}

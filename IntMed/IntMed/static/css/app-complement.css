@@ -74,7 +74,22 @@ a {
 .box .overlay > .fa {
     color: #38a1a1;
 }
+/* user */
+.main-header .navbar .nav>li.user>a>.fa, .main-header .navbar .nav>li.user>a>.glyphicon, .main-header .navbar .nav>li.user>a>.ion {
+    margin-right: 0;
+}
 
+
+/* logo
+---------------------------------------------*/
+.main-header .logo {
+    background-color: rgba(255,255,255, 0.9) !important;
+}
+.main-header .logo .logo-lg img {
+    width: 200px;
+    height: 50px;
+    padding-bottom: 7px;
+}
 
 /* login
 ---------------------------------------------*/
@@ -113,6 +128,7 @@ a {
 }
 .login-box-msg {
     padding-top: 15px;
+    font-size: 13px;
 }
 
 
@@ -153,10 +169,16 @@ a {
     font-size: 10px;
     font-weight: 400;
 }
-.list-group-item .col-xs-4,
-.list-group-item .col-sm-4 {
-    padding-left: 0!important;
-    padding-right: 0!important;
+
+
+.label-app {
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    vertical-align: baseline;
+    border-radius: .25em;
 }
 
 
@@ -226,19 +248,19 @@ table.dataTable thead .sorting_desc:after {
 }
 /* colors */
 .unknown_severity_interaction {
-    color: #777;
+    background-color: #777;
 }
 .severe_interaction {
-    color: #d9534f;
+    background-color: #d9534f;
 }
 .moderate_interaction {
-    color: #f0ad4e;
+    background-color: #f0ad4e;
 }
 .mild_interaction {
-    color: #5bc0de;
+    background-color: #5bc0de;
 }
 .nothing_expected {
-    color: #5cb85c;
+    background-color: #5cb85c;
 }
 
 

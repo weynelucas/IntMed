@@ -5,14 +5,13 @@
                 {[{ ::model.startNode }]}<br/>{[{ ::model.endNode }]}
             </div>
             <div class="col-xs-4 col-sm-4 text-right">
-                <span class="content-app {[{ ::model.type | lowercase }]}">
-                    <i class="fa"></i>
+                <div class="label-app {[{ ::model.type | lowercase }]}">
                     <span class="severity-text"></span>
-                </span>
+                </div>
             </div>
         </div>
     </div>
     <p class="list-group-item-text"><strong>{[{ evidenceLabel }]}:</strong> {[{ ::model.evidence }]}</p>
     <p class="list-group-item-text"><strong>{[{ actionLabel }]}:</strong> {[{ ::model.action }]}</p>
-    <p class="list-group-item-text">{[{ ::model.explanation }]}</i></p>
+    <p class="list-group-item-text"><i>{[{ ::model.explanation }]}</i></i></p>
 </div>

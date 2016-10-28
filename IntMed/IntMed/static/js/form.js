@@ -25,8 +25,8 @@ function removeInputErrosOnCheckboxClick(formId) {
 }
 
 function removeAllErrors(formId) {
-    $(formId).find('input').each(function () {
-        var formGroup = $(this).parent('form-group');
+    $(formId).find('input').each(function (index, elem) {
+        var formGroup = $(elem).parent();
         formGroup.removeClass('has-error').find('.help-block').remove();
 
         if(formGroup && !formGroup.hasClass('has-feedback-fixed')) {
