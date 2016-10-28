@@ -156,9 +156,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
 # http://github.com/weynelucas/djago-sortable-column
 
 SORTABLE_COLUMN_SETTINGS = {
-  'icon': 'fa fa-sort',
-  'icon-asc':'fa fa-sort-asc',
-  'icon-desc':'fa fa-sort-desc',
+  'class_name': 'sorting',
+  'conf_by_css':True,
 }
 
 

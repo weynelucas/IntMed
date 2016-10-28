@@ -39,18 +39,19 @@ class ListView(View):
 
     def get(self, request):
         self.configure()
-
         # Perform query
         objects = query_service.perform_lookup_query(Model=self.model, params=self.params)
 
         # Pagination
         objects = query_service.paginate_list(objects, self.params)
 
+
+
         # Context
         context = {
             'title': self.title,
             'query': self.params,
-            'items_per_page': str(objects.end_index() - (objects.start_index() - 1)),
+            'items_per_page': self.params.get('items_per_page', '50'),
             'objects': objects,
             'objects_total': objects.paginator.count,
             'start_index': objects.start_index,

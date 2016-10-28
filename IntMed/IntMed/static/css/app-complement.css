@@ -160,6 +160,36 @@ a {
 }
 
 
+/* Data tables
+---------------------------------------------*/
+/* thead */
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc {
+    background-color: #38a1a1;
+    cursor: inherit !important;
+}
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting a,
+table.dataTable thead .sorting_asc a,
+table.dataTable thead .sorting_desc a {
+    color: #fff;
+}
+table.dataTable thead .sorting a,
+table.dataTable thead .sorting_asc a,
+table.dataTable thead .sorting_desc a {
+    display: inline-block;
+    width: 100%;
+}
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_desc:after {
+    opacity: 1 !important;
+}
+
+
 /* Interactions
 ---------------------------------------------*/
 /* icons */
