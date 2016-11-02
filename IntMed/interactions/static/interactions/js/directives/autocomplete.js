@@ -23,6 +23,7 @@ app.directive('autocomplete', ['$http', function ($http) {
             },
             select: function (event, ui) {
                 scope.$apply(scope.insertSelectedDrug(ui.item));
+                $(event.target).val('');
                 return false;
             },
         }).autocomplete( "instance" )._renderItem = function(ul, item) {

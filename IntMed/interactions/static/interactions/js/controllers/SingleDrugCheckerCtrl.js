@@ -39,7 +39,7 @@ app.controller('SingleDrugCheckerCtrl', function SingleDrugCheckerCtrl($scope, i
 
     $scope.init = function () {
         $scope.currentPage = 1;
-        $scope.maxSize = 10;
+        $scope.maxSize = 5;
         $scope.pageSize = 50;
         $scope.options = {
             pageSize: [10, 25, 50, 100],

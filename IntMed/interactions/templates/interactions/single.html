@@ -93,7 +93,6 @@ Por Medicamento | Interações Medicamentosas
                         <div class="dataTables_filter" ng-show="totalItems">
                             <div class="form-group">
                                 <label>Total: {[{ totalItems }]}</label>
-                                <input type="text" class="form-control">
                             </div>
                         </div>
                     </div>
@@ -142,6 +141,7 @@ Por Medicamento | Interações Medicamentosas
                         <div class="dataTables_paginate paging-simple-numbers">
                             <ul uib-pagination
                                 total-items="totalItems"
+                                ng-show="totalItems > pageSize"
                                 items-per-page="pageSize"
                                 ng-model="currentPage"
                                 max-size="maxSize"
