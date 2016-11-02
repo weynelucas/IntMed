@@ -21,11 +21,11 @@ app.factory('interactionsApi', function ($http) {
     };
 
     return {
-        proccessMultipleInteractions: function (drugId) {
-            return request(url, uri.multiple, drugId);
-        },
-        processSingleInteractions: function (drugsIds) {
+        proccessMultipleInteractions: function (drugsIds) {
             return request(url, uri.multiple, drugsIds);
+        },
+        processSingleInteractions: function (drugId) {
+            return request(url, uri.single, drugId);
         }
     };
 });

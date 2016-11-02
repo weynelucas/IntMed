@@ -13,53 +13,53 @@
 <link rel="stylesheet" href="/static/libs/vendors/admin-lte/plugins/datatables/dataTables.bootstrap.css" media="screen" title="no title">
 {% endblock %}
 
-{% block main_content %}
-<div class="container">
-    <div class="box box-primary box-solid">
-        <div class="box-header">
-            <div class="row">
-                <h3 class="col-md-8">{{ title }}</h3>
-                {% if enable_create %}
-                <div class="col-md-4 text-right">
-                    <button class="btn btn-app btn-header" type="button" name="button" onclick="remoteFunction('create/', this)" data-toggle="modal" data-target="#mainModal">
-                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                        {% trans 'Add' %}
-                    </button>
-                </div>
-                {% endif %}
+{% block content %}
+<div class="box box-primary box-solid">
+    <div class="box-header">
+        <div class="row">
+            <h3 class="col-md-8">{{ title }}</h3>
+            {% if enable_create %}
+            <div class="col-md-4 text-right">
+                <button class="btn btn-app btn-header" type="button" name="button" onclick="remoteFunction('create/', this)" data-toggle="modal" data-target="#mainModal">
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                    {% trans 'Add' %}
+                </button>
             </div>
+            {% endif %}
         </div>
-        <div class="box-body">
-            <div class="dataTables_wrapper form-inline dt-bootstrap">
-                <!-- Filter and Length -->
-                <div class="row">
-                    <form action="." method="get">
-                        <div class="col-sm-6">
-                            <div class="dataTables_length">
-                                <label>
-                                    {% trans 'Show' %}
-                                    <select class="form-control" name="items_per_page" onchange="paginateItems(this)">
-                                        <option value="10"  {% if items_per_page == '10' %}selected{% endif %}>10</option>
-                                        <option value="25"  {% if items_per_page == '25' %}selected{% endif %}>25</option>
-                                        <option value="50"  {% if items_per_page == '50' %}selected{% endif %}>50</option>
-                                        <option value="100" {% if items_per_page == '100' %}selected{% endif %}>100</option>
-                                    </select>
-                                    {% trans 'entries' %}
-                                </label>
-                            </div>
+    </div>
+    <div class="box-body">
+        <div class="dataTables_wrapper form-inline dt-bootstrap">
+            <!-- Filter and Length -->
+            <div class="row">
+                <form action="." method="get">
+                    <div class="col-sm-6">
+                        <div class="dataTables_length">
+                            <label>
+                                {% trans 'Show' %}
+                                <select class="form-control" name="items_per_page" onchange="paginateItems(this)">
+                                    <option value="10"  {% if items_per_page == '10' %}selected{% endif %}>10</option>
+                                    <option value="25"  {% if items_per_page == '25' %}selected{% endif %}>25</option>
+                                    <option value="50"  {% if items_per_page == '50' %}selected{% endif %}>50</option>
+                                    <option value="100" {% if items_per_page == '100' %}selected{% endif %}>100</option>
+                                </select>
+                                {% trans 'entries' %}
+                            </label>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="dataTables_filter">
-                                <label>
-                                    {% trans 'Search' %}:<input type="search" class="form-control" name="q" value="{{ query.q }}">
-                                </label>
-                            </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="dataTables_filter">
+                            <label>
+                                {% trans 'Search' %}:<input type="search" class="form-control" name="q" value="{{ query.q }}">
+                            </label>
                         </div>
-                    </form>
-                </div>
-                <!-- Table Content -->
-                <div class="row">
-                    <div class="col-sm-12">
+                    </div>
+                </form>
+            </div>
+            <!-- Table Content -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="table-responsive">
                         <table class="table table-bordered table-striped dataTable" role="grid">
                             <thead>
                                 <tr>
@@ -77,34 +77,27 @@
                                 </tr>
                                 {% empty %}
                                 <tr>
-                                    <td>{% trans 'No results found' %}</td>
-                                    {% for field in fields %}
-                                    {% if not forloop.first %}
-                                    <td></td>
-                                    {% endif %}
-                                    {% endfor %}
+                                    <td colspan="{{ fields|length }}">{% trans 'No results found' %}</td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
                         </table>
                     </div>
                 </div>
-                <!-- Table Content -->
-                <div class="row">
-                    <div class="col-sm-5">
-                        <div class="dataTables_info" role="status" aria-live="polite">
-                            {% blocktrans with start=start_index end=end_index total=objects_total%}Showing {{ start }} to {{ end }} of {{ total }} entries{% endblocktrans %}
-                        </div>
+            </div>
+            <!-- Table Info -->
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="dataTables_info" role="status" aria-live="polite">
+                        {% blocktrans with start=start_index end=end_index total=objects_total%}Showing {{ start }} to {{ end }} of {{ total }} entries{% endblocktrans %}
                     </div>
-                    <div class="col-sm-7">
-                        {% if objects.paginator.num_pages > 1 %}
-                        <div class="dataTables_paginate paging-simple-numbers">
-                            {% bootstrap_paginate objects range=5  show_prev_next="false" show_first_last="true" %}
-                        </div>
-                        {% endif %}
+                </div>
+                <div class="col-sm-7">
+                    {% if objects.paginator.num_pages > 1 %}
+                    <div class="dataTables_paginate paging-simple-numbers">
+                        {% bootstrap_paginate objects range=5  show_prev_next="false" show_first_last="true" %}
                     </div>
-                    <div class="col-sm-6 talign-rigth">
-                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

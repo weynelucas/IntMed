@@ -5,16 +5,11 @@ Interações Medicamentosas
 {% endblock %}
 
 
-{% block main_content %}
-<div class="content-wrapper">
-    <div class="container">
-        <div ng-app="drugInteractions">
-            {% include 'interactions/multiple_drugs_checker.html' %}
-            {% include 'interactions/saved_checkers.html' %}
-        </div>
-    </div>
+{% block content %}
+<div ng-app="drugInteractions">
+    {% include 'interactions/multiple_drugs_checker.html' %}
+    {% include 'interactions/saved_checkers.html' %}
 </div>
-
 {% endblock %}
 
 {% block main_script %}
@@ -27,7 +22,6 @@ Interações Medicamentosas
 <script src="/static/libs/vendors/angular/angular.min.js" charset="utf-8"></script>
 <!-- Angular UI Bootstrap -->
 <script src="/static/libs/vendors/angular/ui-bootstrap-tpls-2.1.3.min.js" charset="utf-8"></script>
-<script src="/static/libs/vendors/angular/angular-cookies.min.js" charset="utf-8"></script>
 <!-- App -->
 <script src="/static/interactions/js/app.js" charset="utf-8"></script>
 <!-- Controllers -->

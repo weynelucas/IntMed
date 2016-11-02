@@ -2,33 +2,40 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="/static/img/icon.png"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/static/libs/vendors/bootstrap/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="/static/libs/vendors/font-awesome/css/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="/static/libs/vendors/jquery-ui/css/jquery-ui.min.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
-    <link rel="stylesheet" href="/static/libs/vendors/admin-lte/dist/css/skins/_all-skins.min.css" media="screen" title="no title">
-    <link rel="stylesheet" href="/static/libs/vendors/admin-lte/dist/css/AdminLTE.min.css" media="screen" title="no title">
-    <link rel="stylesheet" href="/static/css/app-complement.css" media="screen" title="no title" charset="utf-8">
-
     {% block head %}
     {% endblock %}
+    <link rel="stylesheet" href="/static/libs/vendors/admin-lte/dist/css/AdminLTE.min.css" media="screen" title="no title">
+    <link rel="stylesheet" href="/static/libs/vendors/admin-lte/dist/css/skins/_all-skins.min.css" media="screen" title="no title">
+    <link rel="stylesheet" href="/static/css/app-complement.css" media="screen" title="no title" charset="utf-8">
 
     {% block page_title %}
     <title>{% block title %}{% endblock %} | INTMED</title>
     {% endblock %}
 </head>
-<body class="{% block body_class %}skin-keppel{% endblock %}">
+<body class="{% block body_class %}skin-keppel sidebar-mini{% endblock %}">
 
     <div id="mainModal" class="modal fade" tabindex="-1" role="dialog"></div>
-    <di class="wrapper">
+    <div class="wrapper">
         {% if request.user.is_authenticated %}
             {% include 'navbar.html' %}
         {% endif %}
 
-        {% block main_content %}
+        {% block body %}
+        <div class="content-wrapper">
+            <section class="content">
+                {% block content %}
+                {% endblock %}
+            </section>
+        </div>
         {% endblock %}
     </div>
 

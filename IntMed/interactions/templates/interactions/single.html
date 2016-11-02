@@ -1,0 +1,218 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+
+{% block head %}
+<link rel="stylesheet" href="/static/libs/vendors/admin-lte/plugins/datatables/dataTables.bootstrap.css" media="screen" title="no title">
+<link rel="stylesheet" href="/static/libs/vendors/admin-lte/plugins/select2/select2.min.css" media="screen" title="no title">
+{% endblock %}
+
+
+{% block title %}
+Por Medicamento | Interações Medicamentosas
+{% endblock %}
+
+{% block content %}
+<div ng-app="drugInteractions" ng-controller="SingleDrugCheckerCtrl">
+    <div class="box box-primary box-solid collapsed-box">
+        <div class="box-header with-border">
+            <div class="row">
+                <div class="box-header-form col-sm-4 col-xs-7">
+                    <div class="form-group has-feedback">
+                        <input class="form-control" type="text" name="name" value="" placeholder="{% trans 'Search' %}..." autocomplete>
+                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                    </div>
+                </div>
+                <div class="col-sm-8 col-xs-5 text-right">
+                    <a class="btn btn-header" data-widget="collapse" ng-show="checker.selectedDrug.name"><i class="fa fa-filter" aria-hidden="true"></i> Filtrar</a>
+                </div>
+            </div>
+        </div>
+        <div class="box-body">
+            <div class="row">
+                <div class="filter">
+                    <!-- Text Search -->
+                    <div class="form-horizontal col-sm-6">
+                        <div class="form-group">
+                            <label for="other" class="col-sm-3 control-label">{% trans 'Drug' %}:</label>
+                            <div class="col-sm-9">
+                                <input id="other" class="form-control"  type="text" ng-model="search.text.other">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="explanation" class="col-sm-3 control-label">{% trans 'Explanation' %}:</label>
+                            <div class="col-sm-9">
+                                <input id=explanation class="form-control" ng-model="search.text.explanation">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Select Search -->
+                    <div class="form-horizontal col-sm-6">
+                        <div class="form-group">
+                            <label for="evidence" class="col-sm-3 control-label">{% trans 'Evidence' %}:</label>
+                            <div class="col-sm-9">
+                                <select id="evidence" class="form-control select2" multiple="multiple" ng-model="search.select.evidence" ng-options="action for action in options.evidence"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="action" class="col-sm-3 control-label">{% trans 'Action' %}:</label>
+                            <div class="col-sm-9">
+                                <select id="action" class="form-control select2" multiple="multiple" ng-model="search.select.action" ng-options="action for action in options.action"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="severity" class="col-sm-3 control-label">{% trans 'Severity' %}:</label>
+                            <div class="col-sm-9">
+                                <select id="severity" class="form-control select2" multiple="multiple" ng-model="search.select.type" ng-options="type.text for type in options.type track by 'string:'+type.key"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box box-primary box-solid">
+        <div class="box-header">
+            <h4 ng-show="checker.selectedDrug.name">{[{ checker.selectedDrug.name }]}</h4>
+            <h4 ng-show="!checker.selectedDrug.name">Nenhum medicamento selecionado</h4>
+            <h5>{[{ checker.selectedDrug.action }]}</h5>
+        </div>
+        <div class="box-body">
+            <div class="dataTables_wrapper dt-bootstrap">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="dataTables_length">
+                            <label>
+                                {% trans 'Show' %}
+                                <select class="form-control" ng-options="size for size in options.pageSize" ng-model="pageSize"></select>
+                                {% trans 'entries' %}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="dataTables_filter" ng-show="totalItems">
+                            <div class="form-group">
+                                <label>Total: {[{ totalItems }]}</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Table Content -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped dataTable" role="grid">
+                                <thead>
+                                    <tr>
+                                        <th width="60px" ng-class="[getSortingClass('type')]"><a ng-click="sortBy('type')">Gravidade</a></th>
+                                        <th ng-class="[getSortingClass('other')]"><a ng-click="sortBy('other')">Medicamento</a></th>
+                                        <th ng-class="[getSortingClass('evidence')]"><a ng-click="sortBy('evidence')">Evidência</a></th>
+                                        <th ng-class="[getSortingClass('action')]"><a ng-click="sortBy('action')">Ação</a></th>
+                                        <th width="50px" ng-class="[getSortingClass('explanation')]"><a ng-click="sortBy('explanation')">Explicação</a></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="interaction in filtered = checker.interactions | filter:search.text | customFilter:search.select | orderBy:propertyName:reverse | paginationSlice:currentPage:pageSize">
+                                        <td>
+                                            <div class="label-app {[{ ::interaction.type | lowercase }]}">
+                                                <span class="severity-text"></span>
+                                            </div>
+                                        </td>
+                                        <td>{[{ ::interaction.other }]}</td>
+                                        <td>{[{ ::interaction.evidence }]}</td>
+                                        <td>{[{ ::interaction.action }]}</td>
+                                        <td class="text-center">
+                                            <a href="#" data-toggle="tooltip" data-placement="top" title="{[{ ::interaction.explanation }]}">
+                                                <i class="fa fa-comment"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr ng-show="!totalItems">
+                                        <td colspan="5" class="text-center">Nenhum resultado encontrado</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- Table Info -->
+                <div class="row" ng-show="checker.interactions.length > pageSize">
+                    <div class="col-sm-7">
+                        <div class="dataTables_paginate paging-simple-numbers">
+                            <ul uib-pagination
+                                total-items="totalItems"
+                                items-per-page="pageSize"
+                                ng-model="currentPage"
+                                max-size="maxSize"
+                                next-text="{% trans 'Next' %}"
+                                previous-text="{% trans 'Previous' %}"
+                                class="pagination">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Overlay -->
+        <div class="overlay" ng-if="loading">
+            <i class="fa fa-refresh fa-spin"></i>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block main_script %}
+<!-- Select2 -->
+<script src="/static/libs/vendors/admin-lte/plugins/select2/select2.full.min.js"></script>
+<script type="text/javascript">
+     $('.select2').select2();
+     function setSelect2ContainerWidth() {
+         $( ".select2-container" ).each( function() {
+             var $this = $( this ),
+             inputGroup = $this.parents( ".input-group" ),
+             inputGroupContainerWidth,
+             inputGroupAddonWidth = 0;
+
+             if ( inputGroup.length ) {
+                 inputGroupContainerWidth = inputGroup.parents( "[class^='col-']" ).width() || inputGroup.parents( ".form-group" ).width();
+
+                 $this.parents( ".input-group" ).find( ".input-group-addon, .input-group-btn" ).each( function() {
+                     inputGroupAddonWidth += $( this ).outerWidth();
+                 });
+
+                 $this.css({ width: inputGroupContainerWidth - inputGroupAddonWidth });
+             }
+         });
+     }
+
+     window.onresize = function( event ) {
+         setSelect2ContainerWidth();
+     }
+
+     setSelect2ContainerWidth();
+</script>
+<!-- Data Tables -->
+<script src="/static/libs/vendors/admin-lte/plugins/datatables/jquery.dataTables.min.js" charset="utf-8"></script>
+<script src="/static/libs/vendors/admin-lte/plugins/datatables/dataTables.bootstrap.min.js" charset="utf-8"></script>
+<!-- Global variable to hold language code -->
+<script type="text/javascript">
+    var language = "{{ request.LANGUAGE_CODE | safe }}";
+</script>
+<script src="/static/js/form.js" charset="utf-8"></script>
+<!-- AngularJS -->
+<script src="/static/libs/vendors/angular/angular.min.js" charset="utf-8"></script>
+<!-- Angular UI Bootstrap -->
+<script src="/static/libs/vendors/angular/ui-bootstrap-tpls-2.1.3.min.js" charset="utf-8"></script>
+<!-- App -->
+<script src="/static/interactions/js/app.js" charset="utf-8"></script>
+<!-- Controllers -->
+<script src="/static/interactions/js/controllers/SingleDrugCheckerCtrl.js" charset="utf-8"></script>
+<!-- Services -->
+<script src="/static/interactions/js/services/interactionsApi.js" charset="utf-8"></script>
+<!-- Directives -->
+<script src="/static/interactions/js/directives/autocomplete.js" charset="utf-8"></script>
+<!-- Filters -->
+<script src="/static/interactions/js/filters/replaceUnderscores.js" charset="utf-8"></script>
+<script src="/static/interactions/js/filters/paginationSlice.js" charset="utf-8"></script>
+{% endblock %}

@@ -1,4 +1,4 @@
-var app = angular.module('drugInteractions', ['ngCookies', 'ui.bootstrap']);
+var app = angular.module('drugInteractions', ['ui.bootstrap']);
 
 app.config(function($interpolateProvider) {
   $interpolateProvider.startSymbol('{[{');

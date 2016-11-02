@@ -1,4 +1,4 @@
-app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($scope, $rootScope, $http, $cookies, modalService, interactionsApi) {
+app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($scope, $rootScope, modalService, interactionsApi) {
 
     var urlPrefix = "/" + language + "/";
     var saveCheckerUrl = urlPrefix + "checker/create/";
