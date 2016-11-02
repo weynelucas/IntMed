@@ -1,41 +1,4 @@
-Array.prototype.contains = function(obj) {
-    var i = this.length;
-    while (i--) {
-        if (this[i] === obj) {
-            return true;
-        }
-    }
-    return false;
-}
-app.filter('customFilter', function () {
-    return function (items, filterData) {
-        if(filterData == undefined)
-            return items;
-        var keys = Object.keys(filterData);
-        var filtered = [];
-        var populate = true;
-        for (var i = 0; i < items.length; i++) {
-            var item = items[i];
-            populate = true;
-            for(var j = 0; j < keys.length ; j++){
-                if(filterData[keys[j]] != undefined){
-                    if(filterData[keys[j]].length == 0 || filterData[keys[j]].contains(item[keys[j]])){
-                        populate = true;
-                    }else{
-                        populate = false;
-                        break;
-                    }
-                }
-            }
-            if(populate){
-                filtered.push(item);
-            }
-        }
-        return filtered;
-    };
-});
-
-app.controller('SingleDrugCheckerCtrl', function SingleDrugCheckerCtrl($scope, interactionsApi, filterFilter, customFilterFilter) {
+app.controller('SingleDrugCheckerCtrl', function SingleDrugCheckerCtrl($scope, $timeout,  interactionsApi, filterFilter, multipleSelectFilterFilter) {
 
     $scope.init = function () {
         $scope.currentPage = 1;
@@ -45,6 +8,13 @@ app.controller('SingleDrugCheckerCtrl', function SingleDrugCheckerCtrl($scope, i
             pageSize: [10, 25, 50, 100],
             action: ["No action", "Informative", "Adjust", "Avoid"],
             evidence: ["Case", "Study", "Theoretical", "Extensive"],
+            type: [
+                {code: "MILD_INTERACTION", text:"Leve"},
+                {code: "MODERATE_INTERACTION", text:"Moderada"},
+                {code: "NOTHING_EXPECTED", text:"Nada esperado"},
+                {code: "SEVERE_INTERACTION", text:"Grave"},
+                {code: "UNKNOWN_SEVERITY_INTERACTION", text:"Gravidade desconhecida"}
+            ]
         };
         $scope.loading = false;
         $scope.checker = {
@@ -96,18 +66,22 @@ app.controller('SingleDrugCheckerCtrl', function SingleDrugCheckerCtrl($scope, i
 
     $scope.resetFilters = function () {
         $scope.search = {};
+        clearAllSelect2Inputs();
     }
 
     $scope.$watch("checker.selectedDrug", function (newSelectedDrug, oldSelectedDrug) {
         if (!$.isEmptyObject($scope.checker.selectedDrug)) {
+            $timeout(function () {
+                $scope.resetFilters();
+            });
             $scope.processInteractions();
         }
-    });
+    }, true);
 
     $scope.$watch('search', function (newVal, oldVal) {
         if (newVal != undefined) {
             $scope.filtered = filterFilter($scope.checker.interactions, newVal.text);
-            $scope.filtered = customFilterFilter($scope.filtered, newVal.select);
+            $scope.filtered = multipleSelectFilterFilter($scope.filtered, newVal.select);
             $scope.totalItems = $scope.filtered.length;
             $scope.currentPage = 1;
         }

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="/static/img/icon.png"/>
-    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/static/libs/vendors/bootstrap/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="/static/libs/vendors/font-awesome/css/font-awesome.min.css" media="screen" title="no title" charset="utf-8">
@@ -16,14 +16,26 @@
     <link rel="stylesheet" href="/static/libs/vendors/admin-lte/dist/css/AdminLTE.min.css" media="screen" title="no title">
     <link rel="stylesheet" href="/static/libs/vendors/admin-lte/dist/css/skins/_all-skins.min.css" media="screen" title="no title">
     <link rel="stylesheet" href="/static/css/app-complement.css" media="screen" title="no title" charset="utf-8">
-
+    <link rel="stylesheet" href="/static/css/preloading.css" media="screen" title="no title">
     {% block page_title %}
     <title>{% block title %}{% endblock %} | INTMED</title>
     {% endblock %}
 </head>
 <body class="{% block body_class %}skin-keppel sidebar-mini{% endblock %}">
 
+    <!-- Main modal -->
     <div id="mainModal" class="modal fade" tabindex="-1" role="dialog"></div>
+    <!-- Loading -->
+    <div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="object" id="object_one"></div>
+                <div class="object" id="object_two"></div>
+                <div class="object" id="object_three"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Main content -->
     <div class="wrapper">
         {% if request.user.is_authenticated %}
             {% include 'navbar.html' %}
@@ -32,8 +44,11 @@
         {% block body %}
         <div class="content-wrapper">
             <section class="content">
-                {% block content %}
-                {% endblock %}
+                <div class="container">
+                    {% block content %}
+                    {% endblock %}
+
+                </div>
             </section>
         </div>
         {% endblock %}
@@ -42,22 +57,16 @@
     <script src="/static/libs/vendors/jquery/jquery-3.1.0.min.js"></script>
     <script src="/static/libs/vendors/bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
     <script src="/static/libs/vendors/jquery-ui/js/jquery-ui.min.js" charset="utf-8"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.fileDownload/1.4.2/jquery.fileDownload.min.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script src="/static/libs/vendors/admin-lte/dist/js/app.min.js" charset="utf-8"></script>
-    <script src="/static/js/datetime.js" charset="utf-8"></script>
+    <script src="/static/js/general.js" charset="utf-8"></script>
     <script src="/static/js/remote.js" charset="utf-8"></script>
-    <script src="/static/js/display_toast.js" charset="utf-8"></script>
-    <script src="/static/js/login_dropdown.js" charset="utf-8"></script>
+    <script src="/static/js/displayToast.js" charset="utf-8"></script>
     <script type="text/javascript">
         // Dispatch django messages in toasts
         {% for message in messages %}
             displayToast('{{ message.tags }}', '{{ message }}')
         {% endfor %}
-
-        $(function () {
-            loginDropdownInit('{{ request.LANGUAGE_CODE }}')
-        });
     </script>
 
     {% block main_script %}

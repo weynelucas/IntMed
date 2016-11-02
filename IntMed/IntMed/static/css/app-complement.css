@@ -12,12 +12,12 @@
 }
 
 body {
-    font-family: LetterGothicStd;
+    font-family: 'Roboto Slab', serif;
     background-color: #ecf0f5;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: LetterGothicStd;
+    font-family: 'Roboto Slab', serif;
 }
 
 a {
@@ -149,6 +149,24 @@ a {
     box-shadow: 0 3px 9px rgba(0,0,0,.5);
 }
 
+/* ui-widget
+---------------------------------------------*/
+.ui-widget {
+    font-family: inherit;
+}
+
+
+/* ui-widget
+---------------------------------------------*/
+.explanation-tooltip {
+    color: #ccc !important;
+}
+.explanation-tooltip:hover,
+.explanation-tooltip:active {
+    color: #777 !important;
+}
+
+
 /* text-alignment
 ---------------------------------------------*/
 .text-right {
@@ -235,6 +253,20 @@ a {
 }
 .box-header-form .form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
     color:    #fff;
+}
+
+
+/* box-header-options
+---------------------------------------------*/
+.box-header-options {
+    text-align: center;
+    padding-top: 15px;
+}
+@media (min-width: 768px) {
+    .box-header-options {
+        text-align: right;
+        padding-top: 0;
+    }
 }
 
 
@@ -369,7 +401,7 @@ table.dataTable thead .sorting_desc:after {
 /* ui-autocomplete
 ---------------------------------------------*/
 .ui-menu {
-    font-family: LetterGothicStd;
+    font-family: 'Roboto Slab', serif;
 }
 .ui-autocomplete {
     max-height: 200px;

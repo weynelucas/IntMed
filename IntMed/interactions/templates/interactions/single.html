@@ -63,7 +63,7 @@ Por Medicamento | Interações Medicamentosas
                         <div class="form-group">
                             <label for="severity" class="col-sm-3 control-label">{% trans 'Severity' %}:</label>
                             <div class="col-sm-9">
-                                <select id="severity" class="form-control select2" multiple="multiple" ng-model="search.select.type" ng-options="type.text for type in options.type track by 'string:'+type.key"></select>
+                                <select id="severity" class="form-control select2" multiple="multiple" ng-model="search.select.type" ng-options="type.code as type.text for type in options.type"></select>
                             </div>
                         </div>
                     </div>
@@ -104,7 +104,7 @@ Por Medicamento | Interações Medicamentosas
                             <table class="table table-bordered table-striped dataTable" role="grid">
                                 <thead>
                                     <tr>
-                                        <th width="60px" ng-class="[getSortingClass('type')]"><a ng-click="sortBy('type')">Gravidade</a></th>
+                                        <th width="90px" ng-class="[getSortingClass('type')]"><a ng-click="sortBy('type')">Gravidade</a></th>
                                         <th ng-class="[getSortingClass('other')]"><a ng-click="sortBy('other')">Medicamento</a></th>
                                         <th ng-class="[getSortingClass('evidence')]"><a ng-click="sortBy('evidence')">Evidência</a></th>
                                         <th ng-class="[getSortingClass('action')]"><a ng-click="sortBy('action')">Ação</a></th>
@@ -112,20 +112,7 @@ Por Medicamento | Interações Medicamentosas
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr ng-repeat="interaction in filtered = checker.interactions | filter:search.text | customFilter:search.select | orderBy:propertyName:reverse | paginationSlice:currentPage:pageSize">
-                                        <td>
-                                            <div class="label-app {[{ ::interaction.type | lowercase }]}">
-                                                <span class="severity-text"></span>
-                                            </div>
-                                        </td>
-                                        <td>{[{ ::interaction.other }]}</td>
-                                        <td>{[{ ::interaction.evidence }]}</td>
-                                        <td>{[{ ::interaction.action }]}</td>
-                                        <td class="text-center">
-                                            <a href="#" data-toggle="tooltip" data-placement="top" title="{[{ ::interaction.explanation }]}">
-                                                <i class="fa fa-comment"></i>
-                                            </a>
-                                        </td>
+                                    <tr interaction-row ng-repeat="interaction in filtered = checker.interactions | filter:search.text | multipleSelectFilter:search.select | orderBy:propertyName:reverse | paginationSlice:currentPage:pageSize" model="interaction">
                                     </tr>
                                     <tr ng-show="!totalItems">
                                         <td colspan="5" class="text-center">Nenhum resultado encontrado</td>
@@ -137,6 +124,9 @@ Por Medicamento | Interações Medicamentosas
                 </div>
                 <!-- Table Info -->
                 <div class="row" ng-show="checker.interactions.length > pageSize">
+                    <div class="col-sm-5">
+                        <div class="dataTables_info" role="status" aria-live="polite"></div>
+                    </div>
                     <div class="col-sm-7">
                         <div class="dataTables_paginate paging-simple-numbers">
                             <ul uib-pagination
@@ -165,33 +155,7 @@ Por Medicamento | Interações Medicamentosas
 {% block main_script %}
 <!-- Select2 -->
 <script src="/static/libs/vendors/admin-lte/plugins/select2/select2.full.min.js"></script>
-<script type="text/javascript">
-     $('.select2').select2();
-     function setSelect2ContainerWidth() {
-         $( ".select2-container" ).each( function() {
-             var $this = $( this ),
-             inputGroup = $this.parents( ".input-group" ),
-             inputGroupContainerWidth,
-             inputGroupAddonWidth = 0;
-
-             if ( inputGroup.length ) {
-                 inputGroupContainerWidth = inputGroup.parents( "[class^='col-']" ).width() || inputGroup.parents( ".form-group" ).width();
-
-                 $this.parents( ".input-group" ).find( ".input-group-addon, .input-group-btn" ).each( function() {
-                     inputGroupAddonWidth += $( this ).outerWidth();
-                 });
-
-                 $this.css({ width: inputGroupContainerWidth - inputGroupAddonWidth });
-             }
-         });
-     }
-
-     window.onresize = function( event ) {
-         setSelect2ContainerWidth();
-     }
-
-     setSelect2ContainerWidth();
-</script>
+<script src="/static/js/select2Utils.js"></script>
 <!-- Data Tables -->
 <script src="/static/libs/vendors/admin-lte/plugins/datatables/jquery.dataTables.min.js" charset="utf-8"></script>
 <script src="/static/libs/vendors/admin-lte/plugins/datatables/dataTables.bootstrap.min.js" charset="utf-8"></script>
@@ -212,7 +176,8 @@ Por Medicamento | Interações Medicamentosas
 <script src="/static/interactions/js/services/interactionsApi.js" charset="utf-8"></script>
 <!-- Directives -->
 <script src="/static/interactions/js/directives/autocomplete.js" charset="utf-8"></script>
+<script src="/static/interactions/js/directives/interactionRow.js" charset="utf-8"></script>
 <!-- Filters -->
-<script src="/static/interactions/js/filters/replaceUnderscores.js" charset="utf-8"></script>
 <script src="/static/interactions/js/filters/paginationSlice.js" charset="utf-8"></script>
+<script src="/static/interactions/js/filters/multipleSelectFilter.js" charset="utf-8"></script>
 {% endblock %}
