@@ -11,13 +11,18 @@
     src: url("/static/fonts/LetterGothicStd-Bold.otf") format("opentype");
 }
 
+@font-face {
+    font-family: AndaleMono;
+    src: url("/static/fonts/ANDALEMO.ttf") format("truetype");
+}
+
 body {
-    font-family: 'Roboto Slab', serif;
+    font-family: LetterGothicStd;
     background-color: #ecf0f5;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Roboto Slab', serif;
+    font-family: LetterGothicStd;
 }
 
 a {
@@ -28,6 +33,10 @@ a {
 
 /* Template Override
 ---------------------------------------------*/
+/* wrapper */
+.skin-keppel .wrapper, .skin-keppel .main-sidebar, .skin-keppel .left-side {
+    background-color: inherit;
+}
 /* content-wrapper */
 .content-wrapper {
     min-height: 916px;
@@ -401,7 +410,7 @@ table.dataTable thead .sorting_desc:after {
 /* ui-autocomplete
 ---------------------------------------------*/
 .ui-menu {
-    font-family: 'Roboto Slab', serif;
+    font-family: inherit;
 }
 .ui-autocomplete {
     max-height: 200px;

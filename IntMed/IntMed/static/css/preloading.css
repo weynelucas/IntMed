@@ -1,5 +1,5 @@
 #loading{
-    background-color: #38a1a1 !important;
+    background-color: #38a1a1;
     height: 100%;
     width: 100%;
     position: fixed;
@@ -16,71 +16,121 @@
     position: absolute;
     left: 50%;
     top: 50%;
-    height: 150px;
-    width: 150px;
-    margin-top: -75px;
-    margin-left: -75px;
+    height: 60px;
+    width: 60px;
+    margin-top: -30px;
+    margin-left: -30px;
+    -webkit-animation: loading-center-absolute 1s infinite;
+    animation: loading-center-absolute 1s infinite;
+
 }
 .object{
     width: 20px;
     height: 20px;
     background-color: #FFF;
     float: left;
-    margin-right: 20px;
-    margin-top: 65px;
     -moz-border-radius: 50% 50% 50% 50%;
     -webkit-border-radius: 50% 50% 50% 50%;
     border-radius: 50% 50% 50% 50%;
+    margin-right: 20px;
+    margin-bottom: 20px;
 }
-
-#object_one {
-    -webkit-animation: object_one 1.5s infinite;
-    animation: object_one 1.5s infinite;
-}
-#object_two {
-    -webkit-animation: object_two 1.5s infinite;
-    animation: object_two 1.5s infinite;
-    -webkit-animation-delay: 0.25s;
-    animation-delay: 0.25s;
-}
-#object_three {
-    -webkit-animation: object_three 1.5s infinite;
-    animation: object_three 1.5s infinite;
-    -webkit-animation-delay: 0.5s;
-    animation-delay: 0.5s;
+.object:nth-child(2n+0) {
+    margin-right: 0px;
 
 }
-
-
-@-webkit-keyframes object_one {
-    75% { -webkit-transform: scale(0); }
+#object_one{
+    -webkit-animation: object_one 1s infinite;
+    animation: object_one 1s infinite;
+}
+#object_two{
+    -webkit-animation: object_two 1s infinite;
+    animation: object_two 1s infinite;
+}
+#object_three{
+    -webkit-animation: object_three 1s infinite;
+    animation: object_three 1s infinite;
+}
+#object_four{
+    -webkit-animation: object_four 1s infinite;
+    animation: object_four 1s infinite;
 }
 
-@keyframes object_one {
-    75% {
-        transform: scale(0);
-        -webkit-transform: scale(0);
+@-webkit-keyframes loading-center-absolute{
+    100% {
+        -ms-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+
+}
+@keyframes loading-center-absolute{
+    100% {
+        -ms-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
     }
 }
 
-@-webkit-keyframes object_two {
-    75% { -webkit-transform: scale(0); }
-}
 
-@keyframes object_two {
-    75% {
-        transform: scale(0);
-        -webkit-transform:  scale(0);
+@-webkit-keyframes object_one{
+    50% {
+        -ms-transform: translate(20px,20px);
+        -webkit-transform: translate(20px,20px);
+        transform: translate(20px,20px);
+    }
+}
+@keyframes object_one{
+    50% {
+        -ms-transform: translate(20px,20px);
+        -webkit-transform: translate(20px,20px);
+        transform: translate(20px,20px);
     }
 }
 
-@-webkit-keyframes object_three {
-    75% { -webkit-transform: scale(0); }
+
+@-webkit-keyframes object_two{
+    50% {
+        -ms-transform: translate(-20px,20px);
+        -webkit-transform: translate(-20px,20px);
+        transform: translate(-20px,20px);
+    }
+}
+@keyframes object_two{
+    50% {
+        -ms-transform: translate(-20px,20px);
+        -webkit-transform: translate(-20px,20px);
+        transform: translate(-20px,20px);
+    }
 }
 
-@keyframes object_three {
-    75% {
-        transform: scale(0);
-        -webkit-transform: scale(0);
+
+@-webkit-keyframes object_three{
+    50% {
+        -ms-transform: translate(20px,-20px);
+        -webkit-transform: translate(20px,-20px);
+        transform: translate(20px,-20px);
+    }
+}
+@keyframes object_three{
+    50% {
+        -ms-transform: translate(20px,-20px);
+        -webkit-transform: translate(20px,-20px);
+        transform: translate(20px,-20px);
+    }
+}
+
+@-webkit-keyframes object_four{
+    50% {
+        -ms-transform: translate(-20px,-20px);
+        -webkit-transform: translate(-20px,-20px);
+        transform: translate(-20px,-20px);
+    }
+}
+@keyframes object_four{
+    50% {
+        -ms-transform: translate(-20px,-20px);
+        -webkit-transform: translate(-20px,-20px);
+        transform: translate(-20px,-20px);
     }
 }
