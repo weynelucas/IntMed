@@ -1,5 +1,6 @@
 #loading{
-    background-color: #38a1a1;
+    background-image: linear-gradient(to right, #38a1a1 0%, #6bb2b5 60%);
+    background-repeat: repeat-x;
     height: 100%;
     width: 100%;
     position: fixed;

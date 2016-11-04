@@ -24,7 +24,7 @@ Por Medicamento | Interações Medicamentosas
                     </div>
                 </div>
                 <div class="col-sm-8 col-xs-5 text-right">
-                    <a class="btn btn-header" data-widget="collapse" ng-show="checker.selectedDrug.name"><i class="fa fa-filter" aria-hidden="true"></i> Filtrar</a>
+                    <a class="btn btn-header" data-widget="collapse" ng-show="checker.selectedDrug.name"><i class="icon ion-funnel"></i> {% trans 'Filter' %}</a>
                 </div>
             </div>
         </div>
@@ -89,13 +89,6 @@ Por Medicamento | Interações Medicamentosas
                             </label>
                         </div>
                     </div>
-                    <div class="col-sm-6">
-                        <div class="dataTables_filter" ng-show="totalItems">
-                            <div class="form-group">
-                                <label>Total: {[{ totalItems }]}</label>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <!-- Table Content -->
                 <div class="row">
@@ -104,18 +97,18 @@ Por Medicamento | Interações Medicamentosas
                             <table class="table table-bordered table-striped dataTable" role="grid">
                                 <thead>
                                     <tr>
-                                        <th width="90px" ng-class="[getSortingClass('type')]"><a ng-click="sortBy('type')">Gravidade</a></th>
-                                        <th ng-class="[getSortingClass('other')]"><a ng-click="sortBy('other')">Medicamento</a></th>
-                                        <th ng-class="[getSortingClass('evidence')]"><a ng-click="sortBy('evidence')">Evidência</a></th>
-                                        <th ng-class="[getSortingClass('action')]"><a ng-click="sortBy('action')">Ação</a></th>
-                                        <th width="50px" ng-class="[getSortingClass('explanation')]"><a ng-click="sortBy('explanation')">Explicação</a></th>
+                                        <th width="90px" ng-class="[getSortingClass('type')]"><a ng-click="sortBy('type')">{% trans 'Severity' %}</a></th>
+                                        <th ng-class="[getSortingClass('other')]"><a ng-click="sortBy('other')">{% trans 'Drug' %}</a></th>
+                                        <th ng-class="[getSortingClass('evidence')]"><a ng-click="sortBy('evidence')">{% trans 'Evidence' %}</a></th>
+                                        <th ng-class="[getSortingClass('action')]"><a ng-click="sortBy('action')">{% trans 'Action'%}</a></th>
+                                        <th width="50px" ng-class="[getSortingClass('explanation')]"><a ng-click="sortBy('explanation')">{% trans 'Explanation' %}</a></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr interaction-row ng-repeat="interaction in filtered = checker.interactions | filter:search.text | multipleSelectFilter:search.select | orderBy:propertyName:reverse | paginationSlice:currentPage:pageSize" model="interaction">
                                     </tr>
                                     <tr ng-show="!totalItems">
-                                        <td colspan="5" class="text-center">Nenhum resultado encontrado</td>
+                                        <td colspan="5" class="text-center">{% trans 'No results found' %}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -125,7 +118,9 @@ Por Medicamento | Interações Medicamentosas
                 <!-- Table Info -->
                 <div class="row" ng-show="checker.interactions.length > pageSize">
                     <div class="col-sm-5">
-                        <div class="dataTables_info" role="status" aria-live="polite"></div>
+                        <div class="dataTables_info" role="status" aria-live="polite">
+                            {% trans 'Total' %}: {[{ totalItems }]} {% trans 'entries' %}
+                        </div>
                     </div>
                     <div class="col-sm-7">
                         <div class="dataTables_paginate paging-simple-numbers">
@@ -135,8 +130,11 @@ Por Medicamento | Interações Medicamentosas
                                 items-per-page="pageSize"
                                 ng-model="currentPage"
                                 max-size="maxSize"
-                                next-text="{% trans 'Next' %}"
-                                previous-text="{% trans 'Previous' %}"
+                                boudary-links="true"
+                                first-text="<<"
+                                last-text=">>"
+                                next-text=">"
+                                previous-text="<"
                                 class="pagination">
                             </ul>
                         </div>

@@ -17,12 +17,12 @@
 }
 
 body {
-    font-family: LetterGothicStd;
+    font-family: "Source Sans Pro", sans-serif;
     background-color: #ecf0f5;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: LetterGothicStd;
+    font-family: "Source Sans Pro", sans-serif;
 }
 
 a {
@@ -72,8 +72,10 @@ a {
     color: #38a1a1;
 }
 /* user */
-.main-header .navbar .nav>li.user>a>.fa, .main-header .navbar .nav>li.user>a>.glyphicon, .main-header .navbar .nav>li.user>a>.ion {
-    margin-right: 0;
+@media (max-width: 768px) {
+    .main-header .navbar .nav>li.user>a>.fa, .main-header .navbar .nav>li.user>a>.glyphicon, .main-header .navbar .nav>li.user>a>.ion {
+        margin-right: 0;
+    }
 }
 /* user-paanel */
 .user-panel {
@@ -102,6 +104,7 @@ a {
     box-shadow: 0 7px 10px -4px rgba(0,0,0,.2);
 }
 
+
 /* logo
 ---------------------------------------------*/
 .main-header .logo {
@@ -112,6 +115,7 @@ a {
     height: 50px;
     padding-bottom: 7px;
 }
+
 
 /* login
 ---------------------------------------------*/
@@ -141,7 +145,7 @@ a {
     margin-bottom: 15px;
 }
 .login-page {
-    background-image: linear-gradient(to right, #2b7551 0%, #6bb2b5 60%);
+    background-image: linear-gradient(to right, #38a1a1 0%, #6bb2b5 60%);
     background-repeat: repeat-x;
 }
 .login-helper {
@@ -150,13 +154,13 @@ a {
 }
 .login-box-msg {
     padding-top: 15px;
-    font-size: 13px;
 }
 .login-box-body {
-    border-radius: 8px;
+    border-radius: 5px;
     -webkit-box-shadow: 0 3px 9px rgba(0,0,0,.5);
     box-shadow: 0 3px 9px rgba(0,0,0,.5);
 }
+
 
 /* ui-widget
 ---------------------------------------------*/
@@ -165,7 +169,7 @@ a {
 }
 
 
-/* ui-widget
+/* explanation-tooltip
 ---------------------------------------------*/
 .explanation-tooltip {
     color: #ccc !important;
@@ -216,7 +220,7 @@ a {
 .label-app {
     padding: .2em .6em .3em;
     font-size: 70%;
-    font-weight: 700;
+    font-weight: 300;
     color: #fff;
     text-align: center;
     vertical-align: baseline;
@@ -243,7 +247,7 @@ a {
 .box-header-form input[type='text'] {
     background-color: #40b7b7;
     border: 1px solid transparent;
-    border-radius: 5px;
+    border-radius: 3px;
     color: #fff;
 }
 .box-header-form .has-feedback .form-control-feedback {
@@ -392,6 +396,22 @@ table.dataTable thead .sorting_desc:after {
     border-color:  #fff;
 }
 
+/* btn icons margin
+---------------------------------------------*/
+.btn-primary .fa, .btn-primary .glyphicon, .btn-primary .icon,
+.btn-default .fa, .btn-default .glyphicon, .btn-default .icon,
+.btn-success .fa, .btn-success .glyphicon, .btn-success .icon,
+.btn-danger  .fa, .btn-danger  .glyphicon, .btn-danger  .icon,
+.btn-warning .fa, .btn-warning .glyphicon, .btn-warning .icon,
+.btn-header  .fa, .btn-header  .glyphicon, .btn-header  .icon {
+    margin-right: 5px;
+}
+.btn-app .fa,
+.btn-app .glyphicon,
+.btn-app .icon {
+    margin-right: 0 !important;
+}
+
 
 /* result
 ---------------------------------------------*/
@@ -425,12 +445,13 @@ table.dataTable thead .sorting_desc:after {
 }
 .ui-autocomplete-item-title {
     color: #38a1a1;
+    font-size: 15px;
 }
 .ui-menu-item .ui-state-active .ui-autocomplete-item-title {
     color: #fff;
 }
 .ui-autocomplete-item-subtitle {
-    font-size: 10px;
+    font-size: 13px;
 }
 
 
