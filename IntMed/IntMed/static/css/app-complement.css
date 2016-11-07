@@ -103,7 +103,10 @@ a {
 .main-header {
     box-shadow: 0 7px 10px -4px rgba(0,0,0,.2);
 }
-
+/* collapse */
+.row.fa-plus {
+    content: none;
+}
 
 /* logo
 ---------------------------------------------*/
@@ -220,7 +223,7 @@ a {
 .label-app {
     padding: .2em .6em .3em;
     font-size: 70%;
-    font-weight: 300;
+    font-weight: 700;
     color: #fff;
     text-align: center;
     vertical-align: baseline;
@@ -235,10 +238,19 @@ a {
     padding-left: 0;
 }
 
+
 /* box
 ---------------------------------------------*/
 .box-header .form-group {
     margin-bottom: 0;
+}
+
+
+/* center
+---------------------------------------------*/
+.center {
+    padding: 70px 0;
+    text-align: center;
 }
 
 
@@ -462,8 +474,14 @@ table.dataTable thead .sorting_desc:after {
 }
 ul.list-info {
     padding-left:10px;
-    font-size: 13px;
 }
+/*@media (min-width:768px) {
+    ul.list-info {
+        columns: 2;
+        -webkit-columns: 2;
+        -moz-columns: 2;
+    }
+}*/
 ul.list-info > li {
     list-style: none;
     margin-bottom: 7px;
@@ -504,11 +522,9 @@ ul.list-info > li:before {
 /* list-group-site
 ---------------------------------------------*/
 .list-group-site ul.list-info > li {
-    font-size: 12px;
     margin-bottom: 0;
 }
 .list-group-site p.list-group-item-text{
-    font-size: 12px;
     margin-bottom: 5px;
 }
 .list-group-site a.list-group-item {
@@ -518,6 +534,8 @@ ul.list-info > li:before {
 .list-group-site a.list-group-item .list-group-item-heading {
     color: #38a1a1;
     margin-bottom: 5px;
+    font-weight: 700;
+    font-size: 15px;
 }
 .list-group-options {
     padding: 0 0 10px 0;

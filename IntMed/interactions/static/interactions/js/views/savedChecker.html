@@ -1,12 +1,12 @@
 <a class="list-group-item"  ng-click="verifyInteraction(checker)" ng-mouseover="checker.hover = true" ng-mouseleave="checker.hover = false">
     <div class="list-card-operation-container" ng-class="{'list-card-operation-visible': checker.hover}" >
-        <span ng-click="deleteConfirmation(checker)" class="list-card-operation icon-sm dark-hover fa fa-trash"></span>
-        <span ng-click="editChecker(checker)"  class="list-card-operation icon-sm dark-hover fa fa-pencil"></span>
+        <span onclick="stopPropagation(event)" ng-click="deleteConfirmation(checker)" class="list-card-operation icon-sm dark-hover fa fa-trash"></span>
+        <span onclick="stopPropagation(event)" ng-click="editChecker(checker)"  class="list-card-operation icon-sm dark-hover fa fa-pencil"></span>
     </div>
 
     <div ng-hide="editingChecker[checker.id]" class="list-group-item-heading">{[{ checker.title || defaultTitle }]}</div>
     <form ng-submit="updateChecker(checker)" ng-show="editingChecker[checker.id]" class="list-group-item-heading">
-        <input  ng-click="preventInsideClick($event)" ng-model="checker.title" class="form-control" type="text" focus="editingChecker[checker.id]">
+        <input onclick="stopPropagation(event)" ng-model="checker.title" class="form-control" type="text" focus="editingChecker[checker.id]">
     </form>
 
     <p class="list-group-item-text">{[{ drugsLabel }]}:</p>

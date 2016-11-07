@@ -21,6 +21,10 @@ app.controller('SingleDrugCheckerCtrl', function SingleDrugCheckerCtrl($scope, $
             selectedDrug: {},
             interactions: [],
         };
+
+        // Initially sort by interaction type
+        $scope.reverse = true;
+        $scope.propertyName = "type";
     }
 
     $scope.selectedIds = function () {
@@ -45,6 +49,16 @@ app.controller('SingleDrugCheckerCtrl', function SingleDrugCheckerCtrl($scope, $
         });
     }
 
+    $scope.isFilterOpen = function () {
+        return !$("#filterBox").hasClass("collapsed-box");
+    }
+
+    $scope.closeFilter = function () {
+        if ($scope.isFilterOpen()) {
+            $.AdminLTE.boxWidget.collapse($("#filterBox .box-body"));
+        }
+    }
+
     $scope.sortBy = function (propertyName) {
         $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
         $scope.propertyName = propertyName;
@@ -67,6 +81,7 @@ app.controller('SingleDrugCheckerCtrl', function SingleDrugCheckerCtrl($scope, $
     $scope.resetFilters = function () {
         $scope.search = {};
         clearAllSelect2Inputs();
+        $scope.closeFilter();
     }
 
     $scope.$watch("checker.selectedDrug", function (newSelectedDrug, oldSelectedDrug) {

@@ -21,3 +21,13 @@ $(function () {
 function changePaginationWhenMobile () {
     $('.pagination').toggleClass('pagination-sm', $(window).width() < 400);
 }
+
+function stopPropagation (event) {
+    if (event && event.stopPropagation) {
+        event.stopPropagation();
+    } else if (window.event) {
+        window.event.cancelBubble = true;
+    } else if (window.$.Event.prototype) {
+        window.$.Event.prototype.stopPropagation();
+    }
+}

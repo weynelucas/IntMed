@@ -19,7 +19,6 @@ app.controller('SavedCheckerCtrl', function SavedCheckerCtrl ($scope, $rootScope
     }
 
     $scope.deleteConfirmation = function (checker) {
-        $scope.preventInsideClick();
         $scope.toDelete = checker
         $('#savedCheckerModal').modal();
     }
@@ -39,7 +38,6 @@ app.controller('SavedCheckerCtrl', function SavedCheckerCtrl ($scope, $rootScope
 
     $scope.editChecker = function (checker) {
         $scope.editingChecker[checker.id] = true;
-        $scope.preventInsideClick();
     }
 
     $scope.updateChecker = function (checker) {
