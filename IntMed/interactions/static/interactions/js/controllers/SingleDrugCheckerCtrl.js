@@ -6,7 +6,7 @@ app.controller('SingleDrugCheckerCtrl', function SingleDrugCheckerCtrl($scope, $
         $scope.pageSize = 50;
         $scope.options = {
             pageSize: [10, 25, 50, 100],
-            action: ["No action", "Informative", "Adjust", "Avoid"],
+            action: ["No action", "Informative", "Monitor", "Adjust", "Avoid"],
             evidence: ["Case", "Study", "Theoretical", "Extensive"],
             type: [
                 {code: "MILD_INTERACTION", text:"Leve"},
