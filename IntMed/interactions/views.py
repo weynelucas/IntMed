@@ -3,8 +3,14 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def index(request):
-    return render(request, "interactions/index.html")
+    context = {
+        'active': 'multiple',
+    }
+    return render(request, "interactions/index.html", context)
 
 @login_required
 def single(request):
-    return render(request, "interactions/single.html")
+    context = {
+        'active': 'single',
+    }
+    return render(request, "interactions/single.html", context)

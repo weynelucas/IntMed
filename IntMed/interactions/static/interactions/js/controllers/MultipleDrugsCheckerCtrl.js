@@ -76,8 +76,8 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
     }
 
     $rootScope.$on('verifyInteraction', function (evt, drugs) {
-        $scope.checker.selectedDrugs = angular.copy(drugs);
         scrollWhenMobile();
+        $scope.checker.selectedDrugs = angular.copy(drugs);
     });
 
     $scope.$watchCollection('checker.selectedDrugs', function (selectedDrugs) {
