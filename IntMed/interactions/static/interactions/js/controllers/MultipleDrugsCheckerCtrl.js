@@ -77,6 +77,7 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
 
     $rootScope.$on('verifyInteraction', function (evt, drugs) {
         $scope.checker.selectedDrugs = angular.copy(drugs);
+        scrollWhenMobile();
     });
 
     $scope.$watchCollection('checker.selectedDrugs', function (selectedDrugs) {
@@ -88,6 +89,14 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
             $scope.loading = false;
         }
     }, true);
+
+    function scrollWhenMobile () {
+        if ($(window).width() < 768) {
+            $('html, body').animate({
+                scrollTop: $("#drugSearchBox").offset().top
+            }, 1000);
+        }
+    }
 
     function appendDrugsIdsOnHtmlResponse (response) {
         var html_response = $.parseHTML(response, document, true)

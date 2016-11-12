@@ -1,7 +1,7 @@
 app.directive('interaction', function () {
     return {
         templateUrl: '/static/interactions/js/views/interaction.html',
-        replace: true,
+        replace: false,
         restrict: 'E',
         scope: {
             model: '=',

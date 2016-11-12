@@ -2,7 +2,9 @@
 
 <div class="col-md-8" ng-controller="MultipleDrugsCheckerCtrl">
     <div id="checkerModal" class="modal fade" tabindex="-1" role="dialog"></div>
-    <div id="interactions" class="box box-solid box-primary">
+
+    <!-- Drug search box -->
+    <div id="drugSearchBox" class="box box-solid box-primary">
         <div class="box-header">
             <div class="row">
                 <div class="box-header-form col-xs-12 col-sm-6">
@@ -12,6 +14,7 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6 box-header-options" ng-show="checker.selectedDrugs.length > 1">
+                    <a class="btn btn-app btn-header" ng-click="clearSelectedDrugs()"><i class="glyphicon glyphicon-erase" aria-hidden="true"></i> {% trans 'Clear all' %}</a>
                     <a class="btn btn-app btn-header" ng-click="exportChecker()"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> {% trans 'Export' %}</a>
                     <a class="btn btn-app btn-header" data-toggle="modal" data-target="#checkerModal" ng-click="openSaveModal($event)"><i class="fa fa-floppy-o" aria-hidden="true"></i> {% trans 'Save' %}</a>
                 </div>
@@ -19,56 +22,43 @@
         </div>
         <div class="box-body">
             <div class="row">
-                <div class="col-sm-6">
-                    <div class="list-group-options row" ng-show="checker.selectedDrugs.length">
-                        <div class="col-xs-6 col-sm-6">
-                            <div class="list-group-options-title">{% trans 'Drugs' %}</div>
-                        </div>
-                        <div class="col-xs-6 col-sm-6">
-                            <div class="text-right">
-                                <span class="chip chip-deletable">
-                                    <span class="chip-text">{% trans 'Clear all' %}</span>
-                                    <button ng-click="clearSelectedDrugs()" class="chip-action"><i class="material-icons">cancel</i></button>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-group list-group-site">
-                        <div class="list-group-item" ng-repeat="drug in checker.selectedDrugs">
-                            <selected-drug model="drug" remove="removeSelectedDrug" index="$index"></selected-drug>
-                        </div>
-                    </div>
+                <div class="info-text" ng-show="!checker.selectedDrugs.length">
+                    {% trans 'No selected drug' %}.
                 </div>
-                <div class="col-sm-6">
-                    <div class="list-info-container" ng-show="!checker.selectedDrugs.length">
-                        <h4 class="list-info-title">{% trans 'Drugs Interactions' %}</h4>
-                        <ul class="list-info">
-                            <li>{% trans 'Use the search field above to look up for drugs' %}</li>
-                            <li>{% trans 'Add a drug on your selected list by choosing one of the options found for your search' %}</li>
-                            <li>{% trans 'Add more drugs to your list to view all interactions found between them' %}</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div ng-show="checker.selectedDrugs.length > 1">
-                            <div class="result-row">
-                                <span class="result-info">
-                                    <ng-pluralize count="checker.interactions.length"
-                                                  when="{'0': '{% trans 'No interactions found' %}',
-                                                         '1': '{} {% trans 'interaction found' %}',
-                                                         'other': '{} {% trans 'interactions found' %}'}">
-                                    </ng-pluralize>
-                                </span>
-                            </div>
-                            <div class="list-group list-group-site">
-                                <div class="list-group-item" ng-repeat="interaction in checker.interactions | orderBy: 'type'">
-                                    <interaction model="interaction" evidence-label="{% trans 'Evidence' %}" action-label="{% trans 'Action' %}"></interaction>
-                                </div>
-                            </div>
-                        </div>
+                <div class="col-sm-7">
+                    <div class="chips-container">
+                        <selected-drug ng-repeat="drug in checker.selectedDrugs" model="drug" remove="removeSelectedDrug" index="$index"></selected-drug>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- Overlay -->
+        <div class="overlay" ng-if="loading">
+            <i class="fa fa-refresh fa-spin"></i>
+        </div>
+    </div>
+
+    <!-- Interactions box -->
+    <div id="interactionsBox" class="box box-solid box-primary">
+        <div class="box-header">
+            <h3 class="box-title">
+                <ng-pluralize count="checker.interactions.length"
+                              when="{'0': '{% trans 'No interactions found' %}',
+                                     '1': '{} {% trans 'interaction found' %}',
+                                     'other': '{} {% trans 'interactions found' %}'}">
+                </ng-pluralize>
+            </h3>
+        </div>
+        <div class="box-body" ng-show="checker.interactions.length">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div ng-repeat="interaction in checker.interactions | orderBy: '-type'">
+                        <interaction model="interaction" evidence-label="{% trans 'Evidence' %}" action-label="{% trans 'Action' %}"></interaction>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Overlay -->
         <div class="overlay" ng-if="loading">
             <i class="fa fa-refresh fa-spin"></i>
         </div>

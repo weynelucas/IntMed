@@ -39,7 +39,6 @@ a {
 }
 /* content-wrapper */
 .content-wrapper {
-    min-height: 916px;
     margin-left: 0;
 }
 /* user-header */
@@ -107,6 +106,12 @@ a {
 .row.fa-plus {
     content: none;
 }
+/* box-title */
+.box-title {
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
 
 /* logo
 ---------------------------------------------*/
@@ -254,6 +259,15 @@ a {
 }
 
 
+/* info-text
+---------------------------------------------*/
+.info-text {
+    font-size: 18px;
+    line-height: 45px;
+    text-align: center;
+}
+
+
 /* box-header-form
 ---------------------------------------------*/
 .box-header-form input[type='text'] {
@@ -261,6 +275,7 @@ a {
     border: 1px solid transparent;
     border-radius: 3px;
     color: #fff;
+    font-size: 16px;
 }
 .box-header-form .has-feedback .form-control-feedback {
     color: #fff;
@@ -326,6 +341,9 @@ table.dataTable thead .sorting_asc:after,
 table.dataTable thead .sorting_desc:after {
     opacity: 1 !important;
 }
+table.dataTable > tbody > tr > td {
+    vertical-align: middle;
+}
 
 
 /* Interactions
@@ -362,20 +380,87 @@ table.dataTable thead .sorting_desc:after {
 .nothing_expected>.severity-text:before {
     content: "Nada esperado";
 }
-/* colors */
-.unknown_severity_interaction {
+
+
+/* box-interaction */
+.box-interaction.box-solid > .box-header {
+    color: #fff;
+}
+.box-interaction > .box-body p {
+    font-size: 16px;
+    margin-bottom: 0;
+}
+.box-interaction > .box-header > .box-title .fa{
+    margin: 0 5px;
+}
+.box-interaction > .box-header .severity-text {
+    font-size: 16px;
+    font-weight: 700;
+}
+@media (max-width: 768px) {
+    .box-interaction > .box-body p {
+        font-size: 14px;
+    }
+    .box-interaction > .box-header > .box-title {
+        font-size: 16px;
+    }
+    .box-interaction > .box-header .severity-text {
+        font-size: 14px;
+    }
+    .box-interaction > .box-header .pull-right {
+        float: none !important;
+    }
+}
+/* boxes */
+.box-interaction.box-solid.unknown_severity_interaction {
+    border: 1px solid #777;
+}
+.box-interaction.box-solid.unknown_severity_interaction > .box-header {
+    background: #777;
     background-color: #777;
 }
-.severe_interaction {
+.box-interaction.box-solid.severe_interaction {
+    border: 1px solid #d9534f;
+}
+.box-interaction.box-solid.severe_interaction > .box-header {
+    background: #d9534f;
     background-color: #d9534f;
 }
-.moderate_interaction {
+.box-interaction.box-solid.moderate_interaction {
+    border: 1px solid #f0ad4e;
+}
+.box-interaction.box-solid.moderate_interaction > .box-header {
+    background: #f0ad4e;
     background-color: #f0ad4e;
 }
-.mild_interaction {
+.box-interaction.box-solid.mild_interaction {
+    border: 1px solid #5bc0de;
+}
+.box-interaction.box-solid.mild_interaction > .box-header {
+    background: #5bc0de;
     background-color: #5bc0de;
 }
-.nothing_expected {
+.box-interaction.box-solid.nothing_expected {
+    border: 1px solid #5cb85c;
+}
+.box-interaction.box-solid.nothing_expected > .box-header{
+    background: #5cb85c;
+    background-color: #5cb85c;
+}
+/* label-app colors*/
+.label-app.unknown_severity_interaction {
+    background-color: #777;
+}
+.label-app.severe_interaction {
+    background-color: #d9534f;
+}
+.label-app.moderate_interaction {
+    background-color: #f0ad4e;
+}
+.label-app.mild_interaction {
+    background-color: #5bc0de;
+}
+.label-app.nothing_expected {
     background-color: #5cb85c;
 }
 
@@ -457,13 +542,13 @@ table.dataTable thead .sorting_desc:after {
 }
 .ui-autocomplete-item-title {
     color: #38a1a1;
-    font-size: 15px;
+    font-size: 16px;
 }
 .ui-menu-item .ui-state-active .ui-autocomplete-item-title {
     color: #fff;
 }
 .ui-autocomplete-item-subtitle {
-    font-size: 13px;
+    font-size: 14px;
 }
 
 
@@ -475,13 +560,6 @@ table.dataTable thead .sorting_desc:after {
 ul.list-info {
     padding-left:10px;
 }
-/*@media (min-width:768px) {
-    ul.list-info {
-        columns: 2;
-        -webkit-columns: 2;
-        -moz-columns: 2;
-    }
-}*/
 ul.list-info > li {
     list-style: none;
     margin-bottom: 7px;
@@ -652,6 +730,28 @@ ul.list-info > li:before {
 }
 .chip-contact {
     padding-left: 0;
+}
+
+
+/* chip-lg
+---------------------------------------------*/
+.chip-lg .chip-text {
+    font-size: 15px;
+}
+
+
+/* chips-container
+---------------------------------------------*/
+.chips-container {
+    text-align: left;
+}
+@media (max-width:768px) {
+    .chips-container {
+        text-align: center;
+    }
+}
+.chips-container > .chip{
+    margin-right: 10px;
 }
 
 

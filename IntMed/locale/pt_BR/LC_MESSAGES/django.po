@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-04 09:05-0300\n"
+"POT-Creation-Date: 2016-11-11 08:20-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,6 +33,10 @@ msgstr "Registrar-se"
 #: .\IntMed\templates\home.html:47
 msgid "Already have an account"
 msgstr "Já possui uma conta"
+
+#: .\IntMed\templates\home.html:47
+msgid "Make Login"
+msgstr "Faça o Login"
 
 #: .\IntMed\templates\home.html:65
 #: .\accounts\templates\accounts\signin_modal_form.html:18
@@ -89,13 +93,13 @@ msgid "Close"
 msgstr "Sair"
 
 #: .\IntMed\templates\modal_form.html:27
-#: .\interactions\templates\interactions\multiple_drugs_checker.html:16
+#: .\interactions\templates\interactions\multiple_drugs_checker.html:17
 msgid "Save"
 msgstr "Salvar"
 
 #: .\IntMed\templates\sidebar.html:33 .\checker\report\generator.py:23
 #: .\checker\report\generator.py:36 .\drug\views.py:20
-#: .\interactions\templates\interactions\multiple_drugs_checker.html:25
+#: .\interactions\templates\interactions\multiple_drugs_checker.html:29
 #: .\interactions\templates\interactions\saved_checkers.html:32
 msgid "Drugs"
 msgstr "Medicamentos"
@@ -177,14 +181,14 @@ msgid "Interaction"
 msgstr "Interação"
 
 #: .\checker\report\generator.py:23
-#: .\interactions\templates\interactions\multiple_drugs_checker.html:64
+#: .\interactions\templates\interactions\multiple_drugs_checker.html:67
 #: .\interactions\templates\interactions\single.html:52
 #: .\interactions\templates\interactions\single.html:102
 msgid "Evidence"
 msgstr "Evidência"
 
 #: .\checker\report\generator.py:23 .\drug\views.py:19
-#: .\interactions\templates\interactions\multiple_drugs_checker.html:64
+#: .\interactions\templates\interactions\multiple_drugs_checker.html:67
 #: .\interactions\templates\interactions\single.html:58
 #: .\interactions\templates\interactions\single.html:103
 msgid "Action"
@@ -238,22 +242,27 @@ msgid "Add Drug"
 msgstr "Adicionar Medicamento"
 
 #: .\interactions\templates\interactions\multiple_drugs_checker.html:15
-msgid "Export"
-msgstr "Exportar"
-
-#: .\interactions\templates\interactions\multiple_drugs_checker.html:30
+#: .\interactions\templates\interactions\multiple_drugs_checker.html:34
 msgid "Clear all"
 msgstr "Limpar tudo"
 
-#: .\interactions\templates\interactions\multiple_drugs_checker.html:44
+#: .\interactions\templates\interactions\multiple_drugs_checker.html:16
+msgid "Export"
+msgstr "Exportar"
+
+#: .\interactions\templates\interactions\multiple_drugs_checker.html:24
+msgid "No selected drug"
+msgstr "Nenhum medicamento selecionado"
+
+#: .\interactions\templates\interactions\multiple_drugs_checker.html:47
 msgid "Drugs Interactions"
 msgstr "Interações Medicamentosas"
 
-#: .\interactions\templates\interactions\multiple_drugs_checker.html:46
+#: .\interactions\templates\interactions\multiple_drugs_checker.html:49
 msgid "Use the search field above to look up for drugs"
 msgstr "Use o campo de pesquisa acima para pesquisar por medicamentos"
 
-#: .\interactions\templates\interactions\multiple_drugs_checker.html:47
+#: .\interactions\templates\interactions\multiple_drugs_checker.html:50
 msgid ""
 "Add a drug on your selected list by choosing one of the options found for "
 "your search"
@@ -261,21 +270,21 @@ msgstr ""
 "Adicione um medicamento à sua lista de selecionados escolhendo uma das "
 "opções encontradas para sua busca"
 
-#: .\interactions\templates\interactions\multiple_drugs_checker.html:48
+#: .\interactions\templates\interactions\multiple_drugs_checker.html:51
 msgid "Add more drugs to your list to view all interactions found between them"
 msgstr ""
 "Adicione mais medicamentos à sua lista para visualizar todas as interações "
 "encontradas entre eles"
 
-#: .\interactions\templates\interactions\multiple_drugs_checker.html:56
+#: .\interactions\templates\interactions\multiple_drugs_checker.html:59
 msgid "No interactions found"
 msgstr "Nenhuma interação encontrada"
 
-#: .\interactions\templates\interactions\multiple_drugs_checker.html:57
+#: .\interactions\templates\interactions\multiple_drugs_checker.html:60
 msgid "interaction found"
 msgstr "interação encontrada"
 
-#: .\interactions\templates\interactions\multiple_drugs_checker.html:58
+#: .\interactions\templates\interactions\multiple_drugs_checker.html:61
 msgid "interactions found"
 msgstr "interações encontradas"
 
