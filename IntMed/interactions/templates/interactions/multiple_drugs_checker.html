@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-sm-7">
                     <div class="chips-container">
-                        <selected-drug ng-repeat="drug in checker.selectedDrugs" model="drug" remove="removeSelectedDrug" index="$index"></selected-drug>
+                        <selected-drug ng-repeat="drug in checker.selectedDrugs" model="drug" remove="removeSelectedDrug" single="viewAllInteractions" index="$index" message="{% trans 'View all drug interactions for' %}"></selected-drug>
                     </div>
                 </div>
             </div>

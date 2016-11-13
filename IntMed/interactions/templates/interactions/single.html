@@ -7,11 +7,6 @@
 <link rel="stylesheet" href="/static/libs/vendors/admin-lte/plugins/select2/select2.min.css" media="screen" title="no title">
 {% endblock %}
 
-
-{% block title %}
-Por Medicamento | Interações Medicamentosas
-{% endblock %}
-
 {% block content %}
 <div ng-app="drugInteractions" ng-controller="SingleDrugCheckerCtrl">
     <div id="filterBox" class="box box-primary box-solid collapsed-box">
@@ -73,8 +68,8 @@ Por Medicamento | Interações Medicamentosas
     </div>
     <div class="box box-primary box-solid">
         <div class="box-header">
-            <h4 ng-show="checker.selectedDrug.name">{[{ checker.selectedDrug.name }]}</h4>
-            <h4 ng-show="!checker.selectedDrug.name">Nenhum medicamento selecionado</h4>
+            <h3 ng-show="checker.selectedDrug.name">{[{ checker.selectedDrug.name }]}</h4>
+            <h3 ng-show="!checker.selectedDrug.name">Nenhum medicamento selecionado</h4>
             <h5>{[{ checker.selectedDrug.action }]}</h5>
         </div>
         <div class="box-body">
@@ -87,6 +82,11 @@ Por Medicamento | Interações Medicamentosas
                                 <select class="form-control" ng-options="size for size in options.pageSize" ng-model="pageSize"></select>
                                 {% trans 'entries' %}
                             </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="dataTables_filter dataTables_total" ng-show="totalItems > 0">
+                            {% trans 'Total' %}: {[{ totalItems }]}
                         </div>
                     </div>
                 </div>
@@ -118,23 +118,20 @@ Por Medicamento | Interações Medicamentosas
                 <!-- Table Info -->
                 <div class="row" ng-show="checker.interactions.length > pageSize">
                     <div class="col-sm-5">
-                        <div class="dataTables_info" role="status" aria-live="polite">
-                            {% trans 'Total' %}: {[{ totalItems }]} {% trans 'entries' %}
-                        </div>
                     </div>
                     <div class="col-sm-7">
                         <div class="dataTables_paginate paging-simple-numbers">
                             <ul uib-pagination
                                 total-items="totalItems"
                                 ng-show="totalItems > pageSize"
+                                boundary-links="true"
                                 items-per-page="pageSize"
                                 ng-model="currentPage"
                                 max-size="maxSize"
-                                boudary-links="true"
-                                first-text="<<"
-                                last-text=">>"
-                                next-text=">"
-                                previous-text="<"
+                                next-text="  ❯"
+                                previous-text="❮  "
+                                first-text="❮❮  "
+                                last-text="  ❯❯"
                                 class="pagination">
                             </ul>
                         </div>
@@ -151,6 +148,14 @@ Por Medicamento | Interações Medicamentosas
 {% endblock %}
 
 {% block main_script %}
+<!-- Global variables -->
+<script type="text/javascript">
+    {% if drug %}
+        var drug = {{ drug | safe }};
+    {% else %}
+        var drug = null;
+    {% endif %}
+</script>
 <!-- Select2 -->
 <script src="/static/libs/vendors/admin-lte/plugins/select2/select2.full.min.js"></script>
 <script src="/static/js/select2Utils.js"></script>

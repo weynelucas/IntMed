@@ -18,7 +18,7 @@ app.controller('SingleDrugCheckerCtrl', function SingleDrugCheckerCtrl($scope, $
         };
         $scope.loading = false;
         $scope.checker = {
-            selectedDrug: {},
+            selectedDrug: drug || {},
             interactions: [],
         };
 

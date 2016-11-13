@@ -6,6 +6,8 @@ app.directive('selectedDrug', function () {
         scope: {
             model: '=',
             remove: '=',
+            single: '=',
+            message: '@',
             index:'=',
         }
     }

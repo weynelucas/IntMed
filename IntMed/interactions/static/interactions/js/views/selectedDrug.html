@@ -1,4 +1,4 @@
 <span class="chip chip-lg chip-deletable">
-    <span class="chip-text">{[{ :: model.name }]}</span>
+    <span ng-click="single(model.id)" data-toggle="tooltip" data-placement="top" title="{[{ message }]} {[{ ::model.name }]}" class="chip-text clickable" >{[{ :: model.name }]}</span>
     <button ng-click="remove(index)" class="chip-action"><i class="material-icons">cancel</i></button>
 </span>

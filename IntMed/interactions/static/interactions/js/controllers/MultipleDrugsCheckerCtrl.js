@@ -4,6 +4,7 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
     var saveCheckerUrl = urlPrefix + "checker/create/";
     var exportCheckerUrl = urlPrefix + "checker/export/";
     var processInteractionsUrl = urlPrefix + "interactions/multiple/";
+    var singleInteractionsUrl = urlPrefix + "interactions/single/";
 
     $scope.init = function () {
         $scope.checker = {
@@ -36,6 +37,10 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
         return $scope.checker.selectedDrugs.map(function (drug) {
             return drug.name;
         });
+    }
+
+    $scope.viewAllInteractions = function (drugId) {
+        window.location.href = singleInteractionsUrl + drugId;
     }
 
     $scope.processInteractions = function () {

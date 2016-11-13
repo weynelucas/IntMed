@@ -122,7 +122,15 @@ li.user-menu.active > a {
     font-weight: 700;
     text-transform: capitalize;
 }
-
+/* box-header */
+.box-header > h1, h2, h3, h4, h5 {
+    font-weight: 700;
+    margin-top: 0;
+}
+/* dataTables_total */
+.dataTables_total {
+    line-height: 34px;
+}
 
 /* logo
 ---------------------------------------------*/
@@ -267,6 +275,13 @@ li.user-menu.active > a {
 .center {
     padding: 70px 0;
     text-align: center;
+}
+
+
+/* clickable
+---------------------------------------------*/
+.clickable {
+    cursor: pointer;
 }
 
 
