@@ -48,15 +48,16 @@ app.controller('MultipleDrugsCheckerCtrl', function MultipleDrugsCheckerCtrl($sc
         });
     }
 
-    $scope.openSaveModal = function (elem) {
-        modalService.openModal(saveCheckerUrl, elem.target, appendDrugsIdsOnHtmlResponse, function () {
+    $scope.openSaveModal = function (ev) {
+        var elem = ev.target.tagName === "I" ? $(ev.target).parent() : ev.target;
+        var target = $(elem).data('target');
+        modalService.openModal(saveCheckerUrl, target, appendDrugsIdsOnHtmlResponse, function () {
             initFormBehaviour({
                 formId: '#modal_form',
                 url: saveCheckerUrl,
                 success: function (response) {
                     $scope.$apply($scope.checkerSaved(response.data));
 
-                    var target = $(elem.target).data('target');
                     $(target).modal('hide');
 
                     displayToast('success', response.message);
