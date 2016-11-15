@@ -307,7 +307,7 @@ msgstr "FIltrar"
 #: .\interactions\templates\interactions\single.html:64
 #: .\interactions\templates\interactions\single.html:100
 msgid "Severity"
-msgstr "Gravidade"
+msgstr "Severidade"
 
 #: .\interactions\templates\interactions\single.html:122
 msgid "Total"
