@@ -1,4 +1,5 @@
 app.controller('SingleDrugCheckerCtrl', function SingleDrugCheckerCtrl($scope, $timeout,  interactionsApi, filterFilter, multipleSelectFilterFilter) {
+    var interactionsProperties = interactionsApi.getInteractionsProperties();
 
     $scope.init = function () {
         $scope.currentPage = 1;
@@ -6,15 +7,9 @@ app.controller('SingleDrugCheckerCtrl', function SingleDrugCheckerCtrl($scope, $
         $scope.pageSize = 50;
         $scope.options = {
             pageSize: [10, 25, 50, 100],
-            action: ["No action", "Informative", "Monitor", "Adjust", "Avoid"],
-            evidence: ["Case", "Study", "Theoretical", "Extensive"],
-            type: [
-                {code: "MILD_INTERACTION", text:"Leve"},
-                {code: "MODERATE_INTERACTION", text:"Moderada"},
-                {code: "NOTHING_EXPECTED", text:"Nada esperado"},
-                {code: "SEVERE_INTERACTION", text:"Grave"},
-                {code: "UNKNOWN_SEVERITY_INTERACTION", text:"Gravidade desconhecida"}
-            ]
+            action:   interactionsProperties.action,
+            evidence: interactionsProperties.evidence,
+            severity: interactionsProperties.severity
         };
         $scope.loading = false;
         $scope.checker = {

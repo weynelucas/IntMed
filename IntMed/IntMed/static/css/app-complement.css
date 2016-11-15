@@ -114,7 +114,7 @@ li.user-menu.active > a {
     box-shadow: 0 7px 10px -4px rgba(0,0,0,.2);
 }
 /* collapse */
-.row.fa-plus {
+.row.fa-plus::before {
     content: none;
 }
 /* box-title */
@@ -400,22 +400,6 @@ table.dataTable > tbody > tr > td {
 }
 .nothing_expected>.fa:before {
     content: "\f118";
-}
-/* labels */
-.unknown_severity_interaction>.severity-text:before {
-    content: "Gravidade desconhecida";
-}
-.severe_interaction>.severity-text:before {
-    content: "Grave";
-}
-.moderate_interaction>.severity-text:before {
-    content: "Moderada";
-}
-.mild_interaction>.severity-text:before {
-    content: "Leve";
-}
-.nothing_expected>.severity-text:before {
-    content: "Nada esperado";
 }
 
 

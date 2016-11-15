@@ -5,6 +5,11 @@ app.factory('interactionsApi', function ($http) {
         multiple: '/api/interactions/multiple/',
         single: '/api/interactions/single/',
     };
+    var interactionsProperties = {
+        action: ["Nenhuma", "Informar", "Monitorar", "Ajustar", "Evitar"],
+        evidence: ["Caso", "Estudo", "Teórica", "Extensa"],
+        severity: ["Leve", "Moderada", "Nada esperado", "Séria", "Severidade desconhecida"]
+    };
 
     var request = function (url, uri, arg) {
         var requestData = {};
@@ -26,6 +31,9 @@ app.factory('interactionsApi', function ($http) {
         },
         processSingleInteractions: function (drugId) {
             return request(url, uri.single, drugId);
+        },
+        getInteractionsProperties: function () {
+            return interactionsProperties;
         }
     };
 });

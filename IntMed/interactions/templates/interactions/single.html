@@ -58,7 +58,7 @@
                         <div class="form-group">
                             <label for="severity" class="col-sm-3 control-label">{% trans 'Severity' %}:</label>
                             <div class="col-sm-9">
-                                <select id="severity" class="form-control select2" multiple="multiple" ng-model="search.select.type" ng-options="type.code as type.text for type in options.type"></select>
+                                <select id="severity" class="form-control select2" multiple="multiple" ng-model="search.select.severity" ng-options="severity for severity in options.severity"></select>
                             </div>
                         </div>
                     </div>
