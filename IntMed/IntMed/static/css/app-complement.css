@@ -134,9 +134,9 @@ li.user-menu.active > a {
 
 /* logo
 ---------------------------------------------*/
-.main-header .logo {
+/*.main-header .logo {
     background-color: rgba(255,255,255, 1) !important;
-}
+}*/
 .main-header .logo .logo-lg img {
     width: 200px;
     height: 50px;
