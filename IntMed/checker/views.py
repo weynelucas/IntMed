@@ -28,7 +28,7 @@ def export(request):
     except:
         raise Http404()
 
-    filename = 'Multiple_Drugs_Interaction_Report_' + datetime.now().strftime('%Y_%m_%d__%H_%M')
+    filename = 'Relatório_Interações_Medicamentosas_' + datetime.now().strftime('%Y_%m_%d__%H_%M')
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = 'attachement; filename=%(filename)s.pdf' % {'filename': filename}
 

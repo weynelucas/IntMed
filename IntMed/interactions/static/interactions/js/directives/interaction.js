@@ -7,6 +7,7 @@ app.directive('interaction', function () {
             model: '=',
             evidenceLabel: '@',
             actionLabel: '@',
+            explanationLabel: '@',
         }
     }
 });

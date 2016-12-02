@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-13 10:48-0300\n"
+"POT-Creation-Date: 2016-11-26 11:48-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,13 +18,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: .\IntMed\settings.py:125
-msgid "Portuguese (Brazil)"
-msgstr "Português do Brasil"
+#: .\IntMed\formatters.py:11
+msgid "No interactions found between selected drugs"
+msgstr "Nenhuma interação encontrada entre os medicamentos selecionados"
 
 #: .\IntMed\settings.py:126
-msgid "English"
-msgstr "Inglês"
+msgid "Portuguese (Brazil)"
+msgstr "Português do Brasil"
 
 #: .\IntMed\templates\home.html:45
 msgid "Sign up"
@@ -62,19 +62,18 @@ msgid "Add"
 msgstr "Adicionar"
 
 #: .\IntMed\templates\list.html:39
-#: .\interactions\templates\interactions\single.html:86
+#: .\interactions\templates\interactions\single.html:81
 msgid "Show"
 msgstr "Exibir"
 
 #: .\IntMed\templates\list.html:46
-#: .\interactions\templates\interactions\single.html:88
-#: .\interactions\templates\interactions\single.html:122
+#: .\interactions\templates\interactions\single.html:83
 msgid "entries"
 msgstr "registros"
 
 #: .\IntMed\templates\list.html:53
 #: .\interactions\templates\interactions\multiple_drugs_checker.html:12
-#: .\interactions\templates\interactions\single.html:22
+#: .\interactions\templates\interactions\single.html:17
 msgid "Search"
 msgstr "Pesquisar"
 
@@ -97,8 +96,8 @@ msgstr "Sair"
 msgid "Save"
 msgstr "Salvar"
 
-#: .\IntMed\templates\sidebar.html:33 .\checker\report\generator.py:23
-#: .\checker\report\generator.py:36 .\drug\views.py:20
+#: .\IntMed\templates\sidebar.html:33 .\checker\report\generator.py:36
+#: .\drug\views.py:20
 #: .\interactions\templates\interactions\saved_checkers.html:35
 msgid "Drugs"
 msgstr "Medicamentos"
@@ -170,35 +169,54 @@ msgstr "Título (Opcional)"
 msgid "drug interaction"
 msgstr "interação medicamentosa"
 
-#: .\checker\report\generator.py:14
+#: .\checker\report\generator.py:13
+msgid "General Informations"
+msgstr "Informações Gerais"
+
+#: .\checker\report\generator.py:21
+msgid "User"
+msgstr ""
+
+#: .\checker\report\generator.py:21
+msgid "Emission date"
+msgstr "Data de emissão"
+
+#: .\checker\report\generator.py:21
 msgid "Selected drugs"
 msgstr "Medicamentos selecionados"
 
-#: .\checker\report\generator.py:23
+#: .\checker\report\generator.py:21
+msgid "Interactions found"
+msgstr "Interações encontradas"
+
+#: .\checker\report\generator.py:34
 #: .\interactions\templates\interactions\saved_checkers.html:35
 msgid "Interaction"
 msgstr "Interação"
 
-#: .\checker\report\generator.py:23
+#: .\checker\report\generator.py:36
+#: .\interactions\templates\interactions\single.html:59
+#: .\interactions\templates\interactions\single.html:100
+msgid "Severity"
+msgstr "Severidade"
+
+#: .\checker\report\generator.py:36
 #: .\interactions\templates\interactions\multiple_drugs_checker.html:56
-#: .\interactions\templates\interactions\single.html:52
+#: .\interactions\templates\interactions\single.html:47
 #: .\interactions\templates\interactions\single.html:102
 msgid "Evidence"
 msgstr "Evidência"
 
-#: .\checker\report\generator.py:23 .\drug\views.py:19
+#: .\checker\report\generator.py:36 .\drug\views.py:19
 #: .\interactions\templates\interactions\multiple_drugs_checker.html:56
-#: .\interactions\templates\interactions\single.html:58
+#: .\interactions\templates\interactions\single.html:53
 #: .\interactions\templates\interactions\single.html:103
 msgid "Action"
 msgstr "Ação"
 
-#: .\checker\report\generator.py:30
-msgid "No interactions found between selected drugs"
-msgstr "Nenhuma interação encontrada entre os medicamentos selecionados"
-
 #: .\checker\report\generator.py:36
-#: .\interactions\templates\interactions\single.html:43
+#: .\interactions\templates\interactions\multiple_drugs_checker.html:56
+#: .\interactions\templates\interactions\single.html:38
 #: .\interactions\templates\interactions\single.html:104
 msgid "Explanation"
 msgstr "Explicação"
@@ -231,7 +249,7 @@ msgstr "ação"
 msgid "drug"
 msgstr "medicamento"
 
-#: .\drug\views.py:19 .\interactions\templates\interactions\single.html.py:37
+#: .\drug\views.py:19 .\interactions\templates\interactions\single.html.py:32
 #: .\interactions\templates\interactions\single.html:101
 msgid "Drug"
 msgstr "Medicamento"
@@ -300,18 +318,16 @@ msgstr "Próximo"
 msgid "Previous"
 msgstr "Anterior"
 
-#: .\interactions\templates\interactions\single.html:27
+#: .\interactions\templates\interactions\single.html:22
 msgid "Filter"
 msgstr "FIltrar"
 
-#: .\interactions\templates\interactions\single.html:64
-#: .\interactions\templates\interactions\single.html:100
-msgid "Severity"
-msgstr "Severidade"
-
-#: .\interactions\templates\interactions\single.html:122
+#: .\interactions\templates\interactions\single.html:89
 msgid "Total"
 msgstr "Total"
+
+msgid "English"
+msgstr "Inglês"
 
 msgid "Wellcome"
 msgstr "Bem vindo"

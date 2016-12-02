@@ -2,6 +2,7 @@ import operator
 from functools import reduce
 from django.apps import apps
 from django.db.models import Q
+from django.db.models.fields import CharField, TextField
 from django.db.models.sql.constants import QUERY_TERMS
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -53,11 +54,20 @@ def perform_lookup_query(Model, params):
         Return:
             List of objects (queryset)
     """
-    fields = [field.name for field in Model._meta.fields if not field.remote_field]
+    fields = [field for field in Model._meta.fields if not field.remote_field]
     query = params.get('q', '')
 
     new_params = params.copy()
-    new_params.update({field + '__icontains': query for field in fields})
+
+    for field in fields:
+        if type(field) in [CharField, TextField]:
+            # Unaccent is for postgres databases (Remove if you use others databases)
+            new_params.update({field.name + '__unaccent__icontains': query})
+        else:
+            new_params.update({field.name + '__icontains': query})
+
+    print(new_params)
+
     return perform_query(Model, params=new_params, or_query=True)
 
 def paginate_list(instance_list, params):

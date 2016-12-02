@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'django.contrib.postgres',
     # Third party
     'bootstrap_pagination',
     'sortable_column',
@@ -123,7 +124,6 @@ from django.utils.translation import ugettext_lazy as _
 
 LANGUAGES = (
     ('pt-br', _('Portuguese (Brazil)')),
-    ('en', _('English')),
 )
 
 LOCALE_PATHS = (
@@ -175,3 +175,6 @@ AUTH_REDIRECT_URL = '/interactions/'
 
 # Favicon
 FAVICON_PATH = STATIC_URL + 'img/icon.png'
+
+# Update drugs on deployment
+UPDATE_DRUGS_ON_DEPLOY = True

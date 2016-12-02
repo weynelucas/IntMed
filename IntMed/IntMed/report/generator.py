@@ -39,16 +39,19 @@ class ReportGenerator:
         for arg in args:
             objects = arg['objects']
             objects_data = []
+            table_per_object = arg.get('table_per_object', False)
+            writer = get_table_writer(arg['table'])
+
             if len(objects):
                 for obj in objects:
-                    objects_data.append(arg['row_formatter'](obj))
+                    if table_per_object:
+                        objects_data = arg['formatter'](obj)
+                        writer(doc_data=doc_data, labels=arg['labels'], table_data=objects_data, colWidths=arg.get('colWidths'), title=arg.get('title'))
+                    else:
+                        objects_data.append(arg['formatter'](obj))
 
-                writer = get_table_writer(arg['table'])
-                writer(doc_data=doc_data, labels=arg['labels'], table_data=objects_data, colWidths=arg.get('colWidths'), title=arg.get('title'))
-            else:
-                empty_message = arg.get('empty_message')
-                if empty_message:
-                    add_paragraph(doc_data, empty_message, 'ParagraphCenter')
+                if not table_per_object:
+                    writer(doc_data=doc_data, labels=arg['labels'], table_data=objects_data, colWidths=arg.get('colWidths'), title=arg.get('title'))
 
 
         self.doc.build(doc_data)

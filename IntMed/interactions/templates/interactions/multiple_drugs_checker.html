@@ -53,7 +53,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div ng-repeat="interaction in checker.interactions | orderBy: '-type'">
-                        <interaction model="interaction" evidence-label="{% trans 'Evidence' %}" action-label="{% trans 'Action' %}"></interaction>
+                        <interaction model="interaction" evidence-label="{% trans 'Evidence' %}" action-label="{% trans 'Action' %}" explanation-label="{% trans 'Explanation' %}"></interaction>
                     </div>
                 </div>
             </div>

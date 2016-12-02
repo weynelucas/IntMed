@@ -1,5 +1,7 @@
 import http.client as http
 import requests
+from django.conf import settings
+from django.core.exceptions import ObjectDoesNotExist
 from .database_service import db_table_exists
 
 
@@ -16,9 +18,15 @@ def load_drugs(DrugClass=None):
         from drug.models import Drug
         DrugClass = Drug
 
-    if db_table_exists(DrugClass._meta.db_table) and not DrugClass.objects.count():
+    if db_table_exists(DrugClass._meta.db_table) and settings.UPDATE_DRUGS_ON_DEPLOY:
         result = requests.get(url, headers={"Authorization": "Token " + token}).json()
 
         for record in result:
-            drug = DrugClass(id = record['id'], name=record['name'], action=record['action'])
-            drug.save()
+            try:
+                drug = DrugClass.objects.get(pk = record['id'])
+                drug.name = record['name']
+                drug.action = record['action']
+            except ObjectDoesNotExist:
+                drug = DrugClass(id = record['id'], name=record['name'], action=record['action'])
+            finally:
+                drug.save()
