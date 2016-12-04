@@ -122,7 +122,8 @@ li.user-menu.active > a {
     background-color: rgba(255,255,255, 1) !important;
 }*/
 .main-header .logo .logo-lg img {
-    height: 44px;
+    height: 45px;
+    padding-bottom: 2px;
 }
 
 
