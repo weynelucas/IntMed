@@ -1,21 +1,5 @@
 /* General
 ---------------------------------------------*/
-@font-face {
-    font-family: LetterGothicStd;
-    src: url("/static/fonts/LetterGothicStd.otf") format("opentype");
-}
-
-@font-face {
-    font-family: LetterGothicStd;
-    font-weight: bold;
-    src: url("/static/fonts/LetterGothicStd-Bold.otf") format("opentype");
-}
-
-@font-face {
-    font-family: AndaleMono;
-    src: url("/static/fonts/ANDALEMO.ttf") format("truetype");
-}
-
 body {
     font-family: "Source Sans Pro", sans-serif;
     background-color: #ecf0f5;
@@ -138,13 +122,11 @@ li.user-menu.active > a {
     background-color: rgba(255,255,255, 1) !important;
 }*/
 .main-header .logo .logo-lg img {
-    width: 200px;
-    height: 50px;
-    padding-bottom: 7px;
+    height: 44px;
 }
 
 
-/* login
+/* modal
 ---------------------------------------------*/
 .modal-content {
     border-style: solid;
@@ -170,6 +152,11 @@ li.user-menu.active > a {
 ---------------------------------------------*/
 .login-logo {
     margin-bottom: 15px;
+}
+@media (max-width: 360px) {
+    .login-logo object {
+        height: inherit;
+    }
 }
 .login-page {
     background-image: linear-gradient(to right, #38a1a1 0%, #6bb2b5 60%);
