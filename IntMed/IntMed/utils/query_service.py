@@ -66,8 +66,6 @@ def perform_lookup_query(Model, params):
         else:
             new_params.update({field.name + '__icontains': query})
 
-    print(new_params)
-
     return perform_query(Model, params=new_params, or_query=True)
 
 def paginate_list(instance_list, params):
