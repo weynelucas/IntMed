@@ -41,14 +41,14 @@
                         <li class="user-header">
                             <p>
                                 {{ request.user.get_full_name }}
-                                <small>{{ request.user.username }}</small>
+                                <small>{{ request.user.email }}</small>
                             </p>
                         </li>
                         <!-- Menu Body -->
                         <li class="user-body">
                             <div class="row">
                                 <div class="col-xs-4 text-center">
-                                    <a class="content-app" href="#"><i class="fa fa-lock"></i> Alterar senha</a>
+                                    <a data-toggle="modal" data-target="#mainModal" onclick="remoteFunction('/{{request.LANGUAGE_CODE}}/accounts/change_password', this)" class="content-app" href="#"><i class="fa fa-lock"></i> Alterar senha</a>
                                 </div>
                                 <div class="col-xs-4 text-center">
                                     <a class="content-app" href="#"><i class="fa fa-pencil"></i> Editar Perfil</a>

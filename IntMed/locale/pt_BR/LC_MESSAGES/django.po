@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-26 11:48-0300\n"
+"POT-Creation-Date: 2016-12-15 22:19-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,33 +26,33 @@ msgstr "Nenhuma interação encontrada entre os medicamentos selecionados"
 msgid "Portuguese (Brazil)"
 msgstr "Português do Brasil"
 
-#: .\IntMed\templates\home.html:45
+#: .\IntMed\templates\home.html:46
 msgid "Sign up"
 msgstr "Registrar-se"
 
-#: .\IntMed\templates\home.html:47
+#: .\IntMed\templates\home.html:48
 msgid "Already have an account"
 msgstr "Já possui uma conta"
 
-#: .\IntMed\templates\home.html:47
+#: .\IntMed\templates\home.html:48
 msgid "Make Login"
 msgstr "Faça o Login"
 
-#: .\IntMed\templates\home.html:65
+#: .\IntMed\templates\home.html:66
 #: .\accounts\templates\accounts\signin_modal_form.html:18
 msgid "Forget the password"
 msgstr "Esqueceu a senha"
 
-#: .\IntMed\templates\home.html:68
+#: .\IntMed\templates\home.html:69
 msgid "Login"
 msgstr "Login"
 
-#: .\IntMed\templates\home.html:70
+#: .\IntMed\templates\home.html:71
 #: .\accounts\templates\accounts\signin_modal_form.html:25
 msgid "New here"
 msgstr "Novo aqui"
 
-#: .\IntMed\templates\home.html:70
+#: .\IntMed\templates\home.html:71
 #: .\accounts\templates\accounts\signin_modal_form.html:25
 msgid "Join Us"
 msgstr "Junte-se a Nós"
@@ -103,10 +103,8 @@ msgid "Drugs"
 msgstr "Medicamentos"
 
 #: .\IntMed\templates\sidebar.html:42
-#, fuzzy
-#| msgid "Interaction"
 msgid "Interactions"
-msgstr "Interação"
+msgstr "Interações"
 
 #: .\IntMed\templates\sidebar.html:48
 msgid "Multiple"
@@ -120,42 +118,70 @@ msgstr ""
 msgid "Site"
 msgstr ""
 
-#: .\IntMed\views.py:72
+#: .\IntMed\views.py:71
 msgid "Complete the form bellow"
 msgstr "Preencha o formulário abaixo"
 
-#: .\accounts\forms.py:9 .\accounts\forms.py:30
+#: .\accounts\forms.py:10
+msgid "Username"
+msgstr "Nome de usuário"
+
+#: .\accounts\forms.py:11
 msgid "E-mail"
 msgstr "E-mail"
 
-#: .\accounts\forms.py:10
+#: .\accounts\forms.py:12
 msgid "First name"
 msgstr "Nome"
 
-#: .\accounts\forms.py:11
+#: .\accounts\forms.py:13
 msgid "Last name"
 msgstr "Sobrenome"
 
-#: .\accounts\forms.py:12 .\accounts\forms.py:31
+#: .\accounts\forms.py:14 .\accounts\forms.py:44
 msgid "Password"
 msgstr "Senha"
 
-#: .\accounts\forms.py:13
+#: .\accounts\forms.py:15
 msgid "Password confirmation"
 msgstr "Confirmação de senha"
 
-#: .\accounts\forms.py:34
+#: .\accounts\forms.py:25
+msgid "This e-mail is already registered."
+msgstr "Um usuário com este e-mail já existe."
+
+#: .\accounts\forms.py:43
+msgid "E-mail or username"
+msgstr "E-mail ou nome de usuário"
+
+#: .\accounts\forms.py:47
 msgid "E-mail or password is incorrect."
 msgstr "E-mail e/ou senha estão incorretos"
 
-#: .\accounts\forms.py:35
+#: .\accounts\forms.py:48
 msgid "This account is inactive."
 msgstr "Esta conta está inativa"
+
+#: .\accounts\forms.py:52
+msgid "Your password"
+msgstr "Sua senha"
+
+#: .\accounts\forms.py:53
+msgid "New password"
+msgstr "Nova senha"
+
+#: .\accounts\forms.py:54
+msgid "Confirm new password"
+msgstr "Confirmação da nova senha"
 
 #: .\accounts\templates\accounts\signin_modal_form.html:20
 #: .\accounts\views.py:11
 msgid "Sign in"
 msgstr "Acessar conta"
+
+#: .\accounts\views.py:19
+msgid "Change password"
+msgstr "Alterar senha"
 
 #: .\api\views.py:32
 msgid "Successfully removed"
@@ -175,7 +201,7 @@ msgstr "Informações Gerais"
 
 #: .\checker\report\generator.py:21
 msgid "User"
-msgstr ""
+msgstr "Usuário"
 
 #: .\checker\report\generator.py:21
 msgid "Emission date"
@@ -233,7 +259,7 @@ msgstr ""
 "Salve suas interações medicamentosas mais consultadas para visualizá-las "
 "mais facilmente no futuro."
 
-#: .\checker\views.py:52
+#: .\checker\views.py:55
 msgid "Drug interaction successfully removed"
 msgstr "Interação medicamentosa excluída com successo"
 
@@ -320,11 +346,14 @@ msgstr "Anterior"
 
 #: .\interactions\templates\interactions\single.html:22
 msgid "Filter"
-msgstr "FIltrar"
+msgstr "Filtrar"
 
 #: .\interactions\templates\interactions\single.html:89
 msgid "Total"
 msgstr "Total"
+
+msgid "Your password has been changed successfully"
+msgstr "Sua senha foi alterada com successo"
 
 msgid "English"
 msgstr "Inglês"

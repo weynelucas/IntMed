@@ -170,11 +170,16 @@ SORTABLE_COLUMN_SETTINGS = {
 }
 
 
+# Authentication
 LOGIN_URL = '/'
 AUTH_REDIRECT_URL = '/interactions/'
+AUTHENTICATION_BACKENDS = [
+    'IntMed.backends.EmailBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 # Favicon
 FAVICON_PATH = STATIC_URL + 'img/icon.png'
 
 # Update drugs on deployment
-UPDATE_DRUGS_ON_DEPLOY = True
+UPDATE_DRUGS_ON_DEPLOY = False

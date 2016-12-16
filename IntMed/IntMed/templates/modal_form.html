@@ -8,7 +8,7 @@
             <h4 class="modal-title">{{ title }}</h4>
             <p>{{ subtitle }}</p>
         </div>
-        <form id="modal_form" action="." method="post">{% csrf_token %}
+        <form id="{{ form_id }}" action="." method="post">{% csrf_token %}
             <div class="modal-body">
                 {% for field in form %}
                     <div class="form-group has-feedback">
@@ -30,3 +30,21 @@
         </form>
     </div>
 </div>
+
+{% if validate_form %}
+<script src="/static/js/form.js" charset="utf-8"></script>
+<script type="text/javascript">
+    initFormBehaviour({
+        formId: "#{{ form_id }}",
+        url: "{{ url }}",
+        success: function (response) {
+            if(response.reload) {
+                location.reload();
+            } else {
+                displayToast('success', response.message);
+                $("#mainModal").modal('hide');
+            }
+        }
+    });
+</script>
+{% endif %}

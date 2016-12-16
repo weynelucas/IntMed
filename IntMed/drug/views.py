@@ -4,7 +4,7 @@ from .forms import DrugForm
 from .serializers import DrugSerializer
 from api.views import ApiListView, ApiDetailsView
 from IntMed.views import ListView, AjaxFormView
-from IntMed.mixins import RemoteCreateFormMixin
+from IntMed.mixins import RemoteCommandFormMixin
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import ugettext_lazy as _
 
@@ -20,12 +20,11 @@ class DrugListView(ListView):
     title = _("Drugs")
     enable_create = False
 
-class DrugFormView(RemoteCreateFormMixin, AjaxFormView):
+class DrugFormView(RemoteCommandFormMixin, AjaxFormView):
     title = _("Add Drug")
     form_class = DrugForm
-
-
-
+    return_data = True
+    reload_page = False
 
 # Api Views
 class DrugApiListView(ApiListView):

@@ -11,8 +11,8 @@ def load_drugs(DrugClass=None):
         Args:
             DrugClass: Drug class (required if app has not been loaded yet)
     """
-    url = "http://api.startupfactor.com.br/api/drugs"
-    token = "f2360d4b17b259c0b15d0b1f57025a9580feb127"
+    url = "http://api.sim.intmed.com.br/api/drugs"
+    token = "8507910ddca9965f915f26c1b71da93b58cd28cd"
 
     if not DrugClass:
         from drug.models import Drug

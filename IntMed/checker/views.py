@@ -7,19 +7,22 @@ from .forms import DrugInteractionCheckerForm
 from api.views import ApiListView, ApiDetailsView
 from django.http import Http404, HttpResponse
 from IntMed.views import AjaxFormView
-from IntMed.mixins import RemoteCreateFormMixin
+from IntMed.mixins import RemoteCommandFormMixin
 from api.permissions import IsOwnerOrReadOnly
 from django.utils.translation import ugettext_lazy as _
 
 # Browsable Views
-class DrugInteractionCheckerFormView(RemoteCreateFormMixin, AjaxFormView):
+class DrugInteractionCheckerFormView(RemoteCommandFormMixin, AjaxFormView):
     title = _('Save Drug Interaction')
     subtitle = _('Save your most searched multiple drugs interactions to check them more easily in the future.')
     success_message = 'Drug interaction successfully added'
     form_class = DrugInteractionCheckerForm
     url = '/checker/create/'
-    append_language_code = True
     has_owner = True
+    return_data = True
+    reload_page = False
+    validate_form = False
+    append_language_code = True
     serializer_class = DrugInteractionCheckerSerializer
 
 def export(request):

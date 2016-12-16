@@ -1,8 +1,8 @@
-from .forms import SignUpForm, SignInForm
+from .forms import SignUpForm, SignInForm, PasswordUpdateForm
 from django.shortcuts import redirect
 from IntMed.views import AjaxFormView
 from django.contrib import auth
-from IntMed.mixins import LoginFormMixin, RemoteCreateFormMixin
+from IntMed.mixins import LoginFormMixin, RemoteCommandFormMixin, AttachRequestMixin
 from django.utils.translation import ugettext_lazy as _
 from django.http import JsonResponse
 
@@ -12,6 +12,17 @@ class SignInFormView(LoginFormMixin, AjaxFormView):
     template_name = 'accounts/signin_modal_form.html'
     url = '/accounts/login/'
     success_url = '/interactions/'
+    append_language_code = True
+
+class PasswordUpdateFormView(RemoteCommandFormMixin, AjaxFormView):
+    form_class = PasswordUpdateForm
+    title = _('Change password')
+    success_message = 'Your password has been changed successfully'
+    url = '/accounts/change_password/'
+    form_id = "change_password_form"
+    attach_request = True
+    return_data = False
+    reload_page = True
     append_language_code = True
 
 def signup(request):

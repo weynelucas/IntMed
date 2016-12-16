@@ -1,6 +1,6 @@
 app.factory('interactionsApi', function ($http) {
-    var url = "http://api.startupfactor.com.br";
-    var token = "f2360d4b17b259c0b15d0b1f57025a9580feb127";
+    var url = "http://api.sim.intmed.com.br";
+    var token = "8507910ddca9965f915f26c1b71da93b58cd28cd";
     var uri = {
         multiple: '/api/interactions/multiple/',
         single: '/api/interactions/single/',

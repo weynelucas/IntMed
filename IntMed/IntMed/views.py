@@ -68,11 +68,14 @@ class ListView(View):
 
 @method_decorator(ajax_required, name='dispatch')
 class AjaxFormView(FormView):
-    template_name = "modal_form.html"
     subtitle = _("Complete the form bellow")
     url = "create/"
-    append_language_code = False
+    form_id = "modal_form"
+    template_name = "modal_form.html"
     has_owner = False
+    validate_form = True
+    attach_request = False
+    append_language_code = False
 
     def get_initial(self):
         initial = super(AjaxFormView, self).get_initial()
@@ -80,6 +83,12 @@ class AjaxFormView(FormView):
             initial['owner'] = self.request.user.id
 
         return initial
+
+    def get_form_kwargs(self, **kwargs):
+        data = super(AjaxFormView, self).get_form_kwargs(**kwargs)
+        if self.attach_request:
+            data['request'] = self.request
+        return data
 
     def get_context_data(self, **kwargs):
         if self.append_language_code:
@@ -89,9 +98,11 @@ class AjaxFormView(FormView):
 
         context = super(AjaxFormView, self).get_context_data(**kwargs)
         context.update({
+            'url': url,
             'title': self.title,
             'subtitle': self.subtitle,
-            'url': url,
+            'form_id': self.form_id,
+            'validate_form': self.validate_form,
         })
         return context
 
