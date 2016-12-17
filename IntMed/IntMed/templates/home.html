@@ -12,7 +12,7 @@
             <object type="image/svg+xml" data="/static/img/sim_color.svg" height="100"></object>
         </div>
         <!-- Sign Up -->
-        <div id="signup_container" style="display:none">
+        <!-- <div id="signup_container" style="display:none">
             <form id="signup_form" action="/{{ request.LANGUAGE_CODE }}/accounts/signup/" method="post">{% csrf_token %}
                 <div class="form-group has-feedback has-feedback-fixed">
                     {{ signup_form.first_name | placeholder:signup_form.first_name.label }}
@@ -46,7 +46,7 @@
                 <button type="submit" class="btn btn-primary btn-block btn-flat">{% trans 'Sign up' %}</button>
             </form>
             <p class="login-box-msg">{% trans 'Already have an account' %} ? <a id="login_link">{% trans 'Make Login' %}</a> </p>
-        </div>
+        </div> -->
         <!-- Login -->
         <div id="login_container">
             <form id="login_form" action="/{{request.LANGUAGE_CODE}}/accounts/login/" method="post">{% csrf_token %}
@@ -68,7 +68,7 @@
 
                 <button type="submit" class="btn btn-primary btn-block btn-flat">{% trans 'Login' %}</button>
             </form>
-            <p class="login-box-msg">{% trans 'New here' %} ? <a id="signup_link">{% trans 'Join Us' %}</a></p>
+            <!-- <p class="login-box-msg">{% trans 'New here' %} ? <a id="signup_link">{% trans 'Join Us' %}</a></p> -->
         </div>
     </div>
 </div>
