@@ -24,6 +24,7 @@
         <div class="box-header with-border">
             <h4 class="box-title">{% trans 'My Interactions' %}</h4>
             <div class="box-tools pull-right">
+                <span ng-show="savedCheckers.length" data-toggle="tooltip" class="badge-header">{[{ savedCheckers.length }]}</span>
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
             </div>
         </div>

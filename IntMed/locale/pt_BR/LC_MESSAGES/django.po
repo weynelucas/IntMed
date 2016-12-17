@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-15 22:19-0300\n"
+"POT-Creation-Date: 2016-12-17 09:29-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,12 +62,12 @@ msgid "Add"
 msgstr "Adicionar"
 
 #: .\IntMed\templates\list.html:39
-#: .\interactions\templates\interactions\single.html:81
+#: .\interactions\templates\interactions\single.html:84
 msgid "Show"
 msgstr "Exibir"
 
 #: .\IntMed\templates\list.html:46
-#: .\interactions\templates\interactions\single.html:83
+#: .\interactions\templates\interactions\single.html:86
 msgid "entries"
 msgstr "registros"
 
@@ -78,7 +78,8 @@ msgid "Search"
 msgstr "Pesquisar"
 
 #: .\IntMed\templates\list.html:80
-#: .\interactions\templates\interactions\single.html:111
+#: .\interactions\templates\interactions\multiple_drugs_checker.html:12
+#: .\interactions\templates\interactions\single.html:109
 msgid "No results found"
 msgstr "Nenhum resultado encontrado"
 
@@ -96,13 +97,22 @@ msgstr "Sair"
 msgid "Save"
 msgstr "Salvar"
 
+#: .\IntMed\templates\navbar.html:54 .\accounts\views.py:19
+msgid "Change password"
+msgstr "Alterar senha"
+
+#: .\IntMed\templates\navbar.html:58
+msgid "Exit"
+msgstr "Sair"
+
 #: .\IntMed\templates\sidebar.html:33 .\checker\report\generator.py:36
 #: .\drug\views.py:20
-#: .\interactions\templates\interactions\saved_checkers.html:35
+#: .\interactions\templates\interactions\saved_checkers.html:36
 msgid "Drugs"
 msgstr "Medicamentos"
 
 #: .\IntMed\templates\sidebar.html:42
+#: .\interactions\templates\interactions\multiple_drugs_checker.html:44
 msgid "Interactions"
 msgstr "Interações"
 
@@ -126,7 +136,7 @@ msgstr "Preencha o formulário abaixo"
 msgid "Username"
 msgstr "Nome de usuário"
 
-#: .\accounts\forms.py:11
+#: .\accounts\forms.py:11 .\accounts\forms.py:43
 msgid "E-mail"
 msgstr "E-mail"
 
@@ -150,17 +160,13 @@ msgstr "Confirmação de senha"
 msgid "This e-mail is already registered."
 msgstr "Um usuário com este e-mail já existe."
 
-#: .\accounts\forms.py:43
-msgid "E-mail or username"
-msgstr "E-mail ou nome de usuário"
-
 #: .\accounts\forms.py:47
 msgid "E-mail or password is incorrect."
-msgstr "E-mail e/ou senha estão incorretos"
+msgstr "E-mail e/ou senha estão incorretos."
 
 #: .\accounts\forms.py:48
 msgid "This account is inactive."
-msgstr "Esta conta está inativa"
+msgstr "Esta conta está inativa."
 
 #: .\accounts\forms.py:52
 msgid "Your password"
@@ -179,13 +185,9 @@ msgstr "Confirmação da nova senha"
 msgid "Sign in"
 msgstr "Acessar conta"
 
-#: .\accounts\views.py:19
-msgid "Change password"
-msgstr "Alterar senha"
-
 #: .\api\views.py:32
 msgid "Successfully removed"
-msgstr "Excluído com successo"
+msgstr "Excluído com sucesso"
 
 #: .\checker\models.py:8
 msgid "Title (Optional)"
@@ -216,34 +218,34 @@ msgid "Interactions found"
 msgstr "Interações encontradas"
 
 #: .\checker\report\generator.py:34
-#: .\interactions\templates\interactions\saved_checkers.html:35
+#: .\interactions\templates\interactions\saved_checkers.html:36
 msgid "Interaction"
 msgstr "Interação"
 
 #: .\checker\report\generator.py:36
 #: .\interactions\templates\interactions\single.html:59
-#: .\interactions\templates\interactions\single.html:100
+#: .\interactions\templates\interactions\single.html:98
 msgid "Severity"
 msgstr "Severidade"
 
 #: .\checker\report\generator.py:36
-#: .\interactions\templates\interactions\multiple_drugs_checker.html:56
+#: .\interactions\templates\interactions\multiple_drugs_checker.html:60
 #: .\interactions\templates\interactions\single.html:47
-#: .\interactions\templates\interactions\single.html:102
+#: .\interactions\templates\interactions\single.html:100
 msgid "Evidence"
 msgstr "Evidência"
 
 #: .\checker\report\generator.py:36 .\drug\views.py:19
-#: .\interactions\templates\interactions\multiple_drugs_checker.html:56
+#: .\interactions\templates\interactions\multiple_drugs_checker.html:60
 #: .\interactions\templates\interactions\single.html:53
-#: .\interactions\templates\interactions\single.html:103
+#: .\interactions\templates\interactions\single.html:101
 msgid "Action"
 msgstr "Ação"
 
 #: .\checker\report\generator.py:36
-#: .\interactions\templates\interactions\multiple_drugs_checker.html:56
+#: .\interactions\templates\interactions\multiple_drugs_checker.html:60
 #: .\interactions\templates\interactions\single.html:38
-#: .\interactions\templates\interactions\single.html:104
+#: .\interactions\templates\interactions\single.html:102
 msgid "Explanation"
 msgstr "Explicação"
 
@@ -261,7 +263,7 @@ msgstr ""
 
 #: .\checker\views.py:55
 msgid "Drug interaction successfully removed"
-msgstr "Interação medicamentosa excluída com successo"
+msgstr "Interação medicamentosa excluída com sucesso"
 
 #: .\drug\models.py:7
 msgid "name"
@@ -276,7 +278,7 @@ msgid "drug"
 msgstr "medicamento"
 
 #: .\drug\views.py:19 .\interactions\templates\interactions\single.html.py:32
-#: .\interactions\templates\interactions\single.html:101
+#: .\interactions\templates\interactions\single.html:99
 msgid "Drug"
 msgstr "Medicamento"
 
@@ -300,15 +302,15 @@ msgstr "Nenhum medicamento selecionado"
 msgid "View all drug interactions for"
 msgstr "Visualizar todas interações medicamentosas para"
 
-#: .\interactions\templates\interactions\multiple_drugs_checker.html:46
+#: .\interactions\templates\interactions\multiple_drugs_checker.html:48
 msgid "No interactions found"
 msgstr "Nenhuma interação encontrada"
 
-#: .\interactions\templates\interactions\multiple_drugs_checker.html:47
+#: .\interactions\templates\interactions\multiple_drugs_checker.html:49
 msgid "interaction found"
 msgstr "interação encontrada"
 
-#: .\interactions\templates\interactions\multiple_drugs_checker.html:48
+#: .\interactions\templates\interactions\multiple_drugs_checker.html:50
 msgid "interactions found"
 msgstr "interações encontradas"
 
@@ -332,15 +334,15 @@ msgstr "Sim"
 msgid "My Interactions"
 msgstr "Minhas Interações"
 
-#: .\interactions\templates\interactions\saved_checkers.html:32
+#: .\interactions\templates\interactions\saved_checkers.html:33
 msgid "You have no interactions saved"
 msgstr "Você não possui nenhuma interação salva"
 
-#: .\interactions\templates\interactions\saved_checkers.html:44
+#: .\interactions\templates\interactions\saved_checkers.html:45
 msgid "Next"
 msgstr "Próximo"
 
-#: .\interactions\templates\interactions\saved_checkers.html:45
+#: .\interactions\templates\interactions\saved_checkers.html:46
 msgid "Previous"
 msgstr "Anterior"
 
@@ -348,12 +350,15 @@ msgstr "Anterior"
 msgid "Filter"
 msgstr "Filtrar"
 
-#: .\interactions\templates\interactions\single.html:89
+#: .\interactions\templates\interactions\single.html:75
 msgid "Total"
 msgstr "Total"
 
+msgid "E-mail or username"
+msgstr "E-mail ou nome de usuário"
+
 msgid "Your password has been changed successfully"
-msgstr "Sua senha foi alterada com successo"
+msgstr "Sua senha foi alterada com sucesso"
 
 msgid "English"
 msgstr "Inglês"
@@ -383,10 +388,10 @@ msgid "Description (Optional)"
 msgstr "Descrição (Opcional)"
 
 msgid "Drug interaction successfully added"
-msgstr "Interação medicamentosa adicionada com successo"
+msgstr "Interação medicamentosa adicionada com sucesso"
 
 msgid "%(model_name)s %(main_property_value)s successfully added."
-msgstr "%(model_name)s %(main_property_value)s adicionado com successo."
+msgstr "%(model_name)s %(main_property_value)s adicionado com sucesso."
 
 msgid "title"
 msgstr "título"

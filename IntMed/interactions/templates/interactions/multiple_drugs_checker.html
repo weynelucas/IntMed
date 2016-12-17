@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="box-header-form col-xs-12 col-sm-6">
                     <div class="form-group has-feedback">
-                        <input class="form-control" type="text" name="name" value="" placeholder="{% trans 'Search' %}..." autocomplete>
+                        <input class="form-control" type="text" name="name" value="" placeholder="{% trans 'Search' %}..." empty-message="{% trans 'No results found' %}" autocomplete>
                         <span class="glyphicon glyphicon-search form-control-feedback"></span>
                     </div>
                 </div>
@@ -41,13 +41,17 @@
     <!-- Interactions box -->
     <div id="interactionsBox" class="box box-solid box-primary">
         <div class="box-header">
-            <h3 class="box-title">
-                <ng-pluralize count="checker.interactions.length"
-                              when="{'0': '{% trans 'No interactions found' %}',
-                                     '1': '{} {% trans 'interaction found' %}',
-                                     'other': '{} {% trans 'interactions found' %}'}">
-                </ng-pluralize>
-            </h3>
+            <h3 class="box-title">{% trans 'Interactions'%}</h3>
+            <div class="box-tools pull-right without-buttons">
+                <span class="label label-header">
+                    <ng-pluralize count="checker.interactions.length"
+                                  when="{'0': '{% trans 'No interactions found' %}',
+                                         '1': '{} {% trans 'interaction found' %}',
+                                         'other': '{} {% trans 'interactions found' %}'}">
+                    </ng-pluralize>
+                </span>
+            </div>
+
         </div>
         <div class="box-body" ng-show="checker.interactions.length">
             <div class="row">

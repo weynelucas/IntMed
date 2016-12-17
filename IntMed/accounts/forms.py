@@ -40,7 +40,7 @@ class SignUpForm(UserCreationForm):
         fields = ['username', 'first_name', 'last_name', 'password1', 'password2']
 
 class SignInForm(AuthenticationForm):
-    username = forms.CharField(widget=forms.TextInput(attrs=form_control), label=_("E-mail or username"))
+    username = forms.CharField(widget=forms.TextInput(attrs=form_control), label=_("E-mail"))
     password = forms.CharField(widget=forms.PasswordInput(attrs=form_control), label=_("Password"))
 
     error_messages = {

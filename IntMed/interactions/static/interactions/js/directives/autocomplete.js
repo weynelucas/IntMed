@@ -15,16 +15,33 @@ app.directive('autocomplete', ['$http', function ($http) {
                         'X-Requested-With': 'XMLHttpRequest'
                     },
                 }).success(function (data, status) {
-                    response( data.length === 1 && data[ 0 ].length === 0 ? [] : data );
+                    if(!data.length) {
+                        var result = [{
+                            name: attrs.emptyMessage,
+                            unselectable: true,
+                        }];
+                        response(result);
+                    } else {
+                        response(data);
+                    }
                 });
+            },
+            search: function (event, ui) {
+                $(this).siblings('.form-control-feedback').attr('class', 'fa fa-refresh fa-spin form-control-feedback')
+            },
+            open: function (event, ui) {
+                $(this).siblings('.form-control-feedback').attr('class', 'glyphicon glyphicon-search form-control-feedback')
             },
             focus: function (event, ui) {
                 return false;
             },
             select: function (event, ui) {
-                scope.$apply(scope.insertSelectedDrug(ui.item));
-                $(event.target).val('');
-                return false;
+                if(!ui.item.unselectable) {
+                    scope.$apply(scope.insertSelectedDrug(ui.item));
+                    $(event.target).val('');
+                    return false;
+                }
+                return true;
             },
         }).autocomplete( "instance" )._renderItem = function(ul, item) {
             var uiItemTitle = $('<span>').addClass('ui-autocomplete-item-title').html(item.name + '<br/>');

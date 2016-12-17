@@ -32,7 +32,7 @@ a {
 .navbar-nav>.user-menu>.dropdown-menu>li.user-header p {
     color: #fff;
     font-weight: 700;
-    font-size: 19px;
+    font-size: 15px;
 }
 .navbar-nav>.user-menu>.dropdown-menu>li.user-header small {
     color: #fff;
@@ -101,15 +101,11 @@ li.user-menu.active > a {
 .row.fa-plus::before {
     content: none;
 }
-/* box-title */
-.box-title {
-    font-weight: 700;
-    text-transform: capitalize;
-}
 /* box-header */
-.box-header > h1, h2, h3, h4, h5 {
+.box-header  h1, h2, h3, h4, h5 {
     font-weight: 700;
     margin-top: 0;
+    margin-bottom: 0;
 }
 /* dataTables_total */
 .dataTables_total {
@@ -250,7 +246,15 @@ li.user-menu.active > a {
     padding-left: 0;
 }
 
-
+/* label-header
+---------------------------------------------*/
+.box-header > .box-tools.without-buttons {
+    top: 7px;
+}
+.label.label-header {
+    background-color: #fff !important;
+    color: #38a1a1 !important;
+}
 /* box
 ---------------------------------------------*/
 .box-header .form-group {
@@ -276,7 +280,7 @@ li.user-menu.active > a {
 /* info-text
 ---------------------------------------------*/
 .info-text {
-    font-size: 18px;
+    font-size: 15px;
     line-height: 45px;
     text-align: center;
 }
@@ -291,7 +295,22 @@ li.app-menu-item > a > img {
     height: 26px;
 }
 
-
+/* badge-header
+---------------------------------------------*/
+.badge-header {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    color: #38a1a1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: #fff;
+    border-radius: 10px;
+}
 
 /* box-header-form
 ---------------------------------------------*/
