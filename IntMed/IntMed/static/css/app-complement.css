@@ -392,23 +392,42 @@ table.dataTable > tbody > tr > td {
 
 /* Interactions
 ---------------------------------------------*/
+.severity-text:before {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 /* icons */
-.unknown_severity_interaction>.fa:before {
-    content: "\f29c";
+.severity-text.unknown_severity_interaction:before {
+    content: "\e085";
 }
-.severe_interaction>.fa:before {
-    content: "\f071";
+.severity-text.severe_interaction:before {
+    content: "\e083";
 }
-.moderate_interaction>.fa:before {
-    content: "\f119";
+.severity-text.moderate_interaction:before {
+    content: "\e101";
 }
-.mild_interaction>.fa:before {
-    content: "\f11a";
+.severity-text.mild_interaction:before {
+    content: "\e086";
 }
-.nothing_expected>.fa:before {
-    content: "\f118";
+.severity-text.nothing_expected:before {
+    content: "\e084";
 }
 
+.severity-text.unknown_severity_interaction:before,
+.severity-text.severe_interaction:before,
+.severity-text.moderate_interaction:before,
+.severity-text.mild_interaction:before,
+.severity-text.nothing_expected:before {
+    padding-right: 7px;
+}
 
 /* box-interaction */
 .box-interaction.box-solid > .box-header {

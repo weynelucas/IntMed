@@ -1,6 +1,6 @@
 <td>
     <div class="label-app {[{ ::model.type | lowercase }]}">
-        <span class="severity-text">{[{ ::model.severity }]}</span>
+        <span class="severity-text {[{ ::model.type | lowercase }]}">{[{ ::model.severity }]}</span>
     </div>
 </td>
 <td>{[{ ::model.other }]}</td>

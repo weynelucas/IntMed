@@ -1,8 +1,8 @@
 <div class="box box-interaction box-solid {[{ ::model.type | lowercase }]}">
     <div class="box-header with-border">
         <h4 class="box-title">{[{ ::model.startNode }]} <i class="fa fa-arrows-h"></i> {[{ ::model.endNode }]}</h4>
-        <div class="pull-right {[{ ::model.type | lowercase }]}">
-            <span class="severity-text">{[{ ::model.severity }]}</span>
+        <div class="pull-right">
+            <span class="severity-text {[{ ::model.type | lowercase }]}">{[{ ::model.severity }]}</span>
         </div>
     </div>
     <div class="box-body">
