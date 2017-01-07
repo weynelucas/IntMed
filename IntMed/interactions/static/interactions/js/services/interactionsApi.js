@@ -8,7 +8,7 @@ app.factory('interactionsApi', function ($http) {
     var interactionsProperties = {
         action: ["Nenhuma", "Informar", "Monitorar", "Ajustar", "Evitar"],
         evidence: ["Caso", "Estudo", "Teórica", "Extensa"],
-        severity: ["Leve", "Moderada", "Nada esperado", "Séria", "Severidade desconhecida"]
+        severity: ["Leve", "Moderada", "Nada esperado", "Grave", "Gravidade desconhecida"]
     };
 
     var request = function (url, uri, arg) {

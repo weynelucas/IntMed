@@ -226,7 +226,7 @@ msgstr "Interação"
 #: .\interactions\templates\interactions\single.html:59
 #: .\interactions\templates\interactions\single.html:98
 msgid "Severity"
-msgstr "Severidade"
+msgstr "Gravidade"
 
 #: .\checker\report\generator.py:36
 #: .\interactions\templates\interactions\multiple_drugs_checker.html:60
