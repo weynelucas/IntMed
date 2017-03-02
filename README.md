@@ -1,2 +1,2 @@
-# IntMed
- System to check and manage drugs interactions.
+# interage_web_old
+ Old repository of Interage Web
